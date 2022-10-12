@@ -31,8 +31,8 @@ interface ILogos {
 
 function ButtonLanguage({ label }: ButtonLanguageProps) {
   const logos: ILogos = {
-    Português: "logo-portugal.png",
-    Umbundo: "logo-angola.png",
+    Português: "logo-portugal.jpg",
+    Umbundo: "logo-angola.jpg",
   };
   return (
     <Button
