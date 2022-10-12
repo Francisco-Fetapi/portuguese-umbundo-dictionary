@@ -8,7 +8,7 @@ export interface IDarkMode {
   darkMode: boolean;
 }
 
-type Language = "portugues" | "umbundo";
+type Language = "Português" | "Umbundo";
 export interface App extends IDarkMode {
   textToTranslate: string;
   textTranslated: string;
@@ -23,8 +23,8 @@ const initialState: App = {
   textToTranslate: "",
   textTranslated: "Aqui irá aparecer o texto traduzido",
   languages: {
-    from: "portugues",
-    to: "umbundo",
+    from: "Português",
+    to: "Umbundo",
   },
 };
 
