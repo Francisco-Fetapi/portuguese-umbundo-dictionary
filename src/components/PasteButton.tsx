@@ -6,7 +6,9 @@ export default function PasteButton() {
     <div>
       <Button
         startIcon={<MdContentPaste />}
-        color="primary"
+        sx={(theme) => ({
+          background: theme.palette.primary.dark,
+        })}
         variant="contained"
         disableElevation
         style={{ borderRadius: "18px" }}

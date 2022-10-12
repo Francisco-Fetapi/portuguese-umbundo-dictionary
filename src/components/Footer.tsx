@@ -1,4 +1,4 @@
-import { Box, Fab, Link, Stack } from "@mui/material";
+import { Box, Fab, Stack } from "@mui/material";
 import { BoxColumnCenter, Text, FooterContainer } from "../styles/General";
 import { MdGroup, MdCamera } from "react-icons/md";
 import { FaMicrophone } from "react-icons/fa";
@@ -32,7 +32,14 @@ function FabWithText({ icon, label, bigger }: FabWithTextProps) {
           : undefined
       }
     >
-      <Fab color="primary">{icon}</Fab>
+      <Fab
+        sx={(theme) => ({
+          backgroundColor: theme.palette.primary.dark,
+          color: "#F0F0F0",
+        })}
+      >
+        {icon}
+      </Fab>
       <Box mt={0.5}>
         <Text
           align="center"
