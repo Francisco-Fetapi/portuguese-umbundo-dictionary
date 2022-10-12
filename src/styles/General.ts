@@ -10,11 +10,15 @@ export const BoxColumnCenter = styled(Box)`
   flex-direction: column;
   align-items: center;
   width: 100%;
+  position: relative;
+  z-index: 1;
 ` as typeof Box;
 
 export const Text = styled(Typography)`` as typeof Typography;
 
 export const HeaderContainer = styled.div`
+  position: relative;
+  z-index: 10;
   height: calc(100vh - 250px);
   min-height: 300px;
   transition: height 0.5s linear;
@@ -30,8 +34,6 @@ export const HeaderContainer = styled.div`
 
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-
-  position: relative;
 
   .ornament {
     position: absolute;
@@ -76,6 +78,7 @@ export const InputArea = styled.div`
 export const FooterContainer = styled.div`
   position: fixed;
   bottom: 0;
+  z-index: 1;
   width: 100%;
   max-width: var(--max-width);
   padding: 10px 0px;
