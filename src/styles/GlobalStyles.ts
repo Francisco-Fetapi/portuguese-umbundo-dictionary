@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
 
   :root{
     --primary-color:#4f5150;
+    --max-width:450px;
   }
 
     .bg-container{
@@ -35,6 +36,7 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
             `};
     }
     .super-container{
-      max-width:450px;
+      max-width:var(--max-width);
+      position: relative;
     }
 `;

@@ -6,7 +6,7 @@ import { BoxColumnCenter } from "../styles/General";
 
 export default function Home() {
   return (
-    <div>
+    <div className="super-container">
       <Header />
       <BoxColumnCenter mt={2}>
         <LanguageToggle />

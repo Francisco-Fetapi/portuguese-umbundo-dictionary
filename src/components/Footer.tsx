@@ -32,14 +32,7 @@ function FabWithText({ icon, label, bigger }: FabWithTextProps) {
           : undefined
       }
     >
-      <Fab
-        sx={(theme) => ({
-          backgroundColor: theme.palette.primary.dark,
-          color: "#F0F0F0",
-        })}
-      >
-        {icon}
-      </Fab>
+      <Fab color="primary">{icon}</Fab>
       <Box mt={0.5}>
         <Text
           align="center"
