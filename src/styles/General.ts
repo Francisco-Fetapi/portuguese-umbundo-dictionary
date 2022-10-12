@@ -16,9 +16,9 @@ export const Text = styled(Typography)`` as typeof Typography;
 
 export const HeaderContainer = styled.div`
   height: calc(100vh - 250px);
+  min-height: 300px;
   transition: height 0.5s linear;
   &.full {
-    max-height: none;
     height: 95vh;
   }
 
