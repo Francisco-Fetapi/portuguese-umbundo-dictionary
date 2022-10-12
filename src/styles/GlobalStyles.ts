@@ -11,6 +11,10 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
     --max-width:450px;
   }
 
+  body{
+    overflow-x:hidden;
+  }
+
     .bg-container{
       width:100vw;
       height: 100vh;
@@ -38,5 +42,15 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
     .super-container{
       max-width:var(--max-width);
       position: relative;
+    }
+
+    .animate{
+      transition:all .5s linear;
+    }
+    .animate-to-bottom{ 
+      /* position:relative;
+      left:100px; */
+      opacity:0;
+      pointer-events: none;
     }
 `;

@@ -14,11 +14,6 @@ export default function InputText() {
 
   return (
     <InputArea>
-      {/* <textarea
-        value={value}
-        onChange={handleChange}
-        placeholder="Introduza o texto"
-      ></textarea> */}
       <input
         value={value}
         onChange={handleChange}

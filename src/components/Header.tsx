@@ -4,9 +4,12 @@ import { MdStar, MdMenu } from "react-icons/md";
 import InputText from "./InputText";
 import PasteButton from "./PasteButton";
 import TranslatedArea from "./TranslatedArea";
+import { useSelector } from "react-redux";
+import { selectTextToTranslate } from "../store/App.selectors";
 
 export default function Header() {
   const theme = useTheme();
+  const textToTranslate = useSelector(selectTextToTranslate);
 
   return (
     <HeaderContainer>
@@ -37,9 +40,11 @@ export default function Header() {
         <Box mt={2} px={1}>
           <InputText />
         </Box>
-        <Box mt={1} mb={2} display="flex" justifyContent="center">
-          <PasteButton />
-        </Box>
+        {textToTranslate.length === 0 && (
+          <Box mt={1} mb={2} display="flex" justifyContent="center">
+            <PasteButton />
+          </Box>
+        )}
         <Box mt={3}>
           <TranslatedArea />
         </Box>
