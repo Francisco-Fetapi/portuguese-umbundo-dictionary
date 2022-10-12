@@ -12,7 +12,9 @@ export default function Header() {
   const textToTranslate = useSelector(selectTextToTranslate);
 
   return (
-    <HeaderContainer>
+    <HeaderContainer
+      className={textToTranslate.length > 0 ? "full" : undefined}
+    >
       <Box pt={2} px={0.8}>
         <Stack direction="row" alignItems="center">
           <IconButton>

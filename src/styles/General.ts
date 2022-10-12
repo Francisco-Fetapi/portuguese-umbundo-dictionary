@@ -15,9 +15,13 @@ export const BoxColumnCenter = styled(Box)`
 export const Text = styled(Typography)`` as typeof Typography;
 
 export const HeaderContainer = styled.div`
-  /* height: calc(100vh - 190px); */
-  max-height: 500px;
-  min-height: 100%;
+  height: calc(100vh - 250px);
+  transition: height 0.5s linear;
+  &.full {
+    max-height: none;
+    height: 95vh;
+  }
+
   overflow-y: auto;
   width: 100%;
   background-color: var(--primary-color);
