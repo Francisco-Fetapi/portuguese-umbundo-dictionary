@@ -2,6 +2,7 @@ import { Box, IconButton, Stack, useTheme } from "@mui/material";
 import { HeaderContainer, Text } from "../styles/General";
 import { MdStar, MdMenu } from "react-icons/md";
 import InputText from "./InputText";
+import PasteButton from "./PasteButton";
 
 export default function Header() {
   const theme = useTheme();
@@ -34,6 +35,9 @@ export default function Header() {
         </Stack>
         <Box mt={2} px={1}>
           <InputText />
+        </Box>
+        <Box mt={1} display="flex" justifyContent="center">
+          <PasteButton />
         </Box>
       </Box>
 
