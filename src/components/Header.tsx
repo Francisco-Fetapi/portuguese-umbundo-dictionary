@@ -3,6 +3,7 @@ import { HeaderContainer, Text } from "../styles/General";
 import { MdStar, MdMenu } from "react-icons/md";
 import InputText from "./InputText";
 import PasteButton from "./PasteButton";
+import TranslatedArea from "./TranslatedArea";
 
 export default function Header() {
   const theme = useTheme();
@@ -36,8 +37,11 @@ export default function Header() {
         <Box mt={2} px={1}>
           <InputText />
         </Box>
-        <Box mt={1} display="flex" justifyContent="center">
+        <Box mt={1} mb={2} display="flex" justifyContent="center">
           <PasteButton />
+        </Box>
+        <Box mt={3}>
+          <TranslatedArea />
         </Box>
       </Box>
 
