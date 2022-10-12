@@ -18,7 +18,7 @@ export default function Header() {
       <Box pt={2} px={0.8}>
         <Stack direction="row" alignItems="center">
           <IconButton>
-            <MdStar color={theme.palette.primary.light} />
+            <MdStar size={30} color={theme.palette.primary.light} />
           </IconButton>
           <Stack
             flexGrow={1}
@@ -36,7 +36,7 @@ export default function Header() {
             </Text>
           </Stack>
           <IconButton>
-            <MdMenu color={theme.palette.primary.light} />
+            <MdMenu size={30} color={theme.palette.primary.light} />
           </IconButton>
         </Stack>
         <Box mt={2} px={1}>
