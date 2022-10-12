@@ -11,6 +11,9 @@ export default function Home() {
       <BoxColumnCenter mt={2}>
         <LanguageToggle />
       </BoxColumnCenter>
+      <BoxColumnCenter mt={3} style={{ zoom: 0.8 }}>
+        <Footer />
+      </BoxColumnCenter>
     </div>
   );
 }

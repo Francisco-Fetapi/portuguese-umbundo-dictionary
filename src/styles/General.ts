@@ -15,7 +15,8 @@ export const BoxColumnCenter = styled(Box)`
 export const Text = styled(Typography)`` as typeof Typography;
 
 export const HeaderContainer = styled.div`
-  min-height: calc(100vh - 160px);
+  height: calc(100vh - 190px);
+  overflow-y: auto;
   width: 100%;
   background-color: var(--primary-color);
 
@@ -62,4 +63,12 @@ export const InputArea = styled.div`
       font-weight: 500;
     }
   }
+`;
+
+export const FooterContainer = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 0px;
 `;
