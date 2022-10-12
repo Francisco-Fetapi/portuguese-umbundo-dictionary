@@ -16,9 +16,13 @@ export const Text = styled(Typography)`` as typeof Typography;
 
 export const HeaderContainer = styled.div`
   height: calc(100vh - 190px);
+  max-height: 500px;
+  min-height: 350px;
   overflow-y: auto;
   width: 100%;
   background-color: var(--primary-color);
+
+  padding-bottom: 20px;
 
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
