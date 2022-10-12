@@ -76,9 +76,6 @@ export const InputArea = styled.div`
 `;
 
 export const FooterContainer = styled.div`
-  position: fixed;
-  bottom: 0;
-  z-index: 1;
   width: 100%;
   max-width: var(--max-width);
   padding: 10px 0px;

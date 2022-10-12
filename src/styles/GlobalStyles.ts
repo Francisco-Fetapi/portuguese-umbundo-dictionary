@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
 
     .bg-container{
       width:100vw;
-      height: 100vh;
+      min-height: 100vh;
       position:absolute;
       z-index:1;
       background: url("/img/bg-afrika.jpg");
@@ -42,6 +42,10 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
     .super-container{
       max-width:var(--max-width);
       position: relative;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
     }
 
     .animate{

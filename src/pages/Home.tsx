@@ -13,15 +13,14 @@ export default function Home() {
   return (
     <div className="super-container">
       <Header />
-      <br />
+
       <BoxColumnCenter
         mt={0}
         className={hasText ? "animate animate-to-bottom" : "animate"}
       >
         <LanguageToggle />
       </BoxColumnCenter>
-      <br />
-      <br />
+
       <BoxColumnCenter
         mt={3}
         style={{ zoom: 0.8 }}
