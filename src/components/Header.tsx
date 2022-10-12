@@ -1,6 +1,7 @@
 import { Box, IconButton, Stack, useTheme } from "@mui/material";
 import { HeaderContainer, Text } from "../styles/General";
 import { MdStar, MdMenu } from "react-icons/md";
+import InputText from "./InputText";
 
 export default function Header() {
   const theme = useTheme();
@@ -31,6 +32,8 @@ export default function Header() {
             <MdMenu color={theme.palette.primary.light} />
           </IconButton>
         </Stack>
+
+        <InputText />
       </Box>
 
       <div className="ornament">

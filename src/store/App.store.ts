@@ -7,10 +7,25 @@ export const THEME_KEY_IN_LOCALSTORAGE = "darkMode";
 export interface IDarkMode {
   darkMode: boolean;
 }
-export interface App extends IDarkMode {}
+
+type Language = "portugues" | "umbundo";
+export interface App extends IDarkMode {
+  textToTranslate: string;
+  textTranslated: string;
+  languages: {
+    from: Language;
+    to: Language;
+  };
+}
 
 const initialState: App = {
   darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
+  textToTranslate: "",
+  textTranslated: "",
+  languages: {
+    from: "portugues",
+    to: "umbundo",
+  },
 };
 
 function stateReseted(initialState: App): App {
@@ -34,6 +49,17 @@ export function sliceCreator(initialState: App) {
         }
         Object.assign(state, stateReseted(initialState));
       },
+      setTextToTranslate(state, action: PayloadAction<string>) {
+        state.textToTranslate = action.payload;
+      },
+      setTextTranslated(state, action: PayloadAction<string>) {
+        state.textToTranslate = action.payload;
+      },
+      toggleLanguage(state) {
+        const lastFrom = state.languages.from;
+        state.languages.from = state.languages.to;
+        state.languages.to = lastFrom;
+      },
     },
   });
 }
@@ -53,7 +79,13 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware(middlewares),
 });
 
-export const { toggleTheme, resetAllState } = app.actions;
+export const {
+  toggleTheme,
+  resetAllState,
+  setTextToTranslate,
+  setTextTranslated,
+  toggleLanguage,
+} = app.actions;
 
 export default store;
 

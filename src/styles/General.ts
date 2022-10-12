@@ -40,3 +40,5 @@ export const HeaderContainer = styled.div`
     }
   }
 `;
+
+export const InputArea = styled.div``;
