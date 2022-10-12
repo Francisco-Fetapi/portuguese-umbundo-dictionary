@@ -32,8 +32,9 @@ export default function Header() {
             <MdMenu color={theme.palette.primary.light} />
           </IconButton>
         </Stack>
-
-        <InputText />
+        <Box mt={2} px={1}>
+          <InputText />
+        </Box>
       </Box>
 
       <div className="ornament">

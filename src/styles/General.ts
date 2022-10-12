@@ -41,4 +41,25 @@ export const HeaderContainer = styled.div`
   }
 `;
 
-export const InputArea = styled.div``;
+export const InputArea = styled.div`
+  textarea {
+    background: transparent;
+    /* border: 1px solid #fff; */
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100px;
+    padding: 8px 5px;
+    color: white;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+
+    ::placeholder {
+      /* color: white; */
+      padding-left: 3px;
+      font-size: inherit;
+      font-family: inherit;
+      font-weight: 500;
+    }
+  }
+`;
