@@ -21,7 +21,7 @@ export interface App extends IDarkMode {
 const initialState: App = {
   darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
   textToTranslate: "",
-  textTranslated: "Aqui irá aparecer o texto traduzido",
+  textTranslated: "Aqui irão aparecer os resultados",
   languages: {
     from: "Português",
     to: "Umbundo",

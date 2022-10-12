@@ -15,14 +15,14 @@ export const BoxColumnCenter = styled(Box)`
 export const Text = styled(Typography)`` as typeof Typography;
 
 export const HeaderContainer = styled.div`
-  height: calc(100vh - 190px);
+  /* height: calc(100vh - 190px); */
   max-height: 500px;
-  min-height: 350px;
+  min-height: 100%;
   overflow-y: auto;
   width: 100%;
   background-color: var(--primary-color);
 
-  padding-bottom: 20px;
+  padding-bottom: 40px;
 
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
@@ -47,14 +47,14 @@ export const HeaderContainer = styled.div`
 `;
 
 export const InputArea = styled.div`
-  textarea {
+  textarea,
+  input {
     background: transparent;
-    /* border: 1px solid #fff; */
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* border: none; */
     outline: none;
     width: 100%;
-    height: 100px;
-    padding: 8px 5px;
+    padding: 8px 10px;
     color: white;
     font-size: 18px;
     font-family: "Roboto", sans-serif;

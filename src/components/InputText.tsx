@@ -3,9 +3,7 @@ import { selectTextToTranslate } from "../store/App.selectors";
 import { setTextToTranslate } from "../store/App.store";
 import { InputArea } from "../styles/General";
 
-type FuncHandleChange =
-  | React.ChangeEventHandler<HTMLTextAreaElement>
-  | undefined;
+type FuncHandleChange = React.ChangeEventHandler<HTMLInputElement> | undefined;
 
 export default function InputText() {
   const value = useSelector(selectTextToTranslate);
@@ -16,11 +14,16 @@ export default function InputText() {
 
   return (
     <InputArea>
-      <textarea
+      {/* <textarea
         value={value}
         onChange={handleChange}
         placeholder="Introduza o texto"
-      ></textarea>
+      ></textarea> */}
+      <input
+        value={value}
+        onChange={handleChange}
+        placeholder="Introduza a palavra"
+      />
     </InputArea>
   );
 }

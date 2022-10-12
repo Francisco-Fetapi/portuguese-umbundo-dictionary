@@ -8,9 +8,12 @@ export default function Home() {
   return (
     <div className="super-container">
       <Header />
-      <BoxColumnCenter mt={2}>
+      <br />
+      <BoxColumnCenter mt={0}>
         <LanguageToggle />
       </BoxColumnCenter>
+      <br />
+      <br />
       <BoxColumnCenter mt={3} style={{ zoom: 0.8 }}>
         <Footer />
       </BoxColumnCenter>
