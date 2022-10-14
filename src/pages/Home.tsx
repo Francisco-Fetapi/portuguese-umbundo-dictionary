@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -13,6 +13,12 @@ export default function Home() {
   const hasText = textToTranslate.length > 0;
   const modalOpen = useSelector(selectMenu);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(setMenu(false));
+    };
+  }, []);
 
   return (
     <div className="super-container">

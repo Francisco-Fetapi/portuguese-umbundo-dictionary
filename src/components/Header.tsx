@@ -7,11 +7,13 @@ import TranslatedArea from "./TranslatedArea";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTextToTranslate } from "../store/App.selectors";
 import { setMenu } from "../store/App.store";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const theme = useTheme();
   const dispatch = useDispatch();
   const textToTranslate = useSelector(selectTextToTranslate);
+  const navigate = useNavigate();
 
   return (
     <HeaderContainer
@@ -19,7 +21,7 @@ export default function Header() {
     >
       <Box pt={2} px={0.8}>
         <Stack direction="row" alignItems="center">
-          <IconButton>
+          <IconButton onClick={() => navigate("/favoritos")}>
             <MdStar size={30} color={theme.palette.primary.light} />
           </IconButton>
           <Stack
