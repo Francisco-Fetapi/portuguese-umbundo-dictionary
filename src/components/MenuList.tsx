@@ -18,12 +18,14 @@ import {
 } from "react-icons/md";
 
 import { Divider } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface IOption {
   label: string;
   icon: React.ReactNode;
   textSecondary: string;
   divider?: boolean;
+  url: `/${string}`;
 }
 
 const options: IOption[] = [
@@ -31,58 +33,69 @@ const options: IOption[] = [
     label: "Histórico",
     icon: <MdHistory />,
     textSecondary: "Configure suas preferencias.",
+    url: "/historico",
   },
   {
     label: "Favoritos",
     icon: <MdStar />,
     textSecondary: "Guarde suas palavras favoritas.",
+    url: "/favoritos",
   },
   {
     label: "Frases guardadas",
     icon: <MdOutlineSaveAlt />,
     textSecondary: "Guarde frases para memorizar.",
     divider: true,
+    url: "/frases-guardadas",
   },
   {
     label: "Verbos",
     icon: <MdTextFields />,
     textSecondary: "Lista dos verbos do umbundo/português.",
+    url: "/verbos",
   },
   {
-    label: "Frases",
+    label: "Conversação",
     icon: <MdTextFormat />,
     textSecondary: "Aprenda frases em vários contextos.",
     divider: true,
+    url: "/conversacao",
   },
   {
     label: "Definições",
     icon: <MdSettings />,
     textSecondary: "Configure suas preferencias.",
+    url: "/definicoes",
   },
   {
     label: "Ajuda e Comentários",
     icon: <MdComment />,
     textSecondary: "Ajudê-nos dando o seu feedback.",
+    url: "/ajuda-e-comentarios",
   },
   {
     label: "Sobre nós",
     icon: <MdGroup />,
     textSecondary: "Saiba mais sobre nós.",
     divider: true,
+    url: "/sobre-nos",
   },
   {
     label: "Politica de Privacidade",
     icon: <MdSecurity />,
     textSecondary: "Conheça nossas politicas.",
+    url: "/politica-de-privacidade",
   },
   {
     label: "Termos de utilização",
     icon: <MdTextSnippet />,
     textSecondary: "Veja os termos da aplicação.",
+    url: "/termos-de-utilizacao",
   },
 ];
 
 export default function MenuList() {
+  const navigate = useNavigate();
   return (
     <List
       sx={{
@@ -93,7 +106,11 @@ export default function MenuList() {
     >
       {options.map((option) => (
         <React.Fragment>
-          <ListItem key={option.label} button>
+          <ListItem
+            key={option.label}
+            button
+            onClick={() => navigate(option.url)}
+          >
             <ListItemAvatar>
               <Avatar>{option.icon}</Avatar>
             </ListItemAvatar>
