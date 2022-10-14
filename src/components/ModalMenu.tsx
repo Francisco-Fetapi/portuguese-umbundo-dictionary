@@ -8,7 +8,7 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { Text } from "../styles/General";
 
-import { createTheme, IconButton, ThemeProvider } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 import MenuList from "./MenuList";
 
 const Transition = React.forwardRef(function Transition(
@@ -31,7 +31,6 @@ export default function ModalMenu({ handleClose, open }: Props) {
       mode: "dark",
     },
   });
-  function done() {}
 
   return (
     <ThemeProvider theme={theme}>
