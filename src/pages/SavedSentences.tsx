@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function SavedSentences() {
-  return <div>SavedSentences</div>;
+  return <PageHeader>SavedSentences</PageHeader>;
 }

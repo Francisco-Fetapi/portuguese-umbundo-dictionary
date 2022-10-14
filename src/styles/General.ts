@@ -90,3 +90,13 @@ export const FooterContainer = styled.div`
     z-index: initial;
   }
 `;
+
+export const PageHeaderContainer = styled.div`
+  height: 95vh;
+  background: var(--primary-color);
+
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  color: #f0f0f0;
+`;

@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function Verbs() {
-  return <div>Verbs</div>;
+  return <PageHeader>Verbs</PageHeader>;
 }

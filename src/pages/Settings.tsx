@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function Settings() {
-  return <div>Settings</div>;
+  return <PageHeader>Settings</PageHeader>;
 }

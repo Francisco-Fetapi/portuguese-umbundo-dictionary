@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function Favorites() {
-  return <div>Favorites</div>;
+  return <PageHeader>Favorites</PageHeader>;
 }

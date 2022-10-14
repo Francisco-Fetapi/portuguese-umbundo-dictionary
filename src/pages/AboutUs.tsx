@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function AboutUs() {
-  return <div>AboutUs</div>;
+  return <PageHeader>AboutUs</PageHeader>;
 }

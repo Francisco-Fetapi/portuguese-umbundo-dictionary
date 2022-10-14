@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function Conversations() {
-  return <div>Conversations</div>;
+  return <PageHeader>Conversations</PageHeader>;
 }

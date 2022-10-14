@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function HelpAndComments() {
-  return <div>HelpAndComments</div>;
+  return <PageHeader>HelpAndComments</PageHeader>;
 }

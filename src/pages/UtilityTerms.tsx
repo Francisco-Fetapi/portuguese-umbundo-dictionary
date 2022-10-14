@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function UtilityTerms() {
-  return <div>UtilityTerms</div>;
+  return <PageHeader>UtilityTerms</PageHeader>;
 }

@@ -1,3 +1,5 @@
+import PageHeader from "../components/PageHeader";
+
 export default function PolicyAndPrivacy() {
-  return <div>PolicyAndPrivacy</div>;
+  return <PageHeader>PolicyAndPrivacy</PageHeader>;
 }
