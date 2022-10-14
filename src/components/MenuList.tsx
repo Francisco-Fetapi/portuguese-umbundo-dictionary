@@ -73,12 +73,12 @@ const options: IOption[] = [
   {
     label: "Politica de Privacidade",
     icon: <MdSecurity />,
-    textSecondary: "Guarde frases para memorizar.",
+    textSecondary: "Conheça nossas politicas.",
   },
   {
     label: "Termos de utilização",
     icon: <MdTextSnippet />,
-    textSecondary: "Guarde frases para memorizar.",
+    textSecondary: "Veja os termos da aplicação.",
   },
 ];
 
