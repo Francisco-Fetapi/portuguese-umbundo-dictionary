@@ -1,9 +1,39 @@
-import { PageHeaderContainer } from "../styles/General";
+import { IconButton, Stack, useTheme, Box } from "@mui/material";
+import { MdArrowBack } from "react-icons/md";
+import { PageHeaderContainer, Text } from "../styles/General";
 
 interface PageHeaderProps {
   children: React.ReactNode;
+  pageName: string;
 }
 
-export default function PageHeader({ children }: PageHeaderProps) {
-  return <PageHeaderContainer>{children}</PageHeaderContainer>;
+export default function PageHeader({ children, pageName }: PageHeaderProps) {
+  const theme = useTheme();
+  return (
+    <PageHeaderContainer>
+      <Box py={1} px={1}>
+        <Stack direction="row" alignItems="center">
+          <IconButton>
+            <MdArrowBack size={30} color={theme.palette.primary.light} />
+          </IconButton>
+          <Stack
+            flexGrow={1}
+            direction="row"
+            gap={0.5}
+            alignItems="center"
+            justifyContent="center"
+            style={{ zoom: 0.95 }}
+          >
+            <Text variant="h6" fontWeight="bold" color="white">
+              {pageName}
+            </Text>
+            {/* <Text variant="h6" color="white" fontWeight={300}>
+              Umbundo
+            </Text> */}
+          </Stack>
+        </Stack>
+      </Box>
+      <Box pt={1}>{children}</Box>
+    </PageHeaderContainer>
+  );
 }
