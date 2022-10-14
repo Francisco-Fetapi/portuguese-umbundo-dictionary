@@ -8,7 +8,6 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import { Text } from "../styles/General";
 
-import { MdClose } from "react-icons/md";
 import { createTheme, IconButton, ThemeProvider } from "@mui/material";
 import MenuList from "./MenuList";
 
@@ -18,7 +17,7 @@ const Transition = React.forwardRef(function Transition(
   },
   ref: React.Ref<unknown>
 ) {
-  return <Slide direction="down" ref={ref} {...props} />;
+  return <Slide direction="left" ref={ref} {...props} />;
 });
 
 interface Props {
@@ -54,16 +53,6 @@ export default function ModalMenu({ handleClose, open }: Props) {
           },
         }}
       >
-        <IconButton
-          sx={{
-            position: "absolute",
-            top: 4,
-            left: 4,
-            color: "#D0D0D0",
-          }}
-        >
-          <MdClose />
-        </IconButton>
         <DialogTitle
           variant="h5"
           align="center"
@@ -79,7 +68,6 @@ export default function ModalMenu({ handleClose, open }: Props) {
           </Text>
         </DialogContent>
         <DialogActions>
-          <Button onClick={done}>Concluir</Button>
           <Button onClick={handleClose}>Fechar</Button>
         </DialogActions>
       </Dialog>

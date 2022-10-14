@@ -4,7 +4,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import { MdOutlineSaveAlt, MdSettings, MdStar } from "react-icons/md";
+import {
+  MdHistory,
+  MdOutlineSaveAlt,
+  MdSettings,
+  MdStar,
+  MdTextFields,
+  MdTextFormat,
+  MdComment,
+  MdGroup,
+  MdSecurity,
+  MdTextSnippet,
+} from "react-icons/md";
+
 import { Divider } from "@mui/material";
 
 interface IOption {
@@ -16,8 +28,8 @@ interface IOption {
 
 const options: IOption[] = [
   {
-    label: "Definições",
-    icon: <MdSettings />,
+    label: "Histórico",
+    icon: <MdHistory />,
     textSecondary: "Configure suas preferencias.",
   },
   {
@@ -30,6 +42,43 @@ const options: IOption[] = [
     icon: <MdOutlineSaveAlt />,
     textSecondary: "Guarde frases para memorizar",
     divider: true,
+  },
+  {
+    label: "Verbos",
+    icon: <MdTextFields />,
+    textSecondary: "Lista dos verbos do umbundo/português",
+  },
+  {
+    label: "Frases",
+    icon: <MdTextFormat />,
+    textSecondary: "Aprenda frases em vários contextos",
+    divider: true,
+  },
+  {
+    label: "Definições",
+    icon: <MdSettings />,
+    textSecondary: "Configure suas preferencias.",
+  },
+  {
+    label: "Ajuda e Comentários",
+    icon: <MdComment />,
+    textSecondary: "Ajudê-nos dando o seu feedback",
+  },
+  {
+    label: "Sobre nós",
+    icon: <MdGroup />,
+    textSecondary: "Saiba mais sobre nós",
+    divider: true,
+  },
+  {
+    label: "Politica de Privacidade",
+    icon: <MdSecurity />,
+    textSecondary: "Guarde frases para memorizar",
+  },
+  {
+    label: "Termos de utilização",
+    icon: <MdTextSnippet />,
+    textSecondary: "Guarde frases para memorizar",
   },
 ];
 
@@ -44,7 +93,7 @@ export default function MenuList() {
     >
       {options.map((option) => (
         <React.Fragment>
-          <ListItem key={option.label}>
+          <ListItem key={option.label} button>
             <ListItemAvatar>
               <Avatar>{option.icon}</Avatar>
             </ListItemAvatar>
