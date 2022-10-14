@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
 
   :root{
     --primary-color:#4f5150;
+    --primary-color2:#3f3f3d;
     --max-width:450px;
   }
 
