@@ -52,9 +52,8 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
       transition:all .5s linear;
     }
     .animate-to-bottom{ 
-      /* position:relative;
-      left:100px; */
       opacity:0;
       pointer-events: none;
+      display:none;
     }
 `;
