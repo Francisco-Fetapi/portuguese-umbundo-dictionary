@@ -14,15 +14,15 @@ export default function PageHeader({ children, pageName }: PageHeaderProps) {
       <Box py={1} px={1}>
         <Stack direction="row" alignItems="center">
           <IconButton>
-            <MdArrowBack size={30} color={theme.palette.primary.light} />
+            <MdArrowBack size={30} color="#F0F0F0" />
           </IconButton>
           <Stack
             flexGrow={1}
             direction="row"
             gap={0.5}
             alignItems="center"
-            justifyContent="center"
             style={{ zoom: 0.95 }}
+            ml={2.5}
           >
             <Text variant="h6" fontWeight="bold" color="white">
               {pageName}

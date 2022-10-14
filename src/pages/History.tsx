@@ -1,5 +1,5 @@
 import PageHeader from "../components/PageHeader";
 
 export default function History() {
-  return <PageHeader>History</PageHeader>;
+  return <PageHeader pageName="Histórico">History</PageHeader>;
 }
