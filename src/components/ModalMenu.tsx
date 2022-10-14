@@ -39,7 +39,6 @@ export default function ModalMenu({ handleClose, open }: Props) {
         open={open}
         TransitionComponent={Transition}
         keepMounted
-        onClose={handleClose}
         maxWidth="md"
         PaperProps={{
           sx: {
@@ -50,6 +49,7 @@ export default function ModalMenu({ handleClose, open }: Props) {
             borderRadius: "20px",
             position: "relative",
             margin: "5px",
+            maxWidth: "var(--max-width)",
           },
         }}
       >
