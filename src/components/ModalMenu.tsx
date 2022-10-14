@@ -9,7 +9,8 @@ import { TransitionProps } from "@mui/material/transitions";
 import { Text } from "../styles/General";
 
 import { MdClose } from "react-icons/md";
-import { IconButton } from "@mui/material";
+import { createTheme, IconButton, ThemeProvider } from "@mui/material";
+import MenuList from "./MenuList";
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -26,9 +27,15 @@ interface Props {
 }
 
 export default function ModalMenu({ handleClose, open }: Props) {
+  const theme = createTheme({
+    palette: {
+      mode: "dark",
+    },
+  });
   function done() {}
+
   return (
-    <div>
+    <ThemeProvider theme={theme}>
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -43,6 +50,7 @@ export default function ModalMenu({ handleClose, open }: Props) {
             color: "white",
             borderRadius: "20px",
             position: "relative",
+            margin: "5px",
           },
         }}
       >
@@ -59,20 +67,22 @@ export default function ModalMenu({ handleClose, open }: Props) {
         <DialogTitle
           variant="h5"
           align="center"
-          sx={(theme) => ({
+          sx={{
             color: "#D0D0D0",
-          })}
+          }}
         >
           Menu
         </DialogTitle>
-        <DialogContent>
-          <Text variant="subtitle2">Content</Text>
+        <DialogContent sx={{ padding: 0 }}>
+          <Text variant="subtitle2">
+            <MenuList />
+          </Text>
         </DialogContent>
         <DialogActions>
           <Button onClick={done}>Concluir</Button>
           <Button onClick={handleClose}>Fechar</Button>
         </DialogActions>
       </Dialog>
-    </div>
+    </ThemeProvider>
   );
 }
