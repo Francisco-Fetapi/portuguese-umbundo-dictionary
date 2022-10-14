@@ -16,6 +16,7 @@ export interface App extends IDarkMode {
     from: Language;
     to: Language;
   };
+  menu: boolean;
 }
 
 const initialState: App = {
@@ -26,6 +27,7 @@ const initialState: App = {
     from: "Português",
     to: "Umbundo",
   },
+  menu: false,
 };
 
 function stateReseted(initialState: App): App {
@@ -60,6 +62,9 @@ export function sliceCreator(initialState: App) {
         state.languages.from = state.languages.to;
         state.languages.to = lastFrom;
       },
+      setMenu(state, action: PayloadAction<boolean>) {
+        state.menu = action.payload;
+      },
     },
   });
 }
@@ -85,6 +90,7 @@ export const {
   setTextToTranslate,
   setTextTranslated,
   toggleLanguage,
+  setMenu,
 } = app.actions;
 
 export default store;

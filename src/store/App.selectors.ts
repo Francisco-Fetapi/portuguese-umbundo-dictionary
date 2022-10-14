@@ -10,3 +10,4 @@ export const selectTextTranslated = (state: RootState) =>
 
 export const selectLanguagesPositions = (state: RootState) =>
   state.app.languages;
+export const selectMenu = (state: RootState) => state.app.menu;

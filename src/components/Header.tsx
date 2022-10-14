@@ -4,11 +4,13 @@ import { MdStar, MdMenu } from "react-icons/md";
 import InputText from "./InputText";
 import PasteButton from "./PasteButton";
 import TranslatedArea from "./TranslatedArea";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectTextToTranslate } from "../store/App.selectors";
+import { setMenu } from "../store/App.store";
 
 export default function Header() {
   const theme = useTheme();
+  const dispatch = useDispatch();
   const textToTranslate = useSelector(selectTextToTranslate);
 
   return (
@@ -35,7 +37,7 @@ export default function Header() {
               Umbundo
             </Text>
           </Stack>
-          <IconButton>
+          <IconButton onClick={() => dispatch(setMenu(true))}>
             <MdMenu size={30} color={theme.palette.primary.light} />
           </IconButton>
         </Stack>
