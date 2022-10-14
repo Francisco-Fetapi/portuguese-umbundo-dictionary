@@ -4,12 +4,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
-import { MdSettings, MdStar } from "react-icons/md";
+import { MdOutlineSaveAlt, MdSettings, MdStar } from "react-icons/md";
+import { Divider } from "@mui/material";
 
 interface IOption {
   label: string;
   icon: React.ReactNode;
   textSecondary: string;
+  divider?: boolean;
 }
 
 const options: IOption[] = [
@@ -23,6 +25,12 @@ const options: IOption[] = [
     icon: <MdStar />,
     textSecondary: "Guarde seus favoritos",
   },
+  {
+    label: "Frases guardadas",
+    icon: <MdOutlineSaveAlt />,
+    textSecondary: "Guarde frases para memorizar",
+    divider: true,
+  },
 ];
 
 export default function MenuList() {
@@ -35,15 +43,18 @@ export default function MenuList() {
       }}
     >
       {options.map((option) => (
-        <ListItem key={option.label} divider>
-          <ListItemAvatar>
-            <Avatar>{option.icon}</Avatar>
-          </ListItemAvatar>
-          <ListItemText
-            primary={option.label}
-            secondary={option.textSecondary}
-          />
-        </ListItem>
+        <React.Fragment>
+          <ListItem key={option.label}>
+            <ListItemAvatar>
+              <Avatar>{option.icon}</Avatar>
+            </ListItemAvatar>
+            <ListItemText
+              primary={option.label}
+              secondary={option.textSecondary}
+            />
+          </ListItem>
+          {option.divider && <Divider variant="middle" />}
+        </React.Fragment>
       ))}
     </List>
   );
