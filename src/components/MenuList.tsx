@@ -35,23 +35,23 @@ const options: IOption[] = [
   {
     label: "Favoritos",
     icon: <MdStar />,
-    textSecondary: "Guarde seus favoritos",
+    textSecondary: "Guarde suas palavras favoritas.",
   },
   {
     label: "Frases guardadas",
     icon: <MdOutlineSaveAlt />,
-    textSecondary: "Guarde frases para memorizar",
+    textSecondary: "Guarde frases para memorizar.",
     divider: true,
   },
   {
     label: "Verbos",
     icon: <MdTextFields />,
-    textSecondary: "Lista dos verbos do umbundo/português",
+    textSecondary: "Lista dos verbos do umbundo/português.",
   },
   {
     label: "Frases",
     icon: <MdTextFormat />,
-    textSecondary: "Aprenda frases em vários contextos",
+    textSecondary: "Aprenda frases em vários contextos.",
     divider: true,
   },
   {
@@ -62,23 +62,23 @@ const options: IOption[] = [
   {
     label: "Ajuda e Comentários",
     icon: <MdComment />,
-    textSecondary: "Ajudê-nos dando o seu feedback",
+    textSecondary: "Ajudê-nos dando o seu feedback.",
   },
   {
     label: "Sobre nós",
     icon: <MdGroup />,
-    textSecondary: "Saiba mais sobre nós",
+    textSecondary: "Saiba mais sobre nós.",
     divider: true,
   },
   {
     label: "Politica de Privacidade",
     icon: <MdSecurity />,
-    textSecondary: "Guarde frases para memorizar",
+    textSecondary: "Guarde frases para memorizar.",
   },
   {
     label: "Termos de utilização",
     icon: <MdTextSnippet />,
-    textSecondary: "Guarde frases para memorizar",
+    textSecondary: "Guarde frases para memorizar.",
   },
 ];
 
