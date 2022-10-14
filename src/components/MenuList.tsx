@@ -84,7 +84,7 @@ const options: IOption[] = [
     label: "Politica de Privacidade",
     icon: <MdSecurity />,
     textSecondary: "Conheça nossas politicas.",
-    url: "/politica-de-privacidade",
+    url: "/politicas-de-privacidade",
   },
   {
     label: "Termos de utilização",
