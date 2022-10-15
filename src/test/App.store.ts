@@ -9,6 +9,7 @@ const initialState: App = {
     from: "Português",
     to: "Umbundo",
   },
+  menu: false,
 };
 
 const app = sliceCreator(initialState);
