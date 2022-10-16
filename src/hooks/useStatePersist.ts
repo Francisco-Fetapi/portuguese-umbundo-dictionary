@@ -1,4 +1,4 @@
-export default function useStatePersist<T extends object | boolean>(
+export default function useStatePersist<T extends object | boolean | string>(
   key: string
 ) {
   function save(state: T) {

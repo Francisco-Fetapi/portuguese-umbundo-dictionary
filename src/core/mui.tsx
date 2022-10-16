@@ -3,7 +3,7 @@ import ThemeProvider from "@mui/material/styles/ThemeProvider";
 import createTheme from "@mui/material/styles/createTheme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { GlobalStyles } from "../styles/GlobalStyles";
-import { selectTheme } from "../store/App.selectors";
+import { selectSettings } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
 interface Props {
@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
-  const darkMode = useSelector(selectTheme);
+  const { darkMode } = useSelector(selectSettings);
   const theme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",

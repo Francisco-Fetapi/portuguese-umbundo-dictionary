@@ -3,13 +3,23 @@ import { configureStore } from "@reduxjs/toolkit";
 import useStatePersist from "../hooks/useStatePersist";
 
 export const THEME_KEY_IN_LOCALSTORAGE = "darkMode";
+export const AUTOMATIC_SEARCH_KEY_IN_LOCALSTORAGE = "automaticSearch";
+export const SAVE_HISTORY_KEY_IN_LOCALSTORAGE = "saveHistory";
+export const APP_LANGUAGE_KEY_IN_LOCALSTORAGE = "appLanguage";
 
 export interface IDarkMode {
   darkMode: boolean;
 }
 
+export interface Settings extends IDarkMode {
+  automaticSearch: boolean;
+  saveHistory: boolean;
+  appLanguage: Language;
+}
+
 type Language = "Português" | "Umbundo";
-export interface App extends IDarkMode {
+export interface App {
+  settings: Settings;
   textToTranslate: string;
   textTranslated: string;
   languages: {
@@ -20,7 +30,18 @@ export interface App extends IDarkMode {
 }
 
 const initialState: App = {
-  darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
+  settings: {
+    darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
+    automaticSearch: useStatePersist<boolean>(
+      AUTOMATIC_SEARCH_KEY_IN_LOCALSTORAGE
+    ).get(),
+    saveHistory: useStatePersist<boolean>(
+      SAVE_HISTORY_KEY_IN_LOCALSTORAGE
+    ).get(),
+    appLanguage:
+      useStatePersist<Language>(APP_LANGUAGE_KEY_IN_LOCALSTORAGE).get() ||
+      "Português",
+  },
   textToTranslate: "",
   textTranslated: "Aqui irão aparecer os resultados",
   languages: {
@@ -32,7 +53,19 @@ const initialState: App = {
 
 function stateReseted(initialState: App): App {
   const darkMode = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get();
-  return { ...initialState, darkMode };
+  const automaticSearch = useStatePersist<boolean>(
+    AUTOMATIC_SEARCH_KEY_IN_LOCALSTORAGE
+  ).get();
+  const saveHistory = useStatePersist<boolean>(
+    SAVE_HISTORY_KEY_IN_LOCALSTORAGE
+  ).get();
+  const appLanguage =
+    useStatePersist<Language>(APP_LANGUAGE_KEY_IN_LOCALSTORAGE).get() ||
+    "Português";
+  return {
+    ...initialState,
+    settings: { darkMode, automaticSearch, saveHistory, appLanguage },
+  };
 }
 
 export function sliceCreator(initialState: App) {
@@ -41,9 +74,9 @@ export function sliceCreator(initialState: App) {
     initialState,
     reducers: {
       toggleTheme(state) {
-        state.darkMode = !state.darkMode;
+        state.settings.darkMode = !state.settings.darkMode;
         const { save } = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE);
-        save(state.darkMode);
+        save(state.settings.darkMode);
       },
       resetAllState(state, action: PayloadAction<boolean | undefined>) {
         if (action.payload) {

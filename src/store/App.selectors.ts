@@ -1,6 +1,6 @@
 import { RootState } from "./App.store";
 
-export const selectTheme = (state: RootState) => state.app.darkMode;
+export const selectSettings = (state: RootState) => state.app.settings;
 
 export const selectTextToTranslate = (state: RootState) =>
   state.app.textToTranslate;
