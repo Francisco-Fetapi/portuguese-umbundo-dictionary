@@ -7,7 +7,6 @@ import {
   ListItemText,
 } from "@mui/material";
 import React from "react";
-import { FaHistory, FaSearch } from "react-icons/fa";
 import { MdHistory, MdLanguage, MdPalette, MdSearch } from "react-icons/md";
 import PageHeader from "../components/PageHeader";
 
@@ -26,7 +25,7 @@ export default function Settings() {
       textSecondary: `Com essa opção selecionada, os resultados da pesquisa surgem enquanto você digita o texto, caso contrário, terás que clicar no botão pesquisar.`,
     },
     {
-      label: "Armazenas histórico",
+      label: "Armazenar histórico",
       icon: <MdHistory />,
       textSecondary: `Sempre salvar o historico de pesquisa de palavras`,
     },
