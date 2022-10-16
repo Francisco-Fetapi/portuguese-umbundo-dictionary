@@ -88,6 +88,9 @@ export function sliceCreator(initialState: App) {
       setMenu(state, action: PayloadAction<boolean>) {
         state.menu = action.payload;
       },
+      setSettings(state, action: PayloadAction<Partial<Settings>>) {
+        Object.assign(state.settings, action.payload);
+      },
     },
   });
 }
@@ -114,6 +117,7 @@ export const {
   setTextTranslated,
   toggleLanguage,
   setMenu,
+  setSettings,
 } = app.actions;
 
 export default store;
