@@ -1,3 +1,4 @@
+import { useTheme } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTextToTranslate } from "../store/App.selectors";
 import { setTextToTranslate } from "../store/App.store";
@@ -11,6 +12,7 @@ export default function InputText() {
   const handleChange: FuncHandleChange = (e) => {
     dispatch(setTextToTranslate(e.target.value));
   };
+  const theme = useTheme();
 
   return (
     <InputArea>
@@ -18,6 +20,7 @@ export default function InputText() {
         value={value}
         onChange={handleChange}
         placeholder="Introduza a palavra"
+        className={theme.palette.mode}
       />
     </InputArea>
   );

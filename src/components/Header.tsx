@@ -32,10 +32,10 @@ export default function Header() {
             justifyContent="center"
             style={{ zoom: 0.95 }}
           >
-            <Text variant="h6" fontWeight="bold" color="white">
+            <Text variant="h6" fontWeight="bold">
               Tradutor
             </Text>
-            <Text variant="h6" color="white" fontWeight={300}>
+            <Text variant="h6" fontWeight={300}>
               Umbundo
             </Text>
           </Stack>

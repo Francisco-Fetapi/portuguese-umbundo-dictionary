@@ -35,7 +35,7 @@ export default function ModalMenu({ handleClose, open }: Props) {
           height: "100%",
           width: 500,
           background: "var(--primary-color2)",
-          color: "white",
+          // color: "white",
           borderRadius: "20px",
           position: "relative",
           margin: "5px",
@@ -46,9 +46,9 @@ export default function ModalMenu({ handleClose, open }: Props) {
       <DialogTitle
         variant="h5"
         align="center"
-        sx={{
-          color: "#D0D0D0",
-        }}
+        // sx={{
+        //   color: "#D0D0D0",
+        // }}
       >
         Menu
       </DialogTitle>

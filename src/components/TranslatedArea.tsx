@@ -6,9 +6,7 @@ export default function TranslatedArea() {
   const textTranslated = useSelector(selectTextTranslated);
   return (
     <div>
-      <Text color="white" align="center">
-        {textTranslated}
-      </Text>
+      <Text align="center">{textTranslated}</Text>
     </div>
   );
 }

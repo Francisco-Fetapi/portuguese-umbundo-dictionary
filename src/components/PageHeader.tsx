@@ -6,9 +6,14 @@ import { PageHeaderContainer, Text } from "../styles/General";
 interface PageHeaderProps {
   children: React.ReactNode;
   pageName: string;
+  noInitialMargin?: boolean;
 }
 
-export default function PageHeader({ children, pageName }: PageHeaderProps) {
+export default function PageHeader({
+  children,
+  pageName,
+  noInitialMargin,
+}: PageHeaderProps) {
   return (
     <PageHeaderContainer>
       <Box>
@@ -46,7 +51,7 @@ export default function PageHeader({ children, pageName }: PageHeaderProps) {
           </Stack>
         </Stack>
       </Box>
-      <Box pt={1}>{children}</Box>
+      <Box pt={noInitialMargin ? 0 : 1}>{children}</Box>
     </PageHeaderContainer>
   );
 }

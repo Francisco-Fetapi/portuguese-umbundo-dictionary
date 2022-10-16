@@ -46,7 +46,7 @@ export const HeaderContainer = styled.div`
     div {
       width: 80px;
       height: 3px;
-      background: white;
+      background: var(--primary-color-text);
       border-radius: 4px;
     }
   }
@@ -57,11 +57,18 @@ export const InputArea = styled.div`
   input {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    &.light {
+      border-color: #bbaeae;
+      color: #1a1a1a;
+      ::placeholder {
+        color: #ccc;
+      }
+    }
     /* border: none; */
     outline: none;
     width: 100%;
     padding: 8px 10px;
-    color: white;
     font-size: 18px;
     font-family: "Roboto", sans-serif;
 
@@ -70,7 +77,7 @@ export const InputArea = styled.div`
       padding-left: 3px;
       font-size: inherit;
       font-family: inherit;
-      font-weight: 500;
+      font-weight: 300;
     }
   }
 `;
@@ -98,5 +105,5 @@ export const PageHeaderContainer = styled.div`
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
 
-  color: #f0f0f0;
+  /* color: #f0f0f0; */
 `;

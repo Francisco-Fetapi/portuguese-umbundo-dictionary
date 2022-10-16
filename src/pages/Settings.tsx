@@ -43,7 +43,7 @@ export default function Settings() {
   ];
 
   return (
-    <PageHeader pageName="Definições">
+    <PageHeader pageName="Definições" noInitialMargin>
       <Box>
         <List
           sx={{

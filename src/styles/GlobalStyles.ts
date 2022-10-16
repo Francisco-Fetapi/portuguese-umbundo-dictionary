@@ -6,11 +6,15 @@ interface StylesProps {
 
 export const GlobalStyles = createGlobalStyle<StylesProps>`
 
-  :root{
-    --primary-color:#4f5150;
-    --primary-color2:#3f3f3d;
-    --max-width:450px;
-  }
+:root{
+  /* --primary-color:#4f5150; */
+  /* --primary-color:#F0F0F0; */
+  --primary-color:rgba(244,244,244,.985);
+  --primary-color-text:#111;
+  /* --primary-color2:#3f3f3d; */
+  --primary-color2:#F4F4F4;
+  --max-width:450px;
+}
 
   body{
     overflow-x:hidden;
