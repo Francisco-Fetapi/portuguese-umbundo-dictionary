@@ -22,7 +22,15 @@ export default function SettingThemeToggle({
   const { darkMode } = useSelector(selectSettings);
 
   return (
-    <Dialog open={open} onClose={handleClose}>
+    <Dialog
+      open={open}
+      onClose={handleClose}
+      PaperProps={{
+        sx: {
+          minWidth: 250,
+        },
+      }}
+    >
       <DialogTitle>Escolher tema</DialogTitle>
       <DialogContent>
         <RadioGroup
