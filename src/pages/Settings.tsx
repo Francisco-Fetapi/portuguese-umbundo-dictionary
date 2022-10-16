@@ -7,10 +7,12 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import { MdHistory, MdLanguage, MdPalette, MdSearch } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
+import SettingThemeToggle from "../components/SettingThemeToggle";
+import useBoolean from "../hooks/useBoolean";
 import { selectSettings } from "../store/App.selectors";
 import { setSettings } from "../store/App.store";
 
@@ -25,6 +27,7 @@ interface IOption {
 export default function Settings() {
   const settings = useSelector(selectSettings);
   const dispatch = useDispatch();
+  const modal = useBoolean();
 
   console.log(settings);
 
@@ -44,12 +47,15 @@ export default function Settings() {
     );
   };
 
+  const chooseTheme = (theme: boolean) => {
+    dispatch(
+      setSettings({
+        darkMode: theme,
+      })
+    );
+  };
   const handleTheme = () => {
-    // dispatch(
-    //   setSettings({
-    //     darkMode: !settings.darkMode,
-    //   })
-    // );
+    modal.handleOpen();
   };
 
   const handleChangeLanguage = () => {
@@ -131,6 +137,7 @@ export default function Settings() {
           ))}
         </List>
       </Box>
+      <SettingThemeToggle {...modal} />
     </PageHeader>
   );
 }
