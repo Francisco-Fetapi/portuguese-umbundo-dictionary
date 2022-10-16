@@ -1,22 +1,22 @@
-import * as React from "react";
+import React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { Box, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { selectSettings } from "../store/App.selectors";
 import { useSelector } from "react-redux";
 
 interface SettingThemeProps {
   open: boolean;
-  handleOpen: () => void;
+  chooseTheme: (theme: boolean) => void;
   handleClose: () => void;
 }
 
 export default function SettingThemeToggle({
   open,
-  handleOpen,
+  chooseTheme,
   handleClose,
 }: SettingThemeProps) {
   const { darkMode } = useSelector(selectSettings);
@@ -25,14 +25,15 @@ export default function SettingThemeToggle({
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Escolher tema</DialogTitle>
       <DialogContent>
-        <FormControlLabel
-          label="Claro"
-          control={<Radio checked={!darkMode} />}
-        />
-        <FormControlLabel
-          label="Escuro"
-          control={<Radio checked={darkMode} />}
-        />
+        <RadioGroup
+          value={darkMode}
+          onChange={(e) =>
+            chooseTheme(e.target.value === "true" ? true : false)
+          }
+        >
+          <FormControlLabel label="Claro" value={false} control={<Radio />} />
+          <FormControlLabel label="Escuro" value={true} control={<Radio />} />
+        </RadioGroup>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Fechar</Button>

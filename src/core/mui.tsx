@@ -12,12 +12,16 @@ interface Props {
 
 export default function Layout({ children }: Props) {
   const { darkMode } = useSelector(selectSettings);
+
+  console.log("darkMode mui before", darkMode);
+
   const theme = createTheme({
     palette: {
       mode: darkMode ? "dark" : "light",
-      // mode: "dark",
     },
   });
+
+  console.log("darkMode mui", theme.palette.mode);
 
   return (
     <ThemeProvider theme={theme}>

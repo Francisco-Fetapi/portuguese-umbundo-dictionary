@@ -39,7 +39,6 @@ export default function Settings() {
     );
 
   const handleSaveHistory = () => {
-    console.log("HandleSaveHistory");
     dispatch(
       setSettings({
         saveHistory: !settings.saveHistory,
@@ -48,6 +47,7 @@ export default function Settings() {
   };
 
   const chooseTheme = (theme: boolean) => {
+    console.log(theme);
     dispatch(
       setSettings({
         darkMode: theme,
@@ -137,7 +137,7 @@ export default function Settings() {
           ))}
         </List>
       </Box>
-      <SettingThemeToggle {...modal} />
+      <SettingThemeToggle {...modal} chooseTheme={chooseTheme} />
     </PageHeader>
   );
 }

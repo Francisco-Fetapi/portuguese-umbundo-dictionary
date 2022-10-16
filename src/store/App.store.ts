@@ -2,11 +2,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import useStatePersist from "../hooks/useStatePersist";
 
-export const THEME_KEY = "darkMode";
-export const AUTOMATIC_SEARCH_KEY = "automaticSearch";
-export const SAVE_HISTORY_KEY = "saveHistory";
-export const APP_LANGUAGE_KEY = "appLanguage";
-
 const SETTINGS_KEY = "settings";
 
 export interface IDarkMode {
@@ -39,13 +34,6 @@ const InitialSettings: Settings = {
 };
 
 const initialState: App = {
-  // settings: {
-  //   darkMode: useStatePersist<boolean>(THEME_KEY).get(),
-  //   automaticSearch: useStatePersist<boolean>(AUTOMATIC_SEARCH_KEY).get(),
-  //   saveHistory: useStatePersist<boolean>(SAVE_HISTORY_KEY).get(),
-  //   appLanguage:
-  //     useStatePersist<Language>(APP_LANGUAGE_KEY).get() || "Português",
-  // },
   settings: useStatePersist<Settings>(SETTINGS_KEY).get() || InitialSettings,
   textToTranslate: "",
   textTranslated: "Aqui irão aparecer os resultados",
@@ -70,11 +58,6 @@ export function sliceCreator(initialState: App) {
     name: "app",
     initialState,
     reducers: {
-      toggleTheme(state) {
-        state.settings.darkMode = !state.settings.darkMode;
-        const { save } = useStatePersist<boolean>(THEME_KEY);
-        save(state.settings.darkMode);
-      },
       resetAllState(state, action: PayloadAction<boolean | undefined>) {
         if (action.payload) {
           return Object.assign(state, initialState);
@@ -120,7 +103,6 @@ export const store = configureStore({
 });
 
 export const {
-  toggleTheme,
   resetAllState,
   setTextToTranslate,
   setTextTranslated,
