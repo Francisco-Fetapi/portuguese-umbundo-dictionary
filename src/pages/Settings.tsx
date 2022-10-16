@@ -23,15 +23,43 @@ interface IOption {
 }
 
 export default function Settings() {
-  const { automaticSearch } = useSelector(selectSettings);
+  const settings = useSelector(selectSettings);
   const dispatch = useDispatch();
+
+  console.log(settings);
 
   const toggleAutomaticSearch = () =>
     dispatch(
       setSettings({
-        automaticSearch: !automaticSearch,
+        automaticSearch: !settings.automaticSearch,
       })
     );
+
+  const handleSaveHistory = () => {
+    console.log("HandleSaveHistory");
+    dispatch(
+      setSettings({
+        saveHistory: !settings.saveHistory,
+      })
+    );
+  };
+
+  const handleTheme = () => {
+    // dispatch(
+    //   setSettings({
+    //     darkMode: !settings.darkMode,
+    //   })
+    // );
+  };
+
+  const handleChangeLanguage = () => {
+    // dispatch(
+    //   setSettings({
+    //     appLanguage:
+    //       settings.appLanguage === "Português" ? "Umbundo" : "Português",
+    //   })
+    // );
+  };
 
   const options: IOption[] = [
     {
@@ -42,7 +70,7 @@ export default function Settings() {
         <Switch
           edge="end"
           onChange={toggleAutomaticSearch}
-          checked={automaticSearch}
+          checked={settings.automaticSearch}
         />
       ),
       handleClick: toggleAutomaticSearch,
@@ -51,19 +79,26 @@ export default function Settings() {
       label: "Armazenar histórico",
       icon: <MdHistory />,
       textSecondary: `Sempre salvar o historico de pesquisa de palavras`,
-      handleClick: () => 0,
+      secondaryAction: (
+        <Switch
+          edge="end"
+          onChange={handleSaveHistory}
+          checked={settings.saveHistory}
+        />
+      ),
+      handleClick: handleSaveHistory,
     },
     {
       label: "Tema",
       icon: <MdPalette />,
       textSecondary: `Altere o tema da aplicaçã entre claro e escuro`,
-      handleClick: () => 0,
+      handleClick: handleTheme,
     },
     {
       label: "Idioma da aplicação",
       icon: <MdLanguage />,
       textSecondary: `Alterar o idioma da aplicação`,
-      handleClick: () => 0,
+      handleClick: handleChangeLanguage,
     },
   ];
 

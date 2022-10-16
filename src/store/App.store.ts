@@ -7,6 +7,8 @@ export const AUTOMATIC_SEARCH_KEY = "automaticSearch";
 export const SAVE_HISTORY_KEY = "saveHistory";
 export const APP_LANGUAGE_KEY = "appLanguage";
 
+const SETTINGS_KEY = "settings";
+
 export interface IDarkMode {
   darkMode: boolean;
 }
@@ -29,14 +31,22 @@ export interface App {
   menu: boolean;
 }
 
+const InitialSettings: Settings = {
+  appLanguage: "Português",
+  automaticSearch: true,
+  darkMode: false,
+  saveHistory: true,
+};
+
 const initialState: App = {
-  settings: {
-    darkMode: useStatePersist<boolean>(THEME_KEY).get(),
-    automaticSearch: useStatePersist<boolean>(AUTOMATIC_SEARCH_KEY).get(),
-    saveHistory: useStatePersist<boolean>(SAVE_HISTORY_KEY).get(),
-    appLanguage:
-      useStatePersist<Language>(APP_LANGUAGE_KEY).get() || "Português",
-  },
+  // settings: {
+  //   darkMode: useStatePersist<boolean>(THEME_KEY).get(),
+  //   automaticSearch: useStatePersist<boolean>(AUTOMATIC_SEARCH_KEY).get(),
+  //   saveHistory: useStatePersist<boolean>(SAVE_HISTORY_KEY).get(),
+  //   appLanguage:
+  //     useStatePersist<Language>(APP_LANGUAGE_KEY).get() || "Português",
+  // },
+  settings: useStatePersist<Settings>(SETTINGS_KEY).get() || InitialSettings,
   textToTranslate: "",
   textTranslated: "Aqui irão aparecer os resultados",
   languages: {
@@ -47,14 +57,11 @@ const initialState: App = {
 };
 
 function stateReseted(initialState: App): App {
-  const darkMode = useStatePersist<boolean>(THEME_KEY).get();
-  const automaticSearch = useStatePersist<boolean>(AUTOMATIC_SEARCH_KEY).get();
-  const saveHistory = useStatePersist<boolean>(SAVE_HISTORY_KEY).get();
-  const appLanguage =
-    useStatePersist<Language>(APP_LANGUAGE_KEY).get() || "Português";
+  const settings =
+    useStatePersist<Settings>(SETTINGS_KEY).get() || InitialSettings;
   return {
     ...initialState,
-    settings: { darkMode, automaticSearch, saveHistory, appLanguage },
+    settings,
   };
 }
 
@@ -89,7 +96,9 @@ export function sliceCreator(initialState: App) {
         state.menu = action.payload;
       },
       setSettings(state, action: PayloadAction<Partial<Settings>>) {
-        Object.assign(state.settings, action.payload);
+        const newSettings = Object.assign(state.settings, action.payload);
+        const { save } = useStatePersist<Settings>(SETTINGS_KEY);
+        save(newSettings);
       },
     },
   });
