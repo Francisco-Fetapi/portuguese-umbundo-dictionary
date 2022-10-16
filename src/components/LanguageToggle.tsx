@@ -42,10 +42,7 @@ function ButtonLanguage({ label }: ButtonLanguageProps) {
       }
       sx={(theme) => ({
         ":disabled": {
-          color:
-            theme.palette.mode === "light"
-              ? "var(--primary-color-text)"
-              : "var(--primary-color)",
+          color: "var(--primary-color-text)",
         },
       })}
       size="small"
