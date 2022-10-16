@@ -40,11 +40,11 @@ function ButtonLanguage({ label }: ButtonLanguageProps) {
       startIcon={
         <img src={`/img/${logos[label]}`} alt="Icon" width={20} height={15} />
       }
-      sx={(theme) => ({
+      sx={{
         ":disabled": {
           color: "var(--primary-color-text)",
         },
-      })}
+      }}
       size="small"
       variant="contained"
       style={{
