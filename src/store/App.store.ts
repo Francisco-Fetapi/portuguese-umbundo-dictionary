@@ -2,10 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import useStatePersist from "../hooks/useStatePersist";
 
-export const THEME_KEY_IN_LOCALSTORAGE = "darkMode";
-export const AUTOMATIC_SEARCH_KEY_IN_LOCALSTORAGE = "automaticSearch";
-export const SAVE_HISTORY_KEY_IN_LOCALSTORAGE = "saveHistory";
-export const APP_LANGUAGE_KEY_IN_LOCALSTORAGE = "appLanguage";
+export const THEME_KEY = "darkMode";
+export const AUTOMATIC_SEARCH_KEY = "automaticSearch";
+export const SAVE_HISTORY_KEY = "saveHistory";
+export const APP_LANGUAGE_KEY = "appLanguage";
 
 export interface IDarkMode {
   darkMode: boolean;
@@ -31,16 +31,11 @@ export interface App {
 
 const initialState: App = {
   settings: {
-    darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
-    automaticSearch: useStatePersist<boolean>(
-      AUTOMATIC_SEARCH_KEY_IN_LOCALSTORAGE
-    ).get(),
-    saveHistory: useStatePersist<boolean>(
-      SAVE_HISTORY_KEY_IN_LOCALSTORAGE
-    ).get(),
+    darkMode: useStatePersist<boolean>(THEME_KEY).get(),
+    automaticSearch: useStatePersist<boolean>(AUTOMATIC_SEARCH_KEY).get(),
+    saveHistory: useStatePersist<boolean>(SAVE_HISTORY_KEY).get(),
     appLanguage:
-      useStatePersist<Language>(APP_LANGUAGE_KEY_IN_LOCALSTORAGE).get() ||
-      "Português",
+      useStatePersist<Language>(APP_LANGUAGE_KEY).get() || "Português",
   },
   textToTranslate: "",
   textTranslated: "Aqui irão aparecer os resultados",
@@ -52,16 +47,11 @@ const initialState: App = {
 };
 
 function stateReseted(initialState: App): App {
-  const darkMode = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get();
-  const automaticSearch = useStatePersist<boolean>(
-    AUTOMATIC_SEARCH_KEY_IN_LOCALSTORAGE
-  ).get();
-  const saveHistory = useStatePersist<boolean>(
-    SAVE_HISTORY_KEY_IN_LOCALSTORAGE
-  ).get();
+  const darkMode = useStatePersist<boolean>(THEME_KEY).get();
+  const automaticSearch = useStatePersist<boolean>(AUTOMATIC_SEARCH_KEY).get();
+  const saveHistory = useStatePersist<boolean>(SAVE_HISTORY_KEY).get();
   const appLanguage =
-    useStatePersist<Language>(APP_LANGUAGE_KEY_IN_LOCALSTORAGE).get() ||
-    "Português";
+    useStatePersist<Language>(APP_LANGUAGE_KEY).get() || "Português";
   return {
     ...initialState,
     settings: { darkMode, automaticSearch, saveHistory, appLanguage },
@@ -75,7 +65,7 @@ export function sliceCreator(initialState: App) {
     reducers: {
       toggleTheme(state) {
         state.settings.darkMode = !state.settings.darkMode;
-        const { save } = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE);
+        const { save } = useStatePersist<boolean>(THEME_KEY);
         save(state.settings.darkMode);
       },
       resetAllState(state, action: PayloadAction<boolean | undefined>) {
