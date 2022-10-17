@@ -51,7 +51,14 @@ export default function PageHeader({
           </Stack>
         </Stack>
       </Box>
-      <Box pt={noInitialMargin ? 0 : 1}>{children}</Box>
+      <Box
+        pt={noInitialMargin ? 0 : 1}
+        display="flex"
+        flexDirection="column"
+        height="85%"
+      >
+        {children}
+      </Box>
     </PageHeaderContainer>
   );
 }

@@ -14,11 +14,11 @@ export default function AboutUs() {
         <Text variant="subtitle2" color="gray">
           Versão 1.0.0
         </Text>
-        <Box mt={1}>
+        {/* <Box mt={1}>
           <Text variant="subtitle2">
             Copyright &copy; 2022, todos os direitos reservados.
           </Text>
-        </Box>
+        </Box> */}
 
         <Box mt={2}>
           <Text variant="subtitle2">Visite nossa página no facebook</Text>
@@ -43,6 +43,12 @@ export default function AboutUs() {
             Nome pessoa1, Nome pessoa2, Nome pessoa3, Nome pessoa4, Nome pessoa5
           </Text>
         </Box>
+      </Box>
+      <Box flexGrow={1} />
+      <Box my={2}>
+        <Text color="gray" fontWeight={700} variant="subtitle2" align="center">
+          Copyright &copy; 2022, todos os direitos reservados.
+        </Text>
       </Box>
     </PageHeader>
   );
