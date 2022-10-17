@@ -46,7 +46,7 @@ export default function AboutUs() {
       </Box>
       <Box flexGrow={1} />
       <Box my={2}>
-        <Text color="gray" fontWeight={700} variant="subtitle2" align="center">
+        <Text color="gray" fontWeight={300} variant="subtitle2" align="center">
           Copyright &copy; 2022, todos os direitos reservados.
         </Text>
       </Box>
