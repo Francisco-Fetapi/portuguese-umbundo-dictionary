@@ -39,9 +39,20 @@ export default function AboutUs() {
 
         <Box mt={2} px={2}>
           <Text variant="subtitle1">Créditos</Text>
-          <Text variant="subtitle2">
-            Nome pessoa1, Nome pessoa2, Nome pessoa3, Nome pessoa4, Nome pessoa5
-          </Text>
+          <Box>
+            <Text variant="subtitle2" align="left" fontWeight={300}>
+              <ul
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                }}
+              >
+                {[1, 2, 3, 4, 5, 6].map((item) => (
+                  <li>Nome da pessoa{item}</li>
+                ))}
+              </ul>
+            </Text>
+          </Box>
         </Box>
       </Box>
       <Box flexGrow={1} />
