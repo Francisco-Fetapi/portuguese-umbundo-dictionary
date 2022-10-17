@@ -23,7 +23,7 @@ export default function PageHeader({
           py={0.5}
           px={1}
           sx={{
-            bgcolor: "primary.main",
+            bgcolor: "primary.dark",
           }}
         >
           <IconButton onClick={() => window.history.back()}>

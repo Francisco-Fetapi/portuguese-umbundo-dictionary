@@ -100,12 +100,12 @@ export default function Settings() {
       textSecondary: `Altere o tema da aplicaçã entre claro e escuro`,
       handleClick: handleTheme,
     },
-    {
-      label: "Idioma da aplicação",
-      icon: <MdLanguage />,
-      textSecondary: `Alterar o idioma da aplicação`,
-      handleClick: handleChangeLanguage,
-    },
+    // {
+    //   label: "Idioma da aplicação",
+    //   icon: <MdLanguage />,
+    //   textSecondary: `Alterar o idioma da aplicação`,
+    //   handleClick: handleChangeLanguage,
+    // },
   ];
 
   return (
