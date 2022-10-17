@@ -45,7 +45,6 @@ export default function Settings() {
   };
 
   const chooseTheme = (theme: boolean) => {
-    console.log(theme);
     dispatch(
       setSettings({
         darkMode: theme,
