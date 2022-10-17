@@ -105,9 +105,8 @@ export default function MenuList() {
       }}
     >
       {options.map((option) => (
-        <React.Fragment>
+        <React.Fragment key={option.label}>
           <ListItem
-            key={option.label}
             button
             onClick={() => navigate(option.url)}
           >

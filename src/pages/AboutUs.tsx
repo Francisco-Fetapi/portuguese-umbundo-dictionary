@@ -1,6 +1,7 @@
 import { Box, Link } from "@mui/material";
 import PageHeader from "../components/PageHeader";
 import { Text } from "../styles/General";
+import config from "../config.json";
 
 export default function AboutUs() {
   return (
@@ -20,7 +21,8 @@ export default function AboutUs() {
           <Text variant="subtitle2">Visite nossa página no facebook</Text>
           <Link
             variant="subtitle2"
-            href="https://facebook.com/dicionario-umbundo-portugues"
+            href={`https://facebook.com/page/${config.application_facebook_page}`}
+            target="__blank"
           >
             Página do facebook
           </Link>
@@ -28,7 +30,10 @@ export default function AboutUs() {
 
         <Box mt={2}>
           <Text variant="subtitle2">Enviar comentários para</Text>
-          <Link variant="subtitle2" href="maito://franciscofetapi10@gmail.com">
+          <Link
+            variant="subtitle2"
+            href={`mailto://${config.application_email}`}
+          >
             Este email
           </Link>
         </Box>
@@ -44,7 +49,7 @@ export default function AboutUs() {
                 }}
               >
                 {[1, 2, 3, 4, 5, 6].map((item) => (
-                  <li>Nome da pessoa{item}</li>
+                  <li key={item}>Nome da pessoa{item}</li>
                 ))}
               </ul>
             </Text>
