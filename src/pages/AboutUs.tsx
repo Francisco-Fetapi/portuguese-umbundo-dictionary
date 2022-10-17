@@ -38,7 +38,7 @@ export default function AboutUs() {
         </Box>
 
         <Box mt={2} px={2}>
-          <Text variant="subtitle1">Créditos</Text>
+          <Text variant="subtitle1">CRÉDITOS</Text>
           <Box>
             <Text variant="subtitle2" align="left" fontWeight={300}>
               <ul
