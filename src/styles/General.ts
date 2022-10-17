@@ -105,5 +105,9 @@ export const PageHeaderContainer = styled.div`
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
 
+  padding-bottom: 5px;
+
+  overflow-y: auto;
+
   /* color: #f0f0f0; */
 `;

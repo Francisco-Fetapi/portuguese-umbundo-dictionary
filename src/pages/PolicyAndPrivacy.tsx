@@ -11,8 +11,6 @@ export default function PolicyAndPrivacy() {
           <Text align="center">Utilização de dados sensiveis</Text>
         </Box>
         <Text align="center" fontWeight={300}>
-          {/* O presente aplicativo tem apenas politica de privacidade por não
-          fazer uso de nenhum dado sensivel. */}
           Abaixo é expressa a única politica de privacidade da aplicação em
           relação a utilização de dados sensiveis:
         </Text>

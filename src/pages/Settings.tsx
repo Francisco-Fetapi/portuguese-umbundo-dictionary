@@ -29,8 +29,6 @@ export default function Settings() {
   const dispatch = useDispatch();
   const modal = useBoolean();
 
-  console.log(settings);
-
   const toggleAutomaticSearch = () =>
     dispatch(
       setSettings({

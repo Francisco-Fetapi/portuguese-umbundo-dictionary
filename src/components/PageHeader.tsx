@@ -24,6 +24,10 @@ export default function PageHeader({
           px={1}
           sx={{
             bgcolor: "primary.dark",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
           }}
         >
           <IconButton onClick={() => window.history.back()}>
@@ -45,9 +49,6 @@ export default function PageHeader({
             >
               {pageName.toUpperCase()}
             </Text>
-            {/* <Text variant="h6" color="white" fontWeight={300}>
-              Umbundo
-            </Text> */}
           </Stack>
         </Stack>
       </Box>
@@ -56,6 +57,7 @@ export default function PageHeader({
         display="flex"
         flexDirection="column"
         height="85%"
+        mt="54px"
       >
         {children}
       </Box>
