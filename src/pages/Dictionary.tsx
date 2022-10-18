@@ -15,6 +15,7 @@ export interface IOption<T = string> {
 
 export type IFilterExampleOptions = "all" | "withoutExample" | "withExample";
 export type IFilterClassOption = "all" | keyof IWordClasses;
+type IFormSubmit = React.FormEventHandler<HTMLFormElement> | undefined;
 
 const options1: IOption<IFilterClassOption>[] = [
   {
@@ -65,6 +66,11 @@ export default function Dictionary() {
     setFilteredResults(filtered);
   }
 
+  const handleSubmit: IFormSubmit = (e) => {
+    e.preventDefault();
+    filter();
+  };
+
   return (
     <PageHeader pageName="Dicionário">
       <Box px={1} pt={1}>
@@ -107,13 +113,20 @@ export default function Dictionary() {
           </Grid>
 
           <Grid item xs={12}>
-            <TextField
-              fullWidth
-              label="Termo de pesquisa"
-              variant="outlined"
-              value={search}
-              onChange={handleSearch}
-            />
+            <Box
+              component="form"
+              noValidate
+              autoComplete="off"
+              onSubmit={handleSubmit}
+            >
+              <TextField
+                fullWidth
+                label="Termo de pesquisa"
+                variant="outlined"
+                value={search}
+                onChange={handleSearch}
+              />
+            </Box>
           </Grid>
         </Grid>
       </Box>
