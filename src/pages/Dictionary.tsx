@@ -56,7 +56,6 @@ export default function Dictionary() {
   const [filteredResults, setFilteredResults] = useState(database.words);
 
   useEffect(() => {
-    console.log(classFilter.value);
     filter();
   }, [classFilter.value, exampleFilter.value]);
 
@@ -69,8 +68,6 @@ export default function Dictionary() {
     filtered = filterByText(filtered, search);
     filtered = filterByClass(filtered, classFilter.value);
     filtered = filterByExamplesQuantity(filtered, exampleFilter.value);
-
-    console.log("filtered", filtered);
 
     setFilteredResults(filtered);
   }
