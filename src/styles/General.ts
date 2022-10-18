@@ -20,6 +20,7 @@ export const HeaderContainer = styled.div`
   position: relative;
   z-index: 10;
   height: calc(100vh - 250px);
+
   min-height: 300px;
   transition: height 0.5s linear;
   &.full {

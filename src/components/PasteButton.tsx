@@ -2,9 +2,12 @@ import { useWindowEvent } from "@mantine/hooks";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { MdContentPaste } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { setTextToTranslate } from "../store/App.store";
 
 export default function PasteButton() {
   const [textToPaste, setTextToPaste] = useState("");
+  const dispatch = useDispatch();
   async function setCopied() {
     try {
       let copied = await navigator.clipboard.readText();
@@ -26,6 +29,7 @@ export default function PasteButton() {
 
   function handle() {
     console.log(textToPaste);
+    dispatch(setTextToTranslate(textToPaste));
   }
   return (
     <div>
