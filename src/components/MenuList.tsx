@@ -32,7 +32,7 @@ const options: IOption[] = [
   {
     label: "Histórico",
     icon: <MdHistory />,
-    textSecondary: "Configure suas preferencias.",
+    textSecondary: "Veja seus últimos termos de pesquisa.",
     url: "/historico",
   },
   {
