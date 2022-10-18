@@ -15,6 +15,7 @@ export interface Settings extends IDarkMode {
 }
 
 type Language = "Português" | "Umbundo";
+
 export interface App {
   settings: Settings;
   textToTranslate: string;
