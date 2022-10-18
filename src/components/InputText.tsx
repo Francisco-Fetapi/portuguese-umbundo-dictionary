@@ -2,7 +2,7 @@ import { useDebouncedValue, useInputState } from "@mantine/hooks";
 import { Box, useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectSettings } from "../store/App.selectors";
+import { selectSettings, selectTextToTranslate } from "../store/App.selectors";
 import { setTextToTranslate } from "../store/App.store";
 import { InputArea } from "../styles/General";
 
@@ -12,6 +12,7 @@ export default function InputText() {
   const [value, handleChange] = useInputState("");
   const [debounced] = useDebouncedValue(value, 700);
   const { automaticSearch } = useSelector(selectSettings);
+  const textToTranslate = useSelector(selectTextToTranslate);
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -20,6 +21,12 @@ export default function InputText() {
       dispatch(setTextToTranslate(value));
     }
   }, [debounced]);
+
+  useEffect(() => {
+    if (value !== textToTranslate) {
+      handleChange(textToTranslate);
+    }
+  }, [textToTranslate]);
 
   const handleSearch: FuncFormEventHandler = (e) => {
     e.preventDefault();
