@@ -20,8 +20,9 @@ export interface IOption<T = string> {
 }
 
 export type IFilterExampleOptions = "all" | "withoutExample" | "withExample";
+export type IFilterClassOption = "all" | keyof IWordClasses;
 
-const options1: IOption<"all" | keyof IWordClasses | string>[] = [
+const options1: IOption<IFilterClassOption>[] = [
   {
     label: "Todos",
     value: "all",
@@ -29,7 +30,7 @@ const options1: IOption<"all" | keyof IWordClasses | string>[] = [
 ];
 Object.keys(wordClasses).forEach((word) => {
   options1.push({
-    value: word,
+    value: word as IFilterClassOption,
     label: wordClasses[word as keyof IWordClasses],
   });
 });
@@ -43,14 +44,29 @@ const defaultOption1 = options1[0];
 const defaultOption2 = options2[0];
 
 export default function Dictionary() {
-  const [classFilter, setClassFilter] = useState<IOption>(defaultOption1);
-  const [exampleFilter, setExampleFilter] = useState<IOption>(options2[0]);
+  const [classFilter, setClassFilter] =
+    useState<IOption<IFilterClassOption>>(defaultOption1);
+  const [exampleFilter, setExampleFilter] = useState<
+    IOption<IFilterExampleOptions>
+  >(options2[0]);
   const [search, handleSearch] = useInputState("");
-  const { database } = useDatabase();
+  const { database, filterByText, filterByClass, filterByExamplesQuantity } =
+    useDatabase();
+  const [filteredResults, setFilteredResults] = useState(database.words);
 
   useEffect(() => {
-    console.log(classFilter, exampleFilter);
+    filter();
+    console.log(classFilter.value);
   }, [classFilter, exampleFilter]);
+
+  function filter() {
+    let filtered = database.words;
+    filtered = filterByText(search);
+    filtered = filterByClass(classFilter.value);
+    filtered = filterByExamplesQuantity(exampleFilter.value);
+
+    setFilteredResults(filtered);
+  }
 
   return (
     <PageHeader pageName="Dicionário">
@@ -116,7 +132,7 @@ export default function Dictionary() {
       </Box>
       <Box mt={1}>
         <List>
-          {database.words?.map((word) => (
+          {filteredResults?.map((word) => (
             <Word
               primary={word.pt}
               secondary={word.um.join(", ")}

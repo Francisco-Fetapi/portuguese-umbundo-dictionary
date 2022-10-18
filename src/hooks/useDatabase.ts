@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { DatabaseContext } from "../contexts/DatabaseProvider";
 import { IWordClasses } from "../database/IWordClasses";
-import { IFilterExampleOptions } from "../pages/Dictionary";
+import { IFilterClassOption, IFilterExampleOptions } from "../pages/Dictionary";
 
 export default function useDatabase() {
   const database = useContext(DatabaseContext);
@@ -30,9 +30,9 @@ export default function useDatabase() {
         return false;
       });
     },
-    filterByClass(option: keyof IWordClasses) {
+    filterByClass(option: IFilterClassOption) {
       return database.words?.filter((word) => {
-        if (word.class === option) return true;
+        if (word.class === option || option === "all") return true;
         return false;
       });
     },
