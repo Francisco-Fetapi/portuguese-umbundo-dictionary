@@ -7,9 +7,9 @@ interface StylesProps {
 export const GlobalStyles = createGlobalStyle<StylesProps>`
 
 :root{
-  
+  /* #4f5150 */
   --primary-color:${(props) =>
-    props.mode === "dark" ? "#4f5150" : "rgba(244,244,244,.985)"};
+    props.mode === "dark" ? "rgba(79,80,81,.9)" : "rgba(244,244,244,.985)"};
   --primary-color-text:${(props) =>
     props.mode === "light" ? "#111" : "#F0F0F0"};;
   --primary-color2:${(props) =>
