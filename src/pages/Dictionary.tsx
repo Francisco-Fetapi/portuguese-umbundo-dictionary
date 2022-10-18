@@ -13,12 +13,14 @@ import PageHeader from "../components/PageHeader";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 
-interface IOption {
-  value: string;
+export interface IOption<T = string> {
+  value: T;
   label: string;
 }
 
-const options1: IOption[] = [
+export type IFilterExampleOptions = "all" | "withoutExample" | "withExample";
+
+const options1: IOption<"all" | keyof IWordClasses | string>[] = [
   {
     label: "Todos",
     value: "all",
@@ -31,7 +33,7 @@ Object.keys(wordClasses).forEach((word) => {
   });
 });
 
-const options2: IOption[] = [
+const options2: IOption<IFilterExampleOptions>[] = [
   { label: "Todos", value: "all" },
   { label: "Sem exemplos", value: "withoutExample" },
   { label: "Com exemplos", value: "withExample" },
