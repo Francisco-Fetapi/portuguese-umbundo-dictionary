@@ -20,13 +20,13 @@ type Language = "Português" | "Umbundo";
 export interface App {
   settings: Settings;
   textToTranslate: string;
-  textTranslated: string;
   languages: {
     from: Language;
     to: Language;
   };
   menu: boolean;
-  searchResults: IWord[];
+  searchResultsMain: IWord[];
+  searchResultsSecondary: IWord[];
 }
 
 const InitialSettings: Settings = {
@@ -39,13 +39,13 @@ const InitialSettings: Settings = {
 const initialState: App = {
   settings: useStatePersist<Settings>(SETTINGS_KEY).get() || InitialSettings,
   textToTranslate: "",
-  textTranslated: "Aqui irão aparecer os resultados",
   languages: {
     from: "Português",
     to: "Umbundo",
   },
   menu: false,
-  searchResults: [],
+  searchResultsMain: [],
+  searchResultsSecondary: [],
 };
 
 function stateReseted(initialState: App): App {

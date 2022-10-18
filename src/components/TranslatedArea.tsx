@@ -1,12 +1,16 @@
 import { useSelector } from "react-redux";
-import { selectTextTranslated } from "../store/App.selectors";
+import { selectSearchResultsMain } from "../store/App.selectors";
 import { Text } from "../styles/General";
 
 export default function TranslatedArea() {
-  const textTranslated = useSelector(selectTextTranslated);
+  const results = useSelector(selectSearchResultsMain);
   return (
     <div>
-      <Text align="center">{textTranslated}</Text>
+      {results.map((word) => (
+        <li key={word.pt}>
+          {word.pt} - {word.um[0]}
+        </li>
+      ))}
     </div>
   );
 }

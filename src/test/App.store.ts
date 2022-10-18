@@ -9,13 +9,13 @@ const initialState: App = {
     appLanguage: "Português",
   },
   textToTranslate: "",
-  textTranslated: "Aqui irão aparecer os resultados",
   languages: {
     from: "Português",
     to: "Umbundo",
   },
   menu: false,
-  searchResults: [],
+  searchResultsMain: [],
+  searchResultsSecondary: [],
 };
 
 const app = sliceCreator(initialState);

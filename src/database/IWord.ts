@@ -2,7 +2,7 @@ import type { IWordClasses } from "./IWordClasses";
 
 interface FromPTtoUM {
   pt: string;
-  um: string;
+  um: string[];
 }
 
 export interface IWord extends FromPTtoUM {
