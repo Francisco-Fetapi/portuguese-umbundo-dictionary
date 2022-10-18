@@ -1,11 +1,11 @@
 import type { IWordClasses } from "./IWordClasses";
 
-interface FromPTtoUM {
+interface FromPTtoUM<T = string[]> {
   pt: string;
-  um: string[];
+  um: T;
 }
 
 export interface IWord extends FromPTtoUM {
-  class?: IWordClasses;
-  examples: FromPTtoUM[];
+  class: keyof IWordClasses;
+  examples: FromPTtoUM<string>[];
 }

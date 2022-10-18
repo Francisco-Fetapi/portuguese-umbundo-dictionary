@@ -25,8 +25,10 @@ export default function PageHeader({
             bgcolor: "primary.dark",
             position: "fixed",
             top: 0,
-            left: 0,
-            right: 0,
+            // left: 0,
+            // right: 0,
+            width: "100%",
+            maxWidth: "var(--max-width)",
             zIndex: 9,
           }}
         >
