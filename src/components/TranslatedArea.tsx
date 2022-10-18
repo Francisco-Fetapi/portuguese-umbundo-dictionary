@@ -1,16 +1,25 @@
+import { List } from "@mui/material";
 import { useSelector } from "react-redux";
-import { IWord } from "../database/IWord";
+import {
+  selectSearchResults,
+  selectTextToTranslate,
+} from "../store/App.selectors";
 import { Text } from "../styles/General";
+import WordItem from "./WordItem";
 
 export default function TranslatedArea() {
-  const results: IWord[] = [];
+  const results = useSelector(selectSearchResults);
+  const textToTranslate = useSelector(selectTextToTranslate);
   return (
-    <div>
+    <List>
       {results.map((word) => (
-        <li key={word.pt}>
-          {word.pt} - {word.um[0]}
-        </li>
+        <WordItem key={word.pt} primary={word.pt} secondary={word.um} />
       ))}
-    </div>
+      {results.length === 0 && textToTranslate.length > 0 && (
+        <Text color="gray" align="center">
+          Nenhum resultado encontrado
+        </Text>
+      )}
+    </List>
   );
 }

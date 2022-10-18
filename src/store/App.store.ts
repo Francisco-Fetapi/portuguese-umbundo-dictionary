@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
-// import { IWord } from "../database/IWord";
+import { IWord } from "../database/IWord";
 import useStatePersist from "../hooks/useStatePersist";
 
 const SETTINGS_KEY = "settings";
@@ -25,6 +25,7 @@ export interface App {
     to: Language;
   };
   menu: boolean;
+  searchResultsMain: IWord[];
 }
 
 const InitialSettings: Settings = {
@@ -42,6 +43,7 @@ const initialState: App = {
     to: "Umbundo",
   },
   menu: false,
+  searchResultsMain: [],
 };
 
 function stateReseted(initialState: App): App {
@@ -67,8 +69,8 @@ export function sliceCreator(initialState: App) {
       setTextToTranslate(state, action: PayloadAction<string>) {
         state.textToTranslate = action.payload;
       },
-      setTextTranslated(state, action: PayloadAction<string>) {
-        state.textToTranslate = action.payload;
+      setSearchResults(state, action: PayloadAction<IWord[]>) {
+        state.searchResultsMain = action.payload;
       },
       toggleLanguage(state) {
         const lastFrom = state.languages.from;
@@ -105,7 +107,7 @@ export const store = configureStore({
 export const {
   resetAllState,
   setTextToTranslate,
-  setTextTranslated,
+  setSearchResults,
   toggleLanguage,
   setMenu,
   setSettings,

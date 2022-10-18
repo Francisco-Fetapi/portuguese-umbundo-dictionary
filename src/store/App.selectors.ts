@@ -4,6 +4,8 @@ export const selectSettings = (state: RootState) => state.app.settings;
 
 export const selectTextToTranslate = (state: RootState) =>
   state.app.textToTranslate;
+export const selectSearchResults = (state: RootState) =>
+  state.app.searchResultsMain;
 
 export const selectLanguagesPositions = (state: RootState) =>
   state.app.languages;
