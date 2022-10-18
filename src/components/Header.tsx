@@ -33,17 +33,22 @@ export default function Header() {
             style={{ zoom: 0.95 }}
           >
             <Text variant="h6" fontWeight="bold">
-              Tradutor
+              Dicionário
             </Text>
             <Text variant="h6" fontWeight={300}>
-              Umbundo
+              Português
             </Text>
           </Stack>
           <IconButton onClick={() => dispatch(setMenu(true))}>
             <MdMenu size={30} color={theme.palette.primary.light} />
           </IconButton>
         </Stack>
-        <Box mt={2} px={1}>
+        <Box position="relative" top={-10}>
+          <Text align="center" variant="subtitle2" fontWeight={300}>
+            Umbundo
+          </Text>
+        </Box>
+        <Box mt={1} px={1}>
           <InputText />
         </Box>
         {textToTranslate.length === 0 && (
