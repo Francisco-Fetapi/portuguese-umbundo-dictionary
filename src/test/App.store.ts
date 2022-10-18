@@ -15,6 +15,7 @@ const initialState: App = {
     to: "Umbundo",
   },
   menu: false,
+  searchResults: [],
 };
 
 const app = sliceCreator(initialState);

@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
+import { IWord } from "../database/IWord";
 import useStatePersist from "../hooks/useStatePersist";
 
 const SETTINGS_KEY = "settings";
@@ -25,6 +26,7 @@ export interface App {
     to: Language;
   };
   menu: boolean;
+  searchResults: IWord[];
 }
 
 const InitialSettings: Settings = {
@@ -43,6 +45,7 @@ const initialState: App = {
     to: "Umbundo",
   },
   menu: false,
+  searchResults: [],
 };
 
 function stateReseted(initialState: App): App {
