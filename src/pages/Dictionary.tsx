@@ -24,7 +24,7 @@ Object.keys(wordClasses).forEach((word) => {
 });
 
 const options2: IOption[] = [
-  { label: "Todos", value: "" },
+  { label: "Todos", value: "all" },
   { label: "Sem exemplos", value: "withoutExample" },
   { label: "Com exemplos", value: "withExample" },
 ];

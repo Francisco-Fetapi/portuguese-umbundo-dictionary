@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { selectSearchResultsMain } from "../store/App.selectors";
+import { IWord } from "../database/IWord";
 import { Text } from "../styles/General";
 
 export default function TranslatedArea() {
-  const results = useSelector(selectSearchResultsMain);
+  const results: IWord[] = [];
   return (
     <div>
       {results.map((word) => (
