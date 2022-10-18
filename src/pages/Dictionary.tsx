@@ -1,6 +1,6 @@
 import { useInputState } from "@mantine/hooks";
 import { Autocomplete, Box, Grid, TextField } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
@@ -28,11 +28,17 @@ const options2: IOption[] = [
   { label: "Sem exemplos", value: "withoutExample" },
   { label: "Com exemplos", value: "withExample" },
 ];
+const defaultOption1 = options1[0];
+const defaultOption2 = options2[0];
 
 export default function Dictionary() {
-  const [classFilter, setClassFilter] = useState<IOption>(options1[0]);
+  const [classFilter, setClassFilter] = useState<IOption>(defaultOption1);
   const [exampleFilter, setExampleFilter] = useState<IOption>(options2[0]);
   const [search, handleSearch] = useInputState("");
+
+  useEffect(() => {
+    console.log(classFilter, exampleFilter);
+  }, [classFilter, exampleFilter]);
 
   return (
     <PageHeader pageName="Dicionário">
@@ -49,7 +55,7 @@ export default function Dictionary() {
                   setClassFilter(newValue);
                 }
               }}
-              defaultValue={classFilter}
+              defaultValue={defaultOption1}
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option.label}
               renderInput={(params) => (
@@ -71,7 +77,7 @@ export default function Dictionary() {
                   setExampleFilter(newValue);
                 }
               }}
-              defaultValue={exampleFilter}
+              defaultValue={defaultOption2}
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option.label}
               renderInput={(params) => (
@@ -88,7 +94,7 @@ export default function Dictionary() {
             <TextField
               fullWidth
               label="Termo de pesquisa"
-              size="small"
+              // size="small"
               variant="outlined"
               value={search}
               onChange={handleSearch}
