@@ -1,3 +1,3 @@
 import wordClasses from "./wordClasses.json";
 
-type IWordClasses = typeof wordClasses;
+export type IWordClasses = typeof wordClasses;

@@ -49,10 +49,10 @@ const options: IOption[] = [
     url: "/frases-guardadas",
   },
   {
-    label: "Verbos",
+    label: "Dicionário",
     icon: <MdTextFields />,
-    textSecondary: "Lista dos verbos do umbundo/português.",
-    url: "/verbos",
+    textSecondary: "Consulte todas palavras com diversos filtros",
+    url: "/dicionario",
   },
   {
     label: "Conversação",
@@ -106,10 +106,7 @@ export default function MenuList() {
     >
       {options.map((option) => (
         <React.Fragment key={option.label}>
-          <ListItem
-            button
-            onClick={() => navigate(option.url)}
-          >
+          <ListItem button onClick={() => navigate(option.url)}>
             <ListItemAvatar>
               <Avatar>{option.icon}</Avatar>
             </ListItemAvatar>

@@ -9,7 +9,7 @@ import PolicyAndPrivacy from "./pages/PolicyAndPrivacy";
 import SavedSentences from "./pages/SavedSentences";
 import Settings from "./pages/Settings";
 import UtilityTerms from "./pages/UtilityTerms";
-import Verbs from "./pages/Verbs";
+import Dictionary from "./pages/Dictionary";
 
 export default function routes() {
   return (
@@ -19,7 +19,7 @@ export default function routes() {
         <Route path="/historico" element={<History />} />
         <Route path="/favoritos" element={<Favorites />} />
         <Route path="/frases-guardadas" element={<SavedSentences />} />
-        <Route path="/verbos" element={<Verbs />} />
+        <Route path="/dicionario" element={<Dictionary />} />
         <Route path="/conversacao" element={<Conversations />} />
         <Route path="/definicoes" element={<Settings />} />
         <Route path="/ajuda-e-comentarios" element={<HelpAndComments />} />
