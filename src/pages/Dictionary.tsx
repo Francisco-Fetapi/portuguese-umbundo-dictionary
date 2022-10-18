@@ -12,6 +12,7 @@ import { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
+import useDatabase from "../hooks/useDatabase";
 
 export interface IOption<T = string> {
   value: T;
@@ -45,6 +46,7 @@ export default function Dictionary() {
   const [classFilter, setClassFilter] = useState<IOption>(defaultOption1);
   const [exampleFilter, setExampleFilter] = useState<IOption>(options2[0]);
   const [search, handleSearch] = useInputState("");
+  const { database } = useDatabase();
 
   useEffect(() => {
     console.log(classFilter, exampleFilter);
@@ -53,7 +55,7 @@ export default function Dictionary() {
   return (
     <PageHeader pageName="Dicionário">
       <Box px={1} pt={1}>
-        <Grid container gap={1.5}>
+        <Grid container gap={1.5} sx={{ zoom: 0.89 }}>
           <Grid item xs>
             <Autocomplete
               disablePortal
@@ -72,7 +74,7 @@ export default function Dictionary() {
                 <TextField
                   {...params}
                   label="Filtrar por classe"
-                  size="small"
+                  // size="small"
                 />
               )}
             />
@@ -94,7 +96,7 @@ export default function Dictionary() {
                 <TextField
                   {...params}
                   label="Filtrar por exemplos"
-                  size="small"
+                  // size="small"
                 />
               )}
             />
@@ -114,11 +116,11 @@ export default function Dictionary() {
       </Box>
       <Box mt={1}>
         <List>
-          {[1, 2, 3, 4, 5, 6].map((item) => (
+          {database.words?.map((word) => (
             <Word
-              primary={"Titulo" + item}
-              secondary={"Subtitulo" + item}
-              key={item}
+              primary={word.pt}
+              secondary={word.um.join(", ")}
+              key={word.pt}
             />
           ))}
         </List>
