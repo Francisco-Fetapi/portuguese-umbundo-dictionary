@@ -1,0 +1,41 @@
+[
+  {
+    "pt": "Obrigado",
+    "um": ["Twapandula"],
+    "class": "s.m",
+    "examples": [
+      {
+        "pt": "Muito obrigado",
+        "um": "Twapandula Tchalua"
+      }
+    ]
+  },
+  {
+    "pt": "Hoje",
+    "um": ["Etali"],
+    "class": "undefined",
+    "examples": []
+  },
+  {
+    "pt": "Nome",
+    "um": ["Onduko"],
+    "class": "undefined",
+    "examples": [
+      {
+        "pt": "Qual é o seu nome",
+        "um": "Ovelye ondukoyove? "
+      }
+    ]
+  },
+  {
+    "pt": "Eu",
+    "um": ["Ame"],
+    "class": "undefined",
+    "examples": [
+      {
+        "pt": "Ame divangula umbundu",
+        "um": "Eu falo umbundo."
+      }
+    ]
+  }
+]
