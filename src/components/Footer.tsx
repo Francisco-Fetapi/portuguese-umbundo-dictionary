@@ -3,11 +3,25 @@ import { BoxColumnCenter, Text, FooterContainer } from "../styles/General";
 import { MdGroup, MdHistory } from "react-icons/md";
 import { FaMicrophone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { useNetwork } from "@mantine/hooks";
+import { useSnackbar } from "notistack";
 
 export default function Footer() {
   const navigate = useNavigate();
+  const network = useNetwork();
+  const { enqueueSnackbar } = useSnackbar();
 
-  function handleMicrophone() {}
+  function handleMicrophone() {
+    if (!network.online) {
+      enqueueSnackbar("Sem conexão com a internet", {
+        variant: "error",
+        autoHideDuration: 3,
+      });
+      console.log("Sem internet");
+      return;
+    }
+    console.log("Tudo ok");
+  }
   return (
     <FooterContainer>
       <Stack direction="row" justifyContent="space-evenly">
