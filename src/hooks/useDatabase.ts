@@ -10,7 +10,13 @@ export default function useDatabase() {
     database,
     filterByText(filtered: IWord[], text: string) {
       return filtered.filter((word) => {
-        if (word.pt.includes(text) || word.um.includes(text)) {
+        let hasInPortuguese = word.pt
+          .toLowerCase()
+          .includes(text.toLowerCase());
+        let hasInUmbundo = word.um.some((w) =>
+          w.toLowerCase().includes(text.toLowerCase())
+        );
+        if (hasInPortuguese || hasInUmbundo) {
           return true;
         }
         return false;

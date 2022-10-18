@@ -133,11 +133,7 @@ export default function Dictionary() {
       <Box mt={1}>
         <List>
           {filteredResults?.map((word) => (
-            <WordItem
-              primary={word.pt}
-              secondary={word.um.join(", ")}
-              key={word.pt}
-            />
+            <WordItem primary={word.pt} secondary={word.um} key={word.pt} />
           ))}
         </List>
         {database.words?.length === 0 && (
