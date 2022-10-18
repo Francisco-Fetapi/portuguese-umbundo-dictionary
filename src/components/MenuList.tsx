@@ -38,20 +38,20 @@ const options: IOption[] = [
   {
     label: "Favoritos",
     icon: <MdStar />,
-    textSecondary: "Guarde suas palavras favoritas.",
+    textSecondary: "Listagem de palavras favoritadas.",
     url: "/favoritos",
   },
   {
     label: "Frases guardadas",
     icon: <MdOutlineSaveAlt />,
-    textSecondary: "Guarde frases para memorizar.",
+    textSecondary: "Veja as frases que guardaste.",
     divider: true,
     url: "/frases-guardadas",
   },
   {
     label: "Dicionário",
     icon: <MdTextFields />,
-    textSecondary: "Consulte todas palavras com diversos filtros",
+    textSecondary: "Consulte todas as palavras com diversos filtros",
     url: "/dicionario",
   },
   {
