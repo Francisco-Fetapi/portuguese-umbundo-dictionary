@@ -1,6 +1,5 @@
 import { IconButton, Stack, useTheme, Box } from "@mui/material";
 import { MdArrowBack } from "react-icons/md";
-// import { use } from "react-router-dom";
 import { PageHeaderContainer, Text } from "../styles/General";
 
 interface PageHeaderProps {
@@ -28,6 +27,7 @@ export default function PageHeader({
             top: 0,
             left: 0,
             right: 0,
+            zIndex: 9,
           }}
         >
           <IconButton onClick={() => window.history.back()}>
