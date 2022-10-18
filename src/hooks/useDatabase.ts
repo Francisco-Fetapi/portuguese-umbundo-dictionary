@@ -30,7 +30,6 @@ export default function useDatabase() {
     },
     filterByClass(filtered: IWord[], option: IFilterClassOption) {
       return filtered.filter((word) => {
-        console.log(option, word.class, word.class === option);
         if (option === "all") return true;
         if (word.class === option) return true;
         return false;
