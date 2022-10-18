@@ -1,11 +1,13 @@
-import { useInputState } from "@mantine/hooks";
+import { useDebouncedValue, useInputState } from "@mantine/hooks";
 import { Autocomplete, Box, Grid, List, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
 import WordItem from "../components/WordItem";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 import useDatabase from "../hooks/useDatabase";
+import { selectSettings } from "../store/App.selectors";
 import { Text } from "../styles/General";
 
 export interface IOption<T = string> {
@@ -45,6 +47,8 @@ export default function Dictionary() {
     IOption<IFilterExampleOptions>
   >(options2[0]);
   const [search, handleSearch] = useInputState("");
+  const [debounced] = useDebouncedValue(search, 700);
+  const { automaticSearch } = useSelector(selectSettings);
   const { database, filterByText, filterByClass, filterByExamplesQuantity } =
     useDatabase();
   const [filteredResults, setFilteredResults] = useState(database.words);
@@ -56,6 +60,14 @@ export default function Dictionary() {
   useEffect(() => {
     setFilteredResults(database.words);
   }, [database.words]);
+
+  useEffect(() => {
+    if (automaticSearch) {
+      filter();
+      console.log("filter on debounced");
+    }
+    console.log("debounced mudou", automaticSearch);
+  }, [debounced]);
 
   function filter() {
     let filtered = database.words!;

@@ -10,7 +10,7 @@ type FuncFormEventHandler = React.FormEventHandler<HTMLFormElement> | undefined;
 
 export default function InputText() {
   const [value, handleChange] = useInputState("");
-  const [debounced] = useDebouncedValue(value, 1000);
+  const [debounced] = useDebouncedValue(value, 700);
   const { automaticSearch } = useSelector(selectSettings);
   const dispatch = useDispatch();
   const theme = useTheme();
