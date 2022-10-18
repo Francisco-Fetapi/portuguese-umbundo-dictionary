@@ -1,15 +1,8 @@
 import { useInputState } from "@mantine/hooks";
-import {
-  Autocomplete,
-  Box,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  TextField,
-} from "@mui/material";
+import { Autocomplete, Box, Grid, List, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
 import PageHeader from "../components/PageHeader";
+import WordItem from "../components/WordItem";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 import useDatabase from "../hooks/useDatabase";
@@ -127,7 +120,7 @@ export default function Dictionary() {
       <Box mt={1}>
         <List>
           {filteredResults?.map((word) => (
-            <Word
+            <WordItem
               primary={word.pt}
               secondary={word.um.join(", ")}
               key={word.pt}
@@ -146,18 +139,5 @@ export default function Dictionary() {
         )}
       </Box>
     </PageHeader>
-  );
-}
-
-interface WordProps {
-  primary: string;
-  secondary: string;
-}
-
-function Word({ ...props }: WordProps) {
-  return (
-    <ListItem button divider>
-      <ListItemText {...props} />
-    </ListItem>
   );
 }
