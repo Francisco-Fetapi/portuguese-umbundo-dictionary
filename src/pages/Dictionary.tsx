@@ -64,9 +64,7 @@ export default function Dictionary() {
   useEffect(() => {
     if (automaticSearch) {
       filter();
-      console.log("filter on debounced");
     }
-    console.log("debounced mudou", automaticSearch);
   }, [debounced]);
 
   function filter() {
