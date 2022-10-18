@@ -13,6 +13,7 @@ import PageHeader from "../components/PageHeader";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 import useDatabase from "../hooks/useDatabase";
+import { Text } from "../styles/General";
 
 export interface IOption<T = string> {
   value: T;
@@ -55,15 +56,21 @@ export default function Dictionary() {
   const [filteredResults, setFilteredResults] = useState(database.words);
 
   useEffect(() => {
-    filter();
     console.log(classFilter.value);
-  }, [classFilter, exampleFilter]);
+    filter();
+  }, [classFilter.value, exampleFilter.value]);
+
+  useEffect(() => {
+    setFilteredResults(database.words);
+  }, [database.words]);
 
   function filter() {
-    let filtered = database.words;
-    filtered = filterByText(search);
-    filtered = filterByClass(classFilter.value);
-    filtered = filterByExamplesQuantity(exampleFilter.value);
+    let filtered = database.words!;
+    filtered = filterByText(filtered, search);
+    filtered = filterByClass(filtered, classFilter.value);
+    filtered = filterByExamplesQuantity(filtered, exampleFilter.value);
+
+    console.log("filtered", filtered);
 
     setFilteredResults(filtered);
   }
@@ -75,7 +82,6 @@ export default function Dictionary() {
           <Grid item xs>
             <Autocomplete
               disablePortal
-              id="combo-box-demo"
               options={options1}
               onChange={(_, newValue) => {
                 if (!newValue) return;
@@ -87,11 +93,7 @@ export default function Dictionary() {
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option.label}
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Filtrar por classe"
-                  // size="small"
-                />
+                <TextField {...params} label="Filtrar por classe" />
               )}
             />
           </Grid>
@@ -109,11 +111,7 @@ export default function Dictionary() {
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option.label}
               renderInput={(params) => (
-                <TextField
-                  {...params}
-                  label="Filtrar por exemplos"
-                  // size="small"
-                />
+                <TextField {...params} label="Filtrar por exemplos" />
               )}
             />
           </Grid>
@@ -122,7 +120,6 @@ export default function Dictionary() {
             <TextField
               fullWidth
               label="Termo de pesquisa"
-              // size="small"
               variant="outlined"
               value={search}
               onChange={handleSearch}
@@ -140,6 +137,16 @@ export default function Dictionary() {
             />
           ))}
         </List>
+        {database.words?.length === 0 && (
+          <Text color="gray" align="center">
+            Carregando...
+          </Text>
+        )}
+        {filteredResults?.length === 0 && (
+          <Text color="gray" align="center">
+            Nenhum resultado encontrado
+          </Text>
+        )}
       </Box>
     </PageHeader>
   );
