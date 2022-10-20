@@ -10,7 +10,7 @@ export default function Word() {
   const word = getWord(params.word!);
   let wordClass = word?.class || "";
   if (wordClass) {
-    wordClass += ". ";
+    wordClass += ". - ";
   }
 
   console.log(word);
@@ -49,33 +49,38 @@ export default function Word() {
 
           <Box mt={1}>
             <Text color="gray">
-              {wordClass} - {word?.um.join(", ")}
+              {wordClass} {word?.um.join(", ")}
             </Text>
           </Box>
 
-          {word?.examples && word.examples.length > 0 && (
-            <Box mt={2}>
-              <Text
-                variant="h6"
-                fontWeight={600}
-                sx={{
-                  color: "var(--primary-color-text)",
-                }}
-              >
-                Exemplo(s)
-              </Text>
-              <Box mt={1}>
-                {word?.examples.map((example) => (
+          <Box mt={2}>
+            <Text
+              variant="h6"
+              fontWeight={600}
+              sx={{
+                color: "var(--primary-color-text)",
+              }}
+            >
+              Exemplo(s)
+            </Text>
+
+            <Box mt={1}>
+              {word?.examples && word.examples.length > 0 ? (
+                word?.examples.map((example) => (
                   <Stack alignItems="center" direction="row" gap={1}>
                     <Text variant="subtitle2">{example.pt} </Text>-
                     <Text variant="subtitle2" color="gray">
                       {example.um}
                     </Text>
                   </Stack>
-                ))}
-              </Box>
+                ))
+              ) : (
+                <Text color="gray" variant="subtitle2">
+                  Sem exmplos no momento.
+                </Text>
+              )}
             </Box>
-          )}
+          </Box>
         </Box>
       </Box>
     </PageHeader>
