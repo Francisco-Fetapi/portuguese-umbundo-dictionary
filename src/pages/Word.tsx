@@ -1,21 +1,55 @@
 import PageHeader from "../components/PageHeader";
 import { useParams } from "react-router-dom";
-import { Box, Stack } from "@mui/material";
+import { Box, IconButton, Stack } from "@mui/material";
 import { Text } from "../styles/General";
 import useDatabase from "../hooks/useDatabase";
+import { MdStar, MdStarOutline } from "react-icons/md";
+import { selectFavorites } from "../store/App.selectors";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addItemOnFavorites,
+  addItemOnHistory,
+  removeItemFromFavorites,
+} from "../store/App.store";
+import { useEffect } from "react";
 
 export default function Word() {
   const params = useParams();
   const { getWord } = useDatabase();
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
   const word = getWord(params.word!);
   let wordClass = word?.class || "";
   if (wordClass) {
     wordClass += ". - ";
   }
+  const isFavorited = favorites.some((item) => item.pt === word?.pt);
 
-  console.log(word);
+  function handleToggleFavorite() {
+    if (isFavorited) {
+      dispatch(removeItemFromFavorites(word!));
+      return;
+    }
+    dispatch(addItemOnFavorites(word!));
+  }
+
+  useEffect(() => {
+    if (word) {
+      dispatch(addItemOnHistory(word!));
+    }
+  }, []);
+
   return (
-    <PageHeader pageName="Dicionário" noInitialMargin>
+    <PageHeader
+      pageName="Dicionário"
+      noInitialMargin
+      secondaryAction={
+        <FavoriteArea
+          isFavorited={isFavorited}
+          handleToggle={handleToggleFavorite}
+        />
+      }
+    >
       <Box>
         <Box
           sx={(theme) => ({
@@ -84,5 +118,20 @@ export default function Word() {
         </Box>
       </Box>
     </PageHeader>
+  );
+}
+
+interface FavoriteAreaProps {
+  isFavorited: boolean;
+  handleToggle: () => void;
+}
+
+function FavoriteArea({ isFavorited, handleToggle }: FavoriteAreaProps) {
+  return (
+    <div>
+      <IconButton onClick={handleToggle}>
+        {isFavorited ? <MdStar /> : <MdStarOutline />}
+      </IconButton>
+    </div>
   );
 }

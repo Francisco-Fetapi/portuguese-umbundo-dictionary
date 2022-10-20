@@ -6,12 +6,14 @@ interface PageHeaderProps {
   children: React.ReactNode;
   pageName: string;
   noInitialMargin?: boolean;
+  secondaryAction?: React.ReactNode;
 }
 
 export default function PageHeader({
   children,
   pageName,
   noInitialMargin,
+  secondaryAction,
 }: PageHeaderProps) {
   return (
     <PageHeaderContainer>
@@ -52,6 +54,8 @@ export default function PageHeader({
               {pageName.toUpperCase()}
             </Text>
           </Stack>
+
+          {secondaryAction}
         </Stack>
       </Box>
       <Box
