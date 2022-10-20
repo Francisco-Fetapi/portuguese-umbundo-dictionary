@@ -1,5 +1,5 @@
 import PageHeader from "../components/PageHeader";
 
 export default function Conversations() {
-  return <PageHeader pageName="Conversação">Conversations</PageHeader>;
+  return <PageHeader pageName="Conversação">Conversação</PageHeader>;
 }
