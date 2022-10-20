@@ -68,7 +68,9 @@ export default function Settings() {
     {
       label: "Pesquisa Automática",
       icon: <MdSearch />,
-      textSecondary: `Com essa opção selecionada, os resultados da pesquisa surgem enquanto você digita o texto, caso contrário, terás que clicar no botão pesquisar.`,
+      // textSecondary: `Com essa opção selecionada, os resultados da pesquisa surgem enquanto você digita o texto, caso contrário, terás que clicar no botão pesquisar.`,
+      textSecondary:
+        "Mostrar resultados enquanto se digita o termo de pesquisa",
       secondaryAction: (
         <Switch
           edge="end"
@@ -81,7 +83,7 @@ export default function Settings() {
     {
       label: "Armazenar histórico",
       icon: <MdHistory />,
-      textSecondary: `Sempre salvar o historico de pesquisa de palavras`,
+      textSecondary: `Sempre salvar o historico de palavras vistas`,
       secondaryAction: (
         <Switch
           edge="end"

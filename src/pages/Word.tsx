@@ -4,7 +4,7 @@ import { Box, IconButton, Stack } from "@mui/material";
 import { Text } from "../styles/General";
 import useDatabase from "../hooks/useDatabase";
 import { MdStar, MdStarOutline } from "react-icons/md";
-import { selectFavorites } from "../store/App.selectors";
+import { selectFavorites, selectSettings } from "../store/App.selectors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   addItemOnFavorites,
@@ -18,6 +18,7 @@ export default function Word() {
   const { getWord } = useDatabase();
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
+  const { saveHistory } = useSelector(selectSettings);
   const word = getWord(params.word!);
   let wordClass = word?.class || "";
   if (wordClass) {
@@ -35,7 +36,9 @@ export default function Word() {
 
   useEffect(() => {
     if (word) {
-      dispatch(addItemOnHistory(word!));
+      if (saveHistory) {
+        dispatch(addItemOnHistory(word!));
+      }
     }
   }, []);
 
@@ -101,7 +104,12 @@ export default function Word() {
             <Box mt={1}>
               {word?.examples && word.examples.length > 0 ? (
                 word?.examples.map((example) => (
-                  <Stack alignItems="center" direction="row" gap={1}>
+                  <Stack
+                    key={example.pt}
+                    alignItems="center"
+                    direction="row"
+                    gap={1}
+                  >
                     <Text variant="subtitle2">{example.pt} </Text>-
                     <Text variant="subtitle2" color="gray">
                       {example.um}
