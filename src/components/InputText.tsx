@@ -31,7 +31,6 @@ export default function InputText() {
   }, [textToTranslate]);
 
   useEffect(() => {
-    // pesquisar e atualizar results
     if (database.words) {
       const results = filterByText(database.words, textToTranslate);
       dispatch(setSearchResults(results));
