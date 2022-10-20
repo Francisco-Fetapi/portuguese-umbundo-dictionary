@@ -11,15 +11,19 @@ export default function TranslatedArea() {
   const results = useSelector(selectSearchResults);
   const textToTranslate = useSelector(selectTextToTranslate);
   console.log(results);
+  if (!textToTranslate) {
+    return <div />;
+  }
   return (
     <List>
-      {results.map((word) => (
-        <WordItem key={word.pt} primary={word.pt} secondary={word.um} />
-      ))}
-      {results.length === 0 && textToTranslate.length > 0 && (
+      {results.length === 0 && textToTranslate.length > 0 ? (
         <Text color="gray" align="center">
           Nenhum resultado encontrado
         </Text>
+      ) : (
+        results.map((word) => (
+          <WordItem key={word.pt} primary={word.pt} secondary={word.um} />
+        ))
       )}
     </List>
   );

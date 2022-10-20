@@ -23,7 +23,7 @@ export default function Home() {
   return (
     <div className="super-container">
       <Header />
-
+      <br />
       <BoxColumnCenter
         mt={0}
         className={hasText ? "animate animate-to-bottom" : "animate"}

@@ -20,10 +20,11 @@ export const HeaderContainer = styled.div`
   position: relative;
   z-index: 10;
   height: calc(100vh - 250px);
-
-  min-height: 300px;
+  max-height: 350px;
+  min-height: 250px;
   transition: height 0.5s linear;
   &.full {
+    max-height: initial;
     height: 95vh;
   }
 

@@ -5,7 +5,10 @@ import InputText from "./InputText";
 import PasteButton from "./PasteButton";
 import TranslatedArea from "./TranslatedArea";
 import { useDispatch, useSelector } from "react-redux";
-import { selectTextToTranslate } from "../store/App.selectors";
+import {
+  selectSearchResults,
+  selectTextToTranslate,
+} from "../store/App.selectors";
 import { setMenu } from "../store/App.store";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +17,7 @@ export default function Header() {
   const dispatch = useDispatch();
   const textToTranslate = useSelector(selectTextToTranslate);
   const navigate = useNavigate();
+  const searchResults = useSelector(selectSearchResults);
 
   return (
     <HeaderContainer
@@ -56,14 +60,15 @@ export default function Header() {
             <PasteButton />
           </Box>
         )}
-        <Box mt={3}>
+        <Box mt={2}>
           <TranslatedArea />
         </Box>
       </Box>
-
-      <div className="ornament">
-        <div />
-      </div>
+      {(searchResults.length === 0 || textToTranslate.length === 0) && (
+        <div className="ornament">
+          <div />
+        </div>
+      )}
     </HeaderContainer>
   );
 }

@@ -2,8 +2,9 @@ import { useDebouncedValue, useInputState } from "@mantine/hooks";
 import { Box, useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import useDatabase from "../hooks/useDatabase";
 import { selectSettings, selectTextToTranslate } from "../store/App.selectors";
-import { setTextToTranslate } from "../store/App.store";
+import { setSearchResults, setTextToTranslate } from "../store/App.store";
 import { InputArea } from "../styles/General";
 
 type FuncFormEventHandler = React.FormEventHandler<HTMLFormElement> | undefined;
@@ -15,6 +16,7 @@ export default function InputText() {
   const textToTranslate = useSelector(selectTextToTranslate);
   const dispatch = useDispatch();
   const theme = useTheme();
+  const { database, filterByText } = useDatabase();
 
   useEffect(() => {
     if (automaticSearch) {
@@ -25,6 +27,14 @@ export default function InputText() {
   useEffect(() => {
     if (value !== textToTranslate) {
       handleChange(textToTranslate);
+    }
+  }, [textToTranslate]);
+
+  useEffect(() => {
+    // pesquisar e atualizar results
+    if (database.words) {
+      const results = filterByText(database.words, textToTranslate);
+      dispatch(setSearchResults(results));
     }
   }, [textToTranslate]);
 

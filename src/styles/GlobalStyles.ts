@@ -52,6 +52,10 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
       display:flex;
       flex-direction:column;
       justify-content:space-between;
+
+      @media(min-height:600px){
+        justify-content: flex-start;
+      }
     }
 
     .animate{
