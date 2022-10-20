@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
 import WordItem from "../components/WordItem";
+import WordList from "../components/WordList";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 import useDatabase from "../hooks/useDatabase";
@@ -51,14 +52,14 @@ export default function Dictionary() {
   const { automaticSearch } = useSelector(selectSettings);
   const { database, filterByText, filterByClass, filterByExamplesQuantity } =
     useDatabase();
-  const [filteredResults, setFilteredResults] = useState(database.words);
+  const [filteredResults, setFilteredResults] = useState(database.words!);
 
   useEffect(() => {
     filter();
   }, [classFilter.value, exampleFilter.value]);
 
   useEffect(() => {
-    setFilteredResults(database.words);
+    setFilteredResults(database.words!);
   }, [database.words]);
 
   useEffect(() => {
@@ -141,19 +142,18 @@ export default function Dictionary() {
         </Grid>
       </Box>
       <Box mt={1}>
-        <List>
+        {/* <List>
           {filteredResults?.map((word) => (
             <WordItem primary={word.pt} secondary={word.um} key={word.pt} />
           ))}
-        </List>
+        </List> */}
+        <WordList
+          words={filteredResults}
+          emptyMessage="Nenhum resultado encontrado"
+        />
         {database.words?.length === 0 && (
           <Text color="gray" align="center">
             Carregando...
-          </Text>
-        )}
-        {filteredResults?.length === 0 && (
-          <Text color="gray" align="center">
-            Nenhum resultado encontrado
           </Text>
         )}
       </Box>

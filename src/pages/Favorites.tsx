@@ -1,5 +1,17 @@
+import { Box } from "@mui/material";
+import { useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
+import WordList from "../components/WordList";
+import { selectFavorites } from "../store/App.selectors";
 
 export default function Favorites() {
-  return <PageHeader pageName="Favoritos">Favorites</PageHeader>;
+  const favorites = useSelector(selectFavorites);
+
+  return (
+    <PageHeader pageName="Favoritos" noInitialMargin={!!favorites.length}>
+      <Box>
+        <WordList words={favorites} />
+      </Box>
+    </PageHeader>
+  );
 }
