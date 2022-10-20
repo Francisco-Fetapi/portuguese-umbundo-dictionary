@@ -59,6 +59,8 @@ export const InputArea = styled.div`
   input {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    /* border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); */
     color: white;
     &.light {
       border-color: #bbaeae;

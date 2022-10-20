@@ -4,6 +4,8 @@ import { IWord } from "../database/IWord";
 import useStatePersist from "../hooks/useStatePersist";
 
 const SETTINGS_KEY = "settings";
+const HISTORY_KEY = "history";
+const FAVORITES_KEY = "favorites";
 
 export interface IDarkMode {
   darkMode: boolean;
@@ -26,6 +28,8 @@ export interface App {
   };
   menu: boolean;
   searchResultsMain: IWord[];
+  history: IWord[];
+  favorites: IWord[];
 }
 
 const InitialSettings: Settings = {
@@ -44,6 +48,8 @@ const initialState: App = {
   },
   menu: false,
   searchResultsMain: [],
+  history: useStatePersist<IWord[]>(HISTORY_KEY).get() || [],
+  favorites: useStatePersist<IWord[]>(FAVORITES_KEY).get() || [],
 };
 
 function stateReseted(initialState: App): App {
@@ -85,6 +91,30 @@ export function sliceCreator(initialState: App) {
         const { save } = useStatePersist<Settings>(SETTINGS_KEY);
         save(newSettings);
       },
+      addItemOnHistory(state, action: PayloadAction<IWord>) {
+        state.history.unshift(action.payload);
+        const { save } = useStatePersist<IWord[]>(HISTORY_KEY);
+        save(state.history);
+      },
+      addItemOnFavorites(state, action: PayloadAction<IWord>) {
+        state.favorites.unshift(action.payload);
+        const { save } = useStatePersist<IWord[]>(FAVORITES_KEY);
+        save(state.favorites);
+      },
+      removeItemFromHistory(state, action: PayloadAction<IWord>) {
+        state.history = state.history.filter(
+          (item) => item.pt !== action.payload.pt
+        );
+        const { save } = useStatePersist<IWord[]>(HISTORY_KEY);
+        save(state.history);
+      },
+      removeItemFromFavorites(state, action: PayloadAction<IWord>) {
+        state.favorites = state.favorites.filter(
+          (item) => item.pt !== action.payload.pt
+        );
+        const { save } = useStatePersist<IWord[]>(FAVORITES_KEY);
+        save(state.favorites);
+      },
     },
   });
 }
@@ -111,6 +141,10 @@ export const {
   toggleLanguage,
   setMenu,
   setSettings,
+  addItemOnFavorites,
+  addItemOnHistory,
+  removeItemFromFavorites,
+  removeItemFromHistory,
 } = app.actions;
 
 export default store;

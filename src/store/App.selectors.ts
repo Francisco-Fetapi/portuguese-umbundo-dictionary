@@ -10,3 +10,6 @@ export const selectSearchResults = (state: RootState) =>
 export const selectLanguagesPositions = (state: RootState) =>
   state.app.languages;
 export const selectMenu = (state: RootState) => state.app.menu;
+
+export const selectFavorites = (state: RootState) => state.app.favorites;
+export const selectHistory = (state: RootState) => state.app.history;
