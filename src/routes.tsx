@@ -10,6 +10,7 @@ import SavedSentences from "./pages/SavedSentences";
 import Settings from "./pages/Settings";
 import UtilityTerms from "./pages/UtilityTerms";
 import Dictionary from "./pages/Dictionary";
+import Word from "./pages/Word";
 
 export default function routes() {
   return (
@@ -29,6 +30,7 @@ export default function routes() {
           element={<PolicyAndPrivacy />}
         />
         <Route path="/termos-de-utilizacao" element={<UtilityTerms />} />
+        <Route path="/palavra/:word" element={<Word />} />
       </Routes>
     </BrowserRouter>
   );

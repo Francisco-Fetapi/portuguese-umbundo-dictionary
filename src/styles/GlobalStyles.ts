@@ -11,9 +11,9 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
   --primary-color:${(props) =>
     props.mode === "dark" ? "rgba(79,80,81,.9)" : "rgba(244,244,244,.985)"};
   --primary-color-text:${(props) =>
-    props.mode === "light" ? "#111" : "#F0F0F0"};;
+    props.mode === "light" ? "#111" : "#F0F0F0"};
   --primary-color2:${(props) =>
-    props.mode === "dark" ? "#3f3f3d" : "#F4F4F4"};;
+    props.mode === "dark" ? "#3f3f3d" : "#F4F4F4"};
   --max-width:450px;
 }
 

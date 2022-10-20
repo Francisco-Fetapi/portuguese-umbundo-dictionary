@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { IWord } from "../database/IWord";
 import wordsJson from "../database/words.json";
 
-interface IDatabase {
+export interface IDatabase {
   words: IWord[];
 }
 interface DatabaseProviderProps {

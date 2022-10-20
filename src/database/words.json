@@ -13,13 +13,11 @@
   {
     "pt": "Hoje",
     "um": ["Etali"],
-    "class": "undefined",
     "examples": []
   },
   {
     "pt": "Nome",
     "um": ["Onduko"],
-    "class": "undefined",
     "examples": [
       {
         "pt": "Qual é o seu nome",
@@ -30,7 +28,7 @@
   {
     "pt": "Eu",
     "um": ["Ame"],
-    "class": "undefined",
+    "class": "pron",
     "examples": [
       {
         "pt": "Ame divangula umbundu",

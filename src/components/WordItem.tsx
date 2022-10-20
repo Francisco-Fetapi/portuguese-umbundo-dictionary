@@ -1,4 +1,5 @@
 import { ListItem, ListItemText } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 interface WordItemProps {
   primary: string;
@@ -6,8 +7,14 @@ interface WordItemProps {
 }
 
 export default function WordItem({ secondary, ...props }: WordItemProps) {
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate("/palavra/" + props.primary.toLowerCase());
+  }
+
   return (
-    <ListItem button divider>
+    <ListItem button divider onClick={handleClick}>
       <ListItemText {...props} secondary={secondary.join(", ")} />
     </ListItem>
   );

@@ -1,13 +1,16 @@
 import { useContext } from "react";
-import { DatabaseContext } from "../contexts/DatabaseProvider";
+import { DatabaseContext, IDatabase } from "../contexts/DatabaseProvider";
 import { IWord } from "../database/IWord";
 import { IFilterClassOption, IFilterExampleOptions } from "../pages/Dictionary";
 
 export default function useDatabase() {
-  const database = useContext(DatabaseContext);
+  const database = useContext(DatabaseContext) as IDatabase;
 
   return {
     database,
+    getWord(word: string) {
+      return database.words?.find((item) => item.pt.toLowerCase() === word);
+    },
     filterByText(filtered: IWord[], text: string) {
       return filtered.filter((word) => {
         let hasInPortuguese = word.pt
