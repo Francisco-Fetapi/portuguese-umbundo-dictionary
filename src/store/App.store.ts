@@ -92,6 +92,10 @@ export function sliceCreator(initialState: App) {
         save(newSettings);
       },
       addItemOnHistory(state, action: PayloadAction<IWord>) {
+        const wordsOnHistory = state.history.map((item) => item.pt);
+        if (wordsOnHistory.includes(action.payload.pt)) {
+          return;
+        }
         state.history.unshift(action.payload);
         const { save } = useStatePersist<IWord[]>(HISTORY_KEY);
         save(state.history);
