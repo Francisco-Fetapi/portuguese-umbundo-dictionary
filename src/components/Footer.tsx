@@ -15,7 +15,7 @@ export default function Footer() {
     if (!network.online) {
       enqueueSnackbar("Sem conexão com a internet", {
         variant: "error",
-        autoHideDuration: 3,
+        autoHideDuration: 3 * 1000,
       });
       console.log("Sem internet");
       return;
