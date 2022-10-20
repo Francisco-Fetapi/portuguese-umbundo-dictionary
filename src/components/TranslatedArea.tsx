@@ -10,6 +10,7 @@ import WordItem from "./WordItem";
 export default function TranslatedArea() {
   const results = useSelector(selectSearchResults);
   const textToTranslate = useSelector(selectTextToTranslate);
+  console.log(results);
   return (
     <List>
       {results.map((word) => (
