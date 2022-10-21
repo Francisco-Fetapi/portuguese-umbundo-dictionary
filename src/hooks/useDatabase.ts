@@ -11,7 +11,7 @@ export default function useDatabase() {
     getWord(word: string) {
       return database.words?.find((item) => item.pt.toLowerCase() === word);
     },
-    filterByText(filtered: IWord[], text: string) {
+    filterByText(filtered: IWord[], text: string, language?: "um" | "pt") {
       return filtered.filter((word) => {
         let hasInPortuguese = word.pt
           .toLowerCase()
@@ -19,10 +19,17 @@ export default function useDatabase() {
         let hasInUmbundo = word.um.some((w) =>
           w.toLowerCase().includes(text.toLowerCase())
         );
-        if (hasInPortuguese || hasInUmbundo) {
-          return true;
+        if (language) {
+          if (language === "pt") {
+            return hasInPortuguese;
+          }
+          if (language === "um") {
+            return hasInUmbundo;
+          }
+          return false;
         }
-        return false;
+
+        return hasInPortuguese || hasInUmbundo;
       });
     },
     filterByExamplesQuantity(filtered: IWord[], option: IFilterExampleOptions) {

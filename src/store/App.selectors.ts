@@ -1,4 +1,7 @@
+import { ShortLanguage } from "../components/LanguageToggle";
 import { RootState } from "./App.store";
+
+type ILanguageShort = "pt" | "um";
 
 export const selectSettings = (state: RootState) => state.app.settings;
 
@@ -11,6 +14,18 @@ export const selectSearchResultsSecondary = (state: RootState) =>
 
 export const selectLanguagesPositions = (state: RootState) =>
   state.app.languages;
+export const selectShortLanguageChoosed = (state: RootState) => {
+  const { from, to } = state.app.languages;
+  const languagesShortMap: ShortLanguage = {
+    Português: "pt",
+    Umbundo: "um",
+  };
+  return [languagesShortMap[from], languagesShortMap[to]] as [
+    ILanguageShort,
+    ILanguageShort
+  ];
+};
+
 export const selectMenu = (state: RootState) => state.app.menu;
 
 export const selectFavorites = (state: RootState) => state.app.favorites;

@@ -29,6 +29,8 @@ interface ILogos {
   Umbundo: string;
 }
 
+export interface ShortLanguage extends ILogos {}
+
 function ButtonLanguage({ label }: ButtonLanguageProps) {
   const logos: ILogos = {
     Português: "logo-portugal.jpg",

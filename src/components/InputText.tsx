@@ -3,7 +3,11 @@ import { Box, useTheme } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useDatabase from "../hooks/useDatabase";
-import { selectSettings, selectTextToTranslate } from "../store/App.selectors";
+import {
+  selectSettings,
+  selectShortLanguageChoosed,
+  selectTextToTranslate,
+} from "../store/App.selectors";
 import { setSearchResults, setTextToTranslate } from "../store/App.store";
 import { InputArea } from "../styles/General";
 
@@ -17,6 +21,9 @@ export default function InputText() {
   const dispatch = useDispatch();
   const theme = useTheme();
   const { database, filterByText } = useDatabase();
+  const languagesOrder = useSelector(selectShortLanguageChoosed);
+
+  console.log(languagesOrder);
 
   useEffect(() => {
     if (automaticSearch) {
@@ -32,7 +39,11 @@ export default function InputText() {
 
   useEffect(() => {
     if (database.words) {
-      const results = filterByText(database.words, textToTranslate);
+      const results = filterByText(
+        database.words,
+        textToTranslate,
+        languagesOrder[0]
+      );
       dispatch(setSearchResults(results));
     }
   }, [textToTranslate]);

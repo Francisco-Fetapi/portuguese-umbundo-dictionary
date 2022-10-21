@@ -81,7 +81,7 @@ export default function Dictionary() {
   }
 
   function filter() {
-    let filtered = currentResults;
+    let filtered = database.words!;
     filtered = filterByText(filtered, searchTextSecondary);
     filtered = filterByClass(filtered, classFilter.value);
     filtered = filterByExamplesQuantity(filtered, exampleFilter.value);
