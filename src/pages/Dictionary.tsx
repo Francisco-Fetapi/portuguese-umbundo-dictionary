@@ -1,14 +1,19 @@
 import { useDebouncedValue, useInputState } from "@mantine/hooks";
 import { Autocomplete, Box, Grid, List, TextField } from "@mui/material";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
 import WordItem from "../components/WordItem";
 import WordList from "../components/WordList";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 import useDatabase from "../hooks/useDatabase";
-import { selectSettings } from "../store/App.selectors";
+import {
+  selectDictionaryFilters,
+  selectSearchResultsSecondary,
+  selectSettings,
+} from "../store/App.selectors";
+import { setSearchResultsSecondary, setState } from "../store/App.store";
 import { Text } from "../styles/General";
 
 export interface IOption<T = string> {
@@ -20,7 +25,7 @@ export type IFilterExampleOptions = "all" | "withoutExample" | "withExample";
 export type IFilterClassOption = "all" | keyof IWordClasses;
 type IFormSubmit = React.FormEventHandler<HTMLFormElement> | undefined;
 
-const options1: IOption<IFilterClassOption>[] = [
+export const options1: IOption<IFilterClassOption>[] = [
   {
     label: "Todos",
     value: "all",
@@ -33,33 +38,34 @@ Object.keys(wordClasses).forEach((word) => {
   });
 });
 
-const options2: IOption<IFilterExampleOptions>[] = [
+export const options2: IOption<IFilterExampleOptions>[] = [
   { label: "Todos", value: "all" },
   { label: "Sem exemplos", value: "withoutExample" },
   { label: "Com exemplos", value: "withExample" },
 ];
-const defaultOption1 = options1[0];
-const defaultOption2 = options2[0];
+export const defaultOption1 = options1[0];
+export const defaultOption2 = options2[0];
 
 export default function Dictionary() {
-  const [classFilter, setClassFilter] =
-    useState<IOption<IFilterClassOption>>(defaultOption1);
-  const [exampleFilter, setExampleFilter] = useState<
-    IOption<IFilterExampleOptions>
-  >(options2[0]);
-  const [search, handleSearch] = useInputState("");
-  const [debounced] = useDebouncedValue(search, 700);
+  const { classFilter, exampleFilter, searchTextSecondary } = useSelector(
+    selectDictionaryFilters
+  );
+  // const [search, handleSearch] = useInputState(searchTextSecondary);
+  const [debounced] = useDebouncedValue(searchTextSecondary, 700);
   const { automaticSearch } = useSelector(selectSettings);
   const { database, filterByText, filterByClass, filterByExamplesQuantity } =
     useDatabase();
-  const [filteredResults, setFilteredResults] = useState(database.words!);
+  const dispatch = useDispatch();
+  const filteredResults = useSelector(selectSearchResultsSecondary);
+  const currentResults =
+    filteredResults.length > 0 ? filteredResults : database.words!;
 
   useEffect(() => {
     filter();
   }, [classFilter.value, exampleFilter.value]);
 
   useEffect(() => {
-    setFilteredResults(database.words!);
+    dispatch(setSearchResultsSecondary(currentResults));
   }, [database.words]);
 
   useEffect(() => {
@@ -68,13 +74,21 @@ export default function Dictionary() {
     }
   }, [debounced]);
 
+  function handleSearch(searchTextSecondary: string) {
+    dispatch(
+      setState({
+        searchTextSecondary,
+      })
+    );
+  }
+
   function filter() {
-    let filtered = database.words!;
-    filtered = filterByText(filtered, search);
+    let filtered = currentResults;
+    filtered = filterByText(filtered, searchTextSecondary);
     filtered = filterByClass(filtered, classFilter.value);
     filtered = filterByExamplesQuantity(filtered, exampleFilter.value);
 
-    setFilteredResults(filtered);
+    dispatch(setSearchResultsSecondary(filtered));
   }
 
   const handleSubmit: IFormSubmit = (e) => {
@@ -93,10 +107,15 @@ export default function Dictionary() {
               onChange={(_, newValue) => {
                 if (!newValue) return;
                 if (options1.includes(newValue)) {
-                  setClassFilter(newValue);
+                  dispatch(
+                    setState({
+                      classFilter: newValue,
+                    })
+                  );
                 }
               }}
               defaultValue={defaultOption1}
+              value={classFilter}
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option.label}
               renderInput={(params) => (
@@ -111,10 +130,15 @@ export default function Dictionary() {
               onChange={(_, newValue) => {
                 if (!newValue) return;
                 if (options2.includes(newValue)) {
-                  setExampleFilter(newValue);
+                  dispatch(
+                    setState({
+                      exampleFilter: newValue,
+                    })
+                  );
                 }
               }}
               defaultValue={defaultOption2}
+              value={exampleFilter}
               sx={{ width: "100%" }}
               getOptionLabel={(option) => option.label}
               renderInput={(params) => (
@@ -134,19 +158,14 @@ export default function Dictionary() {
                 fullWidth
                 label="Termo de pesquisa"
                 variant="outlined"
-                value={search}
-                onChange={handleSearch}
+                value={searchTextSecondary}
+                onChange={(e) => handleSearch(e.target.value)}
               />
             </Box>
           </Grid>
         </Grid>
       </Box>
       <Box mt={1}>
-        {/* <List>
-          {filteredResults?.map((word) => (
-            <WordItem primary={word.pt} secondary={word.um} key={word.pt} />
-          ))}
-        </List> */}
         <WordList
           words={filteredResults}
           emptyMessage="Nenhum resultado encontrado"

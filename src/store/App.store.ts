@@ -2,6 +2,13 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 import { IWord } from "../database/IWord";
 import useStatePersist from "../hooks/useStatePersist";
+import {
+  defaultOption1,
+  defaultOption2,
+  IFilterClassOption,
+  IFilterExampleOptions,
+  IOption,
+} from "../pages/Dictionary";
 
 const SETTINGS_KEY = "settings";
 const HISTORY_KEY = "history";
@@ -30,6 +37,10 @@ export interface App {
   searchResultsMain: IWord[];
   history: IWord[];
   favorites: IWord[];
+  searchResultsSecondary: IWord[];
+  classFilter: IOption<IFilterClassOption>;
+  exampleFilter: IOption<IFilterExampleOptions>;
+  searchTextSecondary: string;
 }
 
 const InitialSettings: Settings = {
@@ -48,8 +59,12 @@ const initialState: App = {
   },
   menu: false,
   searchResultsMain: [],
+  searchResultsSecondary: [],
   history: useStatePersist<IWord[]>(HISTORY_KEY).get() || [],
   favorites: useStatePersist<IWord[]>(FAVORITES_KEY).get() || [],
+  classFilter: defaultOption1,
+  exampleFilter: defaultOption2,
+  searchTextSecondary: "",
 };
 
 function stateReseted(initialState: App): App {
@@ -77,6 +92,9 @@ export function sliceCreator(initialState: App) {
       },
       setSearchResults(state, action: PayloadAction<IWord[]>) {
         state.searchResultsMain = action.payload;
+      },
+      setSearchResultsSecondary(state, action: PayloadAction<IWord[]>) {
+        state.searchResultsSecondary = action.payload;
       },
       toggleLanguage(state) {
         const lastFrom = state.languages.from;
@@ -124,6 +142,15 @@ export function sliceCreator(initialState: App) {
         const { save } = useStatePersist<IWord[]>(HISTORY_KEY);
         save(state.history);
       },
+      setState(state, action: PayloadAction<Partial<App>>) {
+        Object.assign(state, action.payload);
+      },
+      resetDictionary(state) {
+        state.searchResultsSecondary = [];
+        state.classFilter = defaultOption1;
+        state.exampleFilter = defaultOption2;
+        state.searchTextSecondary = "";
+      },
     },
   });
 }
@@ -155,6 +182,9 @@ export const {
   removeItemFromFavorites,
   removeItemFromHistory,
   removeAllHistory,
+  setSearchResultsSecondary,
+  setState,
+  resetDictionary,
 } = app.actions;
 
 export default store;
