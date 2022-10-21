@@ -119,6 +119,11 @@ export function sliceCreator(initialState: App) {
         const { save } = useStatePersist<IWord[]>(FAVORITES_KEY);
         save(state.favorites);
       },
+      removeAllHistory(state) {
+        state.history = [];
+        const { save } = useStatePersist<IWord[]>(HISTORY_KEY);
+        save(state.history);
+      },
     },
   });
 }
@@ -149,6 +154,7 @@ export const {
   addItemOnHistory,
   removeItemFromFavorites,
   removeItemFromHistory,
+  removeAllHistory,
 } = app.actions;
 
 export default store;
