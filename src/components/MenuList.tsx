@@ -49,10 +49,10 @@ const options: IOption[] = [
     url: "/frases-guardadas",
   },
   {
-    label: "Dicionário",
+    label: "Pesquisa avançada",
     icon: <MdTextFields />,
     textSecondary: "Consulte todas as palavras com diversos filtros",
-    url: "/dicionario",
+    url: "/pesquisa-avancada",
   },
   {
     label: "Conversação",

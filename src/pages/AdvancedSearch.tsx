@@ -45,7 +45,7 @@ export const options2: IOption<IFilterExampleOptions>[] = [
 export const defaultOption1 = options1[0];
 export const defaultOption2 = options2[0];
 
-export default function Dictionary() {
+export default function AdvancedSearch() {
   const { classFilter, exampleFilter, searchTextSecondary } = useSelector(
     selectDictionaryFilters
   );
@@ -95,7 +95,7 @@ export default function Dictionary() {
   };
 
   return (
-    <PageHeader pageName="Dicionário">
+    <PageHeader pageName="Pesquisa Avançada">
       <Box px={1} pt={1}>
         <Grid container gap={1.5} sx={{ zoom: 0.89 }}>
           <Grid item xs>

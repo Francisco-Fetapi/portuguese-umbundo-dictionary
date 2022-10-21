@@ -8,7 +8,7 @@ import {
   IFilterClassOption,
   IFilterExampleOptions,
   IOption,
-} from "../pages/Dictionary";
+} from "../pages/AdvancedSearch";
 
 const SETTINGS_KEY = "settings";
 const HISTORY_KEY = "history";

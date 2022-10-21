@@ -9,7 +9,7 @@ import PolicyAndPrivacy from "./pages/PolicyAndPrivacy";
 import SavedSentences from "./pages/SavedSentences";
 import Settings from "./pages/Settings";
 import UtilityTerms from "./pages/UtilityTerms";
-import Dictionary from "./pages/Dictionary";
+import AdvancedSearch from "./pages/AdvancedSearch";
 import Word from "./pages/Word";
 
 export default function routes() {
@@ -20,7 +20,7 @@ export default function routes() {
         <Route path="/historico" element={<History />} />
         <Route path="/favoritos" element={<Favorites />} />
         <Route path="/frases-guardadas" element={<SavedSentences />} />
-        <Route path="/dicionario" element={<Dictionary />} />
+        <Route path="/pesquisa-avancada" element={<AdvancedSearch />} />
         <Route path="/conversacao" element={<Conversations />} />
         <Route path="/definicoes" element={<Settings />} />
         <Route path="/ajuda-e-comentarios" element={<HelpAndComments />} />

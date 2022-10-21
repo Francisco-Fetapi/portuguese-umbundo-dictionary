@@ -37,9 +37,9 @@ export default function Footer() {
           handleClick={handleMicrophone}
         />
         <FabWithText
-          label="Dicionário"
+          label="Pesquisa Avançada"
           icon={<MdTextFields size={30} />}
-          handleClick={() => navigate("/dicionario")}
+          handleClick={() => navigate("/pesquisa-avancada")}
         />
       </Stack>
     </FooterContainer>
