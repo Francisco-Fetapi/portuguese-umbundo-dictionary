@@ -1,6 +1,6 @@
 import { Box, Fab, Stack } from "@mui/material";
 import { BoxColumnCenter, Text, FooterContainer } from "../styles/General";
-import { MdGroup, MdHistory } from "react-icons/md";
+import { MdGroup, MdTextFields } from "react-icons/md";
 import { FaMicrophone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useNetwork } from "@mantine/hooks";
@@ -37,9 +37,9 @@ export default function Footer() {
           handleClick={handleMicrophone}
         />
         <FabWithText
-          label="Histórico"
-          icon={<MdHistory size={30} />}
-          handleClick={() => navigate("/historico")}
+          label="Dicionário"
+          icon={<MdTextFields size={30} />}
+          handleClick={() => navigate("/dicionario")}
         />
       </Stack>
     </FooterContainer>
