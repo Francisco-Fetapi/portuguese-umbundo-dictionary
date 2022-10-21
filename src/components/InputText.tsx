@@ -23,8 +23,6 @@ export default function InputText() {
   const { database, filterByText } = useDatabase();
   const languagesOrder = useSelector(selectShortLanguageChoosed);
 
-  console.log(languagesOrder);
-
   useEffect(() => {
     if (automaticSearch) {
       dispatch(setTextToTranslate(value));
