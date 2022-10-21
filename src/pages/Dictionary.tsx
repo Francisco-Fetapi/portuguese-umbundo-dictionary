@@ -1,9 +1,8 @@
-import { useDebouncedValue, useInputState } from "@mantine/hooks";
-import { Autocomplete, Box, Grid, List, TextField } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useDebouncedValue } from "@mantine/hooks";
+import { Autocomplete, Box, Grid, TextField } from "@mui/material";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
-import WordItem from "../components/WordItem";
 import WordList from "../components/WordList";
 import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
@@ -50,7 +49,6 @@ export default function Dictionary() {
   const { classFilter, exampleFilter, searchTextSecondary } = useSelector(
     selectDictionaryFilters
   );
-  // const [search, handleSearch] = useInputState(searchTextSecondary);
   const [debounced] = useDebouncedValue(searchTextSecondary, 700);
   const { automaticSearch } = useSelector(selectSettings);
   const { database, filterByText, filterByClass, filterByExamplesQuantity } =
