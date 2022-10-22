@@ -15,8 +15,12 @@ const initialState: App = {
   },
   menu: false,
   searchResultsMain: [],
+  searchResultsSecondary: [],
   history: [],
   favorites: [],
+  classFilter: "",
+  exampleFilter: ""
+  searchTextSecondary: "",
 };
 
 const app = sliceCreator(initialState);
