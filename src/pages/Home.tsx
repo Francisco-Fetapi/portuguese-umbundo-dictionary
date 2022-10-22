@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import LanguageToggle from "../components/LanguageToggle";
 import ModalMenu from "../components/ModalMenu";
 import { selectMenu, selectTextToTranslate } from "../store/App.selectors";
-import { resetDictionary, setMenu } from "../store/App.store";
+import { resetAdvancedSearch, setMenu } from "../store/App.store";
 import { BoxColumnCenter } from "../styles/General";
 
 export default function Home() {
@@ -21,7 +21,7 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    dispatch(resetDictionary());
+    dispatch(resetAdvancedSearch());
   }, []);
 
   return (

@@ -30,7 +30,7 @@ export const selectMenu = (state: RootState) => state.app.menu;
 
 export const selectFavorites = (state: RootState) => state.app.favorites;
 export const selectHistory = (state: RootState) => state.app.history;
-export const selectDictionaryFilters = (state: RootState) => {
+export const selectAdvancedSearchFilters = (state: RootState) => {
   return {
     classFilter: state.app.classFilter,
     exampleFilter: state.app.exampleFilter,

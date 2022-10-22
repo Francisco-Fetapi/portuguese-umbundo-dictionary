@@ -8,7 +8,7 @@ import { IWordClasses } from "../database/IWordClasses";
 import wordClasses from "../database/wordClasses.json";
 import useDatabase from "../hooks/useDatabase";
 import {
-  selectDictionaryFilters,
+  selectAdvancedSearchFilters,
   selectSearchResultsSecondary,
   selectSettings,
 } from "../store/App.selectors";
@@ -47,7 +47,7 @@ export const defaultOption2 = options2[0];
 
 export default function AdvancedSearch() {
   const { classFilter, exampleFilter, searchTextSecondary } = useSelector(
-    selectDictionaryFilters
+    selectAdvancedSearchFilters
   );
   const [debounced] = useDebouncedValue(searchTextSecondary, 700);
   const { automaticSearch } = useSelector(selectSettings);

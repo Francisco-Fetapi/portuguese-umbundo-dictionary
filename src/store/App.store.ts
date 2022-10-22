@@ -145,7 +145,7 @@ export function sliceCreator(initialState: App) {
       setState(state, action: PayloadAction<Partial<App>>) {
         Object.assign(state, action.payload);
       },
-      resetDictionary(state) {
+      resetAdvancedSearch(state) {
         state.searchResultsSecondary = [];
         state.classFilter = defaultOption1;
         state.exampleFilter = defaultOption2;
@@ -184,7 +184,7 @@ export const {
   removeAllHistory,
   setSearchResultsSecondary,
   setState,
-  resetDictionary,
+  resetAdvancedSearch,
 } = app.actions;
 
 export default store;

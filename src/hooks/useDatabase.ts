@@ -1,7 +1,10 @@
 import { useContext } from "react";
 import { DatabaseContext, IDatabase } from "../contexts/DatabaseProvider";
 import { IWord } from "../database/IWord";
-import { IFilterClassOption, IFilterExampleOptions } from "../pages/Dictionary";
+import {
+  IFilterClassOption,
+  IFilterExampleOptions,
+} from "../pages/AdvancedSearch";
 
 export default function useDatabase() {
   const database = useContext(DatabaseContext) as IDatabase;
