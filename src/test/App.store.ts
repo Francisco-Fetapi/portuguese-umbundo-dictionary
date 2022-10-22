@@ -19,7 +19,7 @@ const initialState: App = {
   history: [],
   favorites: [],
   classFilter: "",
-  exampleFilter: ""
+  exampleFilter: "",
   searchTextSecondary: "",
 };
 
