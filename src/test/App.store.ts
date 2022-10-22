@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { defaultOption1, defaultOption2 } from "../pages/AdvancedSearch";
 import { App, middlewares, sliceCreator } from "../store/App.store";
 
 const initialState: App = {
@@ -18,8 +19,8 @@ const initialState: App = {
   searchResultsSecondary: [],
   history: [],
   favorites: [],
-  classFilter: "",
-  exampleFilter: "",
+  classFilter: defaultOption1,
+  exampleFilter: defaultOption2,
   searchTextSecondary: "",
 };
 
