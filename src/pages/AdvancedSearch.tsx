@@ -60,7 +60,7 @@ export default function AdvancedSearch() {
 
   useEffect(() => {
     filter();
-  }, [classFilter.value, exampleFilter.value]);
+  }, [classFilter.value, exampleFilter.value, database.words]);
 
   useEffect(() => {
     dispatch(setSearchResultsSecondary(currentResults));
@@ -85,6 +85,15 @@ export default function AdvancedSearch() {
     filtered = filterByText(filtered, searchTextSecondary);
     filtered = filterByClass(filtered, classFilter.value);
     filtered = filterByExamplesQuantity(filtered, exampleFilter.value);
+
+    // order by pt
+    filtered = filtered?.sort((a, b) => {
+      if (a.pt > b.pt) return 1;
+      if (a.pt < b.pt) return -1;
+      return 0;
+    });
+
+    console.log("ordered", filtered);
 
     dispatch(setSearchResultsSecondary(filtered));
   }
