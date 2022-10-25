@@ -41,8 +41,6 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
     }
   }, [fWords]);
 
-  console.log(words);
-
   return (
     <DatabaseContext.Provider value={{ words }}>
       {fwordsLoading && (
