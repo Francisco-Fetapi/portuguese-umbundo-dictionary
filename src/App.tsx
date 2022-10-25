@@ -4,7 +4,8 @@ import store from "./store/App.store";
 import { Provider } from "react-redux";
 import Routes from "./routes";
 import { AppContainer } from "./styles/General";
-import DatabaseProvider from "./contexts/DatabaseProvider";
+// import DatabaseProvider from "./contexts/DatabaseProvider";
+import DatabaseProvider from "./contexts/FireBaseProvider";
 
 function App() {
   return (

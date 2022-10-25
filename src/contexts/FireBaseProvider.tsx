@@ -6,8 +6,14 @@ import { getFirestore, collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import firebaseConfig from "../firebase.json";
-import { Backdrop, LinearProgress } from "@mui/material";
+import {
+  Backdrop,
+  CircularProgress,
+  LinearProgress,
+  Stack,
+} from "@mui/material";
 import { DatabaseContext, DatabaseProviderProps } from "./DatabaseProvider";
+import { Text } from "../styles/General";
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
@@ -22,7 +28,13 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
   useEffect(() => {
     console.log("palavras do firebase mudou");
     if (!fwordsLoading && fWords) {
-      const newWords = fWords.docs.map((doc) => doc.data());
+      const newWords = fWords.docs.map((doc) => {
+        let um = doc.data().um as string;
+        let newUmbundoFormated = um.split(",");
+        newUmbundoFormated = newUmbundoFormated.map((um) => um.trim());
+
+        return { ...doc.data(), um: newUmbundoFormated };
+      });
       console.log(newWords);
       setWords(newWords as IWord[]);
       console.log("Buscou palavras do firebase");
@@ -33,12 +45,19 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
 
   return (
     <DatabaseContext.Provider value={{ words }}>
-      {true && (
+      {fwordsLoading && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-          open={true}
+          open={fwordsLoading}
         >
-          <LinearProgress color="secondary" />
+          {/* <LinearProgress color="primary" variant="indeterminate" /> */}
+          <Stack justifyContent="center" alignItems="center">
+            <CircularProgress />
+            <br />
+            <Text align="center" variant="subtitle2" color="gray">
+              Carregando dados. Aguarde um momento
+            </Text>
+          </Stack>
         </Backdrop>
       )}
       {children}
