@@ -5,7 +5,7 @@ import wordsJson from "../database/words.json";
 export interface IDatabase {
   words: IWord[];
 }
-interface DatabaseProviderProps {
+export interface DatabaseProviderProps {
   children: React.ReactNode;
 }
 
