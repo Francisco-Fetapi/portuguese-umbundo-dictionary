@@ -5,6 +5,7 @@ import {
   IFilterClassOption,
   IFilterExampleOptions,
 } from "../pages/AdvancedSearch";
+import { ILanguageShort } from "../store/App.selectors";
 
 export default function useDatabase() {
   const database = useContext(DatabaseContext) as IDatabase;
@@ -14,7 +15,7 @@ export default function useDatabase() {
     getWord(word: string) {
       return database.words?.find((item) => item.pt.toLowerCase() === word);
     },
-    filterByText(filtered: IWord[], text: string, language?: "um" | "pt") {
+    filterByText(filtered: IWord[], text: string, language?: ILanguageShort) {
       return filtered.filter((word) => {
         let hasInPortuguese = word.pt
           .toLowerCase()

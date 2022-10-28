@@ -1,10 +1,17 @@
 import { Box, Button, ButtonGroup, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import LanguageToggle from "../components/LanguageToggle";
 import PageHeader from "../components/PageHeader";
 import PasteButton from "../components/PasteButton";
+import useTraductor from "../hooks/useTraductor";
+import {
+  ILanguageShort,
+  languagesShortMap,
+  selectLanguagesPositions,
+} from "../store/App.selectors";
 import { Text } from "../styles/General";
 
 const LanguageToggleContainer = styled.div`
@@ -18,6 +25,23 @@ const LanguageToggleContainer = styled.div`
 export default function Traductor() {
   const [textToTranslate, setTextToTranslate] = useState("");
   const theme = useTheme();
+  const { translate } = useTraductor();
+  const { from, to } = useSelector(selectLanguagesPositions);
+  const fromLanguageShortForm = languagesShortMap[from] as ILanguageShort;
+  const toLanguageShortForm = languagesShortMap[to] as ILanguageShort;
+  const [translated, setTranslated] = useState("");
+
+  function handleTranslate() {
+    console.log(toLanguageShortForm);
+    const result = translate(
+      textToTranslate,
+      fromLanguageShortForm,
+      toLanguageShortForm
+    );
+    console.log(result);
+    setTranslated(result.join(" "));
+  }
+
   return (
     <PageHeader
       pageName="Tradutor"
@@ -46,15 +70,27 @@ export default function Traductor() {
         />
       </Box>
 
-      <Box mt={1} display="flex" justifyContent="center">
-        {textToTranslate.length === 0 ? (
-          <PasteButton handleCopy={setTextToTranslate} />
-        ) : (
-          <ButtonGroup variant="contained" size="small">
-            <Button>Traduzir</Button>
-          </ButtonGroup>
-        )}
-      </Box>
+      {translated.length === 0 ? (
+        <Box mt={1} display="flex" justifyContent="center">
+          {textToTranslate.length === 0 ? (
+            <PasteButton handleCopy={setTextToTranslate} />
+          ) : (
+            <ButtonGroup variant="contained" size="small">
+              <Button onClick={handleTranslate}>Traduzir</Button>
+            </ButtonGroup>
+          )}
+        </Box>
+      ) : (
+        <Box mt={1} display="flex" justifyContent="center">
+          <Button
+            variant="contained"
+            size="small"
+            onClick={() => setTranslated("")}
+          >
+            Limpar tradução
+          </Button>
+        </Box>
+      )}
 
       <Box
         mt={4}
@@ -65,14 +101,7 @@ export default function Traductor() {
           overflow: "auto",
         })}
       >
-        <Text fontWeight={300}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio enim,
-          minima recusandae dolorum ex similique rerum eius. Pariatur officiis
-          impedit tempore repellendus. Facere corporis saepe illo velit quasi
-          blanditiis error! minima recusandae dolorum ex similique rerum eius.
-          Pariatur officiis impedit tempore repellendus. Facere corporis saepe
-          illo velit quasi blanditiis error!
-        </Text>
+        <Text fontWeight={300}>{translated}</Text>
       </Box>
 
       <Footer forTraductorPage setText={(value) => setTextToTranslate(value)} />
