@@ -76,7 +76,6 @@ export default function Word() {
           <Text
             variant="h5"
             sx={{
-              textTransform: "capitalize",
               fontWeight: 900,
               color: "var(--primary-color-text)",
             }}
