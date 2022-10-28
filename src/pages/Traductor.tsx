@@ -59,11 +59,11 @@ export default function Traductor() {
       <Box
         mt={4}
         px={1}
-        sx={{
-          borderLeft: "3px solid var(--primary-color-text)",
+        sx={(theme) => ({
+          borderLeft: `3px solid ${theme.palette.primary.main}`,
           maxHeight: 100,
           overflow: "auto",
-        }}
+        })}
       >
         <Text fontWeight={300}>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odio enim,
