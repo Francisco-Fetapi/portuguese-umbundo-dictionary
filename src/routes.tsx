@@ -11,6 +11,7 @@ import Settings from "./pages/Settings";
 import UtilityTerms from "./pages/UtilityTerms";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Word from "./pages/Word";
+import Traductor from "./pages/Traductor";
 
 export default function routes() {
   return (
@@ -31,6 +32,7 @@ export default function routes() {
         />
         <Route path="/termos-de-utilizacao" element={<UtilityTerms />} />
         <Route path="/palavra/:word" element={<Word />} />
+        <Route path="/tradutor" element={<Traductor />} />
       </Routes>
     </BrowserRouter>
   );

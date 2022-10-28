@@ -1,6 +1,6 @@
 import { Box, Fab, Stack } from "@mui/material";
 import { BoxColumnCenter, Text, FooterContainer } from "../styles/General";
-import { MdGroup, MdTextFields } from "react-icons/md";
+import { MdGroup, MdTextFields, MdTranslate } from "react-icons/md";
 import { FaMicrophone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useNetwork } from "@mantine/hooks";
@@ -26,9 +26,9 @@ export default function Footer() {
     <FooterContainer>
       <Stack direction="row" justifyContent="space-evenly">
         <FabWithText
-          label="Conversa"
-          icon={<MdGroup size={30} />}
-          handleClick={() => navigate("/conversacao")}
+          label="Tradutor"
+          icon={<MdTranslate size={30} />}
+          handleClick={() => navigate("/tradutor")}
         />
         <FabWithText
           bigger
