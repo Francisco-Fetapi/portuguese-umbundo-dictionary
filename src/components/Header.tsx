@@ -9,7 +9,7 @@ import {
   selectSearchResults,
   selectTextToTranslate,
 } from "../store/App.selectors";
-import { setMenu } from "../store/App.store";
+import { setMenu, setTextToTranslate } from "../store/App.store";
 import { useNavigate } from "react-router-dom";
 
 export default function Header() {
@@ -57,7 +57,9 @@ export default function Header() {
         </Box>
         {textToTranslate.length === 0 && (
           <Box mt={1} mb={2} display="flex" justifyContent="center">
-            <PasteButton />
+            <PasteButton
+              handleCopy={(value) => dispatch(setTextToTranslate(value))}
+            />
           </Box>
         )}
         <Box mt={2}>
