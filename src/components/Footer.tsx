@@ -6,7 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { useNetwork } from "@mantine/hooks";
 import { useSnackbar } from "notistack";
 
-export default function Footer() {
+interface FooterProps {
+  forTraductorPage?: boolean;
+  setText: (value: string) => void;
+}
+
+export default function Footer({ forTraductorPage, setText }: FooterProps) {
   const navigate = useNavigate();
   const network = useNetwork();
   const { enqueueSnackbar } = useSnackbar();
@@ -21,7 +26,23 @@ export default function Footer() {
       return;
     }
     console.log("Tudo ok");
+    setText("Texto pego do microfone");
   }
+
+  if (forTraductorPage) {
+    return (
+      <FooterContainer style={{ bottom: 30 }}>
+        <Stack direction="row" justifyContent="space-evenly">
+          <FabWithText
+            label="Falar"
+            icon={<FaMicrophone size={30} />}
+            handleClick={handleMicrophone}
+          />
+        </Stack>
+      </FooterContainer>
+    );
+  }
+
   return (
     <FooterContainer>
       <Stack direction="row" justifyContent="space-evenly">

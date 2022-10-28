@@ -35,7 +35,7 @@ export default function PasteButton({ handleCopy }: PasteButtonProps) {
     handleCopy(textToPaste);
   }
   return (
-    <div>
+    <>
       {textToPaste.length > 0 && (
         <Button
           startIcon={<MdContentPaste />}
@@ -51,6 +51,6 @@ export default function PasteButton({ handleCopy }: PasteButtonProps) {
           Colar&nbsp;&nbsp;&nbsp;
         </Button>
       )}
-    </div>
+    </>
   );
 }

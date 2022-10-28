@@ -1,6 +1,7 @@
-import { Box, TextField, useTheme } from "@mui/material";
+import { Box, Button, ButtonGroup, TextField, useTheme } from "@mui/material";
 import { useState } from "react";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 import LanguageToggle from "../components/LanguageToggle";
 import PageHeader from "../components/PageHeader";
 import PasteButton from "../components/PasteButton";
@@ -18,7 +19,15 @@ export default function Traductor() {
   const [textToTranslate, setTextToTranslate] = useState("");
   const theme = useTheme();
   return (
-    <PageHeader pageName="Tradutor" noInitialMargin>
+    <PageHeader
+      pageName="Tradutor"
+      noInitialMargin
+      containerProps={{
+        style: {
+          position: "relative",
+        },
+      }}
+    >
       <Box display="flex" justifyContent="center" my={1}>
         <LanguageToggleContainer className={theme.palette.mode}>
           <LanguageToggle />
@@ -30,15 +39,23 @@ export default function Traductor() {
           multiline
           minRows={2}
           maxRows={4}
-          label="Frase a ser traduzida"
+          label="Texto a ser traduzido"
           fullWidth
           value={textToTranslate}
           onChange={(e) => setTextToTranslate(e.target.value)}
         />
       </Box>
+
       <Box mt={1} display="flex" justifyContent="center">
-        <PasteButton handleCopy={setTextToTranslate} />
+        {textToTranslate.length === 0 ? (
+          <PasteButton handleCopy={setTextToTranslate} />
+        ) : (
+          <ButtonGroup variant="contained" size="small">
+            <Button>Traduzir</Button>
+          </ButtonGroup>
+        )}
       </Box>
+
       <Box
         mt={4}
         px={1}
@@ -57,6 +74,8 @@ export default function Traductor() {
           illo velit quasi blanditiis error!
         </Text>
       </Box>
+
+      <Footer forTraductorPage setText={(value) => setTextToTranslate(value)} />
     </PageHeader>
   );
 }

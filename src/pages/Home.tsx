@@ -5,7 +5,11 @@ import Header from "../components/Header";
 import LanguageToggle from "../components/LanguageToggle";
 import ModalMenu from "../components/ModalMenu";
 import { selectMenu, selectTextToTranslate } from "../store/App.selectors";
-import { resetAdvancedSearch, setMenu } from "../store/App.store";
+import {
+  resetAdvancedSearch,
+  setMenu,
+  setTextToTranslate,
+} from "../store/App.store";
 import { BoxColumnCenter } from "../styles/General";
 
 export default function Home() {
@@ -40,7 +44,7 @@ export default function Home() {
         style={{ zoom: 0.8, height: 120 }}
         className={hasText ? "animate animate-to-bottom" : "animate"}
       >
-        <Footer />
+        <Footer setText={(value) => dispatch(setTextToTranslate(value))} />
       </BoxColumnCenter>
 
       <ModalMenu

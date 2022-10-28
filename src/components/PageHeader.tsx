@@ -7,6 +7,7 @@ interface PageHeaderProps {
   pageName: string;
   noInitialMargin?: boolean;
   secondaryAction?: React.ReactNode;
+  containerProps?: object;
 }
 
 export default function PageHeader({
@@ -14,6 +15,7 @@ export default function PageHeader({
   pageName,
   noInitialMargin,
   secondaryAction,
+  containerProps,
 }: PageHeaderProps) {
   return (
     <PageHeaderContainer>
@@ -64,6 +66,7 @@ export default function PageHeader({
         flexDirection="column"
         height="85%"
         mt="54px"
+        {...containerProps}
       >
         {children}
       </Box>
