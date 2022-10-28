@@ -1,27 +1,32 @@
 import { ILanguageShort } from "../store/App.selectors";
 import useDatabase from "./useDatabase";
 
+interface IWordsTranslated {
+  [key: string]: string;
+}
+
 export default function useTraductor() {
   const { database, filterByText } = useDatabase();
   return {
     translate(text: string, from: ILanguageShort, to: ILanguageShort) {
-      let words = text.trim().split(" ");
-      words = words.map((word) => word.trim());
+      let words = text.trim().split(/\W+/g);
+      //   words = words.map((word) => word.replace(/\W+/, ""));
       words = words.filter((word) => word.length > 0);
+      //   let words = text.split(/\W+/g);
 
-      let wordsTranslated = words.map((word, key) => {
+      let wordsTranslated: IWordsTranslated = {};
+      words.forEach((word, key) => {
         let findedWords = filterByText(database.words, word, from);
         if (findedWords.length === 0) {
-          return "_".repeat(word.length);
-        }
-        let firstFinded = findedWords[0][to].toString();
-        if (key === 0) {
-          // first letter must be `uppercased`
-          firstFinded = firstFinded[0].toUpperCase() + firstFinded.substring(1);
+          wordsTranslated[word] = "_".repeat(word.length);
         } else {
-          firstFinded = firstFinded.toLowerCase();
+          let firstFinded = findedWords[0];
+          if (to === "um") {
+            wordsTranslated[word] = firstFinded[to][0];
+          } else {
+            wordsTranslated[word] = firstFinded[to];
+          }
         }
-        return firstFinded;
       });
       return wordsTranslated;
     },

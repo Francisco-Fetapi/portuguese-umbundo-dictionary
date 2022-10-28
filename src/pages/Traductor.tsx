@@ -38,8 +38,15 @@ export default function Traductor() {
       fromLanguageShortForm,
       toLanguageShortForm
     );
-    console.log(result);
-    setTranslated(result.join(" "));
+    let text = textToTranslate;
+    Object.keys(result).forEach((word) => {
+      text = text.replace(word, result[word]);
+    });
+
+    text = text.toLowerCase();
+    text = text[0].toLowerCase() + text.substring(1);
+
+    setTranslated(text);
   }
 
   return (
