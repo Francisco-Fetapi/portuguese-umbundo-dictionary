@@ -1,7 +1,7 @@
 [
   {
-    "pt": "Obrigado",
-    "um": ["Twapandula"],
+    "pt": "obrigado",
+    "um": ["twapandula"],
     "class": "s.m",
     "examples": [
       {
@@ -11,13 +11,19 @@
     ]
   },
   {
-    "pt": "Hoje",
-    "um": ["Etali"],
+    "pt": "ódio",
+    "um": ["ócisola"],
+    "class": "s.m",
     "examples": []
   },
   {
-    "pt": "Nome",
-    "um": ["Onduko"],
+    "pt": "hoje",
+    "um": ["etali"],
+    "examples": []
+  },
+  {
+    "pt": "nome",
+    "um": ["onduko"],
     "examples": [
       {
         "pt": "Qual é o seu nome",
@@ -26,8 +32,8 @@
     ]
   },
   {
-    "pt": "Eu",
-    "um": ["Ame"],
+    "pt": "eu",
+    "um": ["ame"],
     "class": "pron",
     "examples": [
       {
