@@ -40,7 +40,7 @@ export default function Traductor() {
     );
     let text = textToTranslate;
     Object.keys(result).forEach((word) => {
-      text = text.replace(word, result[word]);
+      text = text.replaceAll(word, result[word]);
     });
 
     text = text.toLowerCase();

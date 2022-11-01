@@ -9,10 +9,9 @@ export default function useTraductor() {
   const { database, filterByText } = useDatabase();
   return {
     translate(text: string, from: ILanguageShort, to: ILanguageShort) {
-      let words = text.trim().split(/\W+/g);
-      //   words = words.map((word) => word.replace(/\W+/, ""));
+      let words = text.trim().split(/[^á-úa-z]+/gi);
+      // let words = text.trim().split(/\W+/g);
       words = words.filter((word) => word.length > 0);
-      //   let words = text.split(/\W+/g);
 
       let wordsTranslated: IWordsTranslated = {};
       words.forEach((word, key) => {
