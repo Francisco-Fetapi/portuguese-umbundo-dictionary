@@ -12,6 +12,7 @@ import UtilityTerms from "./pages/UtilityTerms";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import Word from "./pages/Word";
 import Traductor from "./pages/Traductor";
+import Conversation from "./pages/Conversation";
 
 export default function routes() {
   return (
@@ -23,6 +24,7 @@ export default function routes() {
         <Route path="/frases-guardadas" element={<SavedSentences />} />
         <Route path="/pesquisa-avancada" element={<AdvancedSearch />} />
         <Route path="/conversacao" element={<Conversations />} />
+        <Route path="/conversacao/:slug" element={<Conversation />} />
         <Route path="/definicoes" element={<Settings />} />
         <Route path="/ajuda-e-comentarios" element={<HelpAndComments />} />
         <Route path="/sobre-nos" element={<AboutUs />} />
