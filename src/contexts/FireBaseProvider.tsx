@@ -27,7 +27,6 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
   );
 
   useEffect(() => {
-    console.log("palavras do firebase mudou");
     if (!fwordsLoading && fWords) {
       const newWords = fWords.docs.map((doc) => {
         let um = doc.data().um as string;
@@ -38,12 +37,11 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
       });
       console.log(newWords);
       setWords(newWords as IWord[]);
-      console.log("Buscou palavras do firebase");
     }
   }, [fWords]);
 
   return (
-    <DatabaseContext.Provider value={{ words }}>
+    <DatabaseContext.Provider value={{ words, conversations }}>
       {fwordsLoading && (
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
