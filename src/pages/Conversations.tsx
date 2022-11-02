@@ -12,7 +12,7 @@ import conversations from "../database/conversations.json";
 export default function Conversations() {
   const navigate = useNavigate();
   return (
-    <PageHeader pageName="Conversação">
+    <PageHeader pageName="Conversação" noInitialMargin>
       <List
         sx={{
           width: "100%",
@@ -25,6 +25,7 @@ export default function Conversations() {
             key={conversation.slug}
             button
             onClick={() => navigate(`/conversacao/${conversation.slug}`)}
+            divider
           >
             <ListItemAvatar
               sx={{
