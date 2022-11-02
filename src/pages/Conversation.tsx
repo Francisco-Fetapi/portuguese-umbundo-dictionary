@@ -2,15 +2,16 @@ import { List, ListItem, ListItemText, Stack } from "@mui/material";
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import PageHeader from "../components/PageHeader";
-import conversations from "../database/conversations.json";
+import useDatabase from "../hooks/useDatabase";
 
 export default function Conversation() {
   const params = useParams();
+  const { database } = useDatabase();
   const conversation = useMemo(() => {
-    return conversations.find(
+    return database?.conversations.find(
       (conversation) => conversation.slug === params.slug
     );
-  }, []);
+  }, [database.conversations]);
 
   return (
     <PageHeader pageName={conversation?.topic || "Conversação"} noInitialMargin>

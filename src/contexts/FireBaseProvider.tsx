@@ -20,6 +20,7 @@ export const db = getFirestore(app);
 
 export default function FireBaseProvider({ children }: DatabaseProviderProps) {
   const [words, setWords] = useState<IWord[]>([]);
+  const [conversations, setConversations] = useState([]);
   const [fWords, fwordsLoading, fwordsError] = useCollection(
     collection(db, "words"),
     {}
