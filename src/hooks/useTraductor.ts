@@ -6,24 +6,22 @@ interface IWordsTranslated {
 }
 
 export default function useTraductor() {
-  const { database, filterByText } = useDatabase();
+  const { database, getWord } = useDatabase();
   return {
     translate(text: string, from: ILanguageShort, to: ILanguageShort) {
       let words = text.trim().split(/[^á-úa-z]+/gi);
-      // let words = text.trim().split(/\W+/g);
       words = words.filter((word) => word.length > 0);
 
       let wordsTranslated: IWordsTranslated = {};
       words.forEach((word, key) => {
-        let findedWords = filterByText(database.words, word, from);
-        if (findedWords.length === 0) {
+        let findedWord = getWord(word, from);
+        if (!findedWord) {
           wordsTranslated[word] = "_".repeat(word.length);
         } else {
-          let firstFinded = findedWords[0];
           if (to === "um") {
-            wordsTranslated[word] = firstFinded[to][0];
+            wordsTranslated[word] = findedWord[to][0];
           } else {
-            wordsTranslated[word] = firstFinded[to];
+            wordsTranslated[word] = findedWord[to];
           }
         }
       });

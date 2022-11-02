@@ -12,8 +12,15 @@ export default function useDatabase() {
 
   return {
     database,
-    getWord(word: string) {
-      return database.words?.find((item) => item.pt.toLowerCase() === word);
+    getWord(word: string, from: ILanguageShort = "pt") {
+      return database.words?.find((item) => {
+        let word2 = item[from];
+        if (from === "pt") {
+          return word === word2;
+        } else {
+          return word2.includes(word);
+        }
+      });
     },
     filterByText(filtered: IWord[], text: string, language?: ILanguageShort) {
       return filtered.filter((word) => {

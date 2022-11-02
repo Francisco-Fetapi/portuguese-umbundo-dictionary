@@ -18,11 +18,11 @@ export default function Home() {
   const modalOpen = useSelector(selectMenu);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    return () => {
-      dispatch(setMenu(false));
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch(setMenu(false));
+  //   };
+  // }, []);
 
   useEffect(() => {
     dispatch(resetAdvancedSearch());
