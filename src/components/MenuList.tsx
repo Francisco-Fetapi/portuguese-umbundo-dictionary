@@ -40,14 +40,15 @@ const options: IOption[] = [
     icon: <MdStar />,
     textSecondary: "Listagem de palavras favoritadas.",
     url: "/favoritos",
-  },
-  {
-    label: "Frases guardadas",
-    icon: <MdOutlineSaveAlt />,
-    textSecondary: "Veja as frases que guardaste.",
     divider: true,
-    url: "/frases-guardadas",
   },
+  // {
+  //   label: "Frases guardadas",
+  //   icon: <MdOutlineSaveAlt />,
+  //   textSecondary: "Veja as frases que guardaste.",
+  //   divider: true,
+  //   url: "/frases-guardadas",
+  // },
   {
     label: "Pesquisa avançada",
     icon: <MdTextFields />,
