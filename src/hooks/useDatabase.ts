@@ -14,11 +14,11 @@ export default function useDatabase() {
     database,
     getWord(word: string, from: ILanguageShort = "pt") {
       return database.words?.find((item) => {
-        let word2 = item[from];
+        // let word2 = item[from];
         if (from === "pt") {
-          return word === word2;
+          return word.trim() == item[from].trim();
         } else {
-          return word2.includes(word);
+          return item[from].includes(word);
         }
       });
     },
