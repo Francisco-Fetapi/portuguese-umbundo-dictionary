@@ -19,12 +19,13 @@ export default function Word() {
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   const { saveHistory } = useSelector(selectSettings);
+  console.log("param", params.word);
   const word = getWord(params.word!);
   let wordClass = word?.class || "";
   if (wordClass) {
     wordClass += ". - ";
   }
-  const isFavorited = favorites.some((item) => item.pt === word?.pt);
+  const isFavorited = favorites.some((item) => item?.pt === word?.pt);
 
   function handleToggleFavorite() {
     if (isFavorited) {
