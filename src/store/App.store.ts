@@ -125,14 +125,14 @@ export function sliceCreator(initialState: App) {
       },
       removeItemFromHistory(state, action: PayloadAction<IWord>) {
         state.history = state.history.filter(
-          (item) => item.pt !== action.payload.pt
+          (item) => item?.pt.trim() !== action.payload?.pt.trim()
         );
         const { save } = useStatePersist<IWord[]>(HISTORY_KEY);
         save(state.history);
       },
       removeItemFromFavorites(state, action: PayloadAction<IWord>) {
         state.favorites = state.favorites.filter(
-          (item) => item.pt !== action.payload.pt
+          (item) => item?.pt.trim() !== action.payload?.pt.trim()
         );
         const { save } = useStatePersist<IWord[]>(FAVORITES_KEY);
         save(state.favorites);
