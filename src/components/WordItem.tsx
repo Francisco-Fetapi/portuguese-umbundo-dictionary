@@ -18,9 +18,11 @@ export default function WordItem({ secondary, ...props }: WordItemProps) {
       <ListItemText
         {...props}
         secondary={
-          <span className="show_short_and_view_more">
-            {secondary.slice(0, 3).join(", ")}
-          </span>
+          (secondary?.length || 0) !== 0 ? (
+            <span className="show_short_and_view_more">
+              {secondary.slice(0, 3).join(", ")}
+            </span>
+          ) : null
         }
       />
     </ListItem>
