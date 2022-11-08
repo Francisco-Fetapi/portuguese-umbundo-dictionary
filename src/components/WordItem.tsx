@@ -15,7 +15,14 @@ export default function WordItem({ secondary, ...props }: WordItemProps) {
 
   return (
     <ListItem button divider onClick={handleClick}>
-      <ListItemText {...props} secondary={secondary.join(", ")} />
+      <ListItemText
+        {...props}
+        secondary={
+          <span className="show_short_and_view_more">
+            {secondary.slice(0, 3).join(", ")}
+          </span>
+        }
+      />
     </ListItem>
   );
 }

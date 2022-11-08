@@ -30,7 +30,8 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
     if (!fwordsLoading && fWords) {
       const newWords = fWords.docs.map((doc) => {
         let um = doc.data().um as string;
-        let newUmbundoFormated = um.split(",");
+        let newUmbundoFormated = um.split(/[,;]/g);
+        console.log(newUmbundoFormated);
         newUmbundoFormated = newUmbundoFormated.map((um) => um.trim());
 
         return { ...doc.data(), um: newUmbundoFormated };

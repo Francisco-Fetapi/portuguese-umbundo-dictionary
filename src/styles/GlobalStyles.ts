@@ -20,6 +20,13 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
   body{
     overflow-x:hidden;
   }
+  .show_short_and_view_more{
+    text-overflow:ellipsis;
+    overflow: hidden;
+    max-width:320px;
+    white-space: nowrap;
+    display:inline-block;
+  }
 
     .bg-container{
       width:100vw;
