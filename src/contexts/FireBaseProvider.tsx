@@ -14,24 +14,26 @@ import {
 } from "@mui/material";
 import { DatabaseContext, DatabaseProviderProps } from "./DatabaseProvider";
 import { Text } from "../styles/General";
+import { IConversation } from "../database/IConversation";
 
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export default function FireBaseProvider({ children }: DatabaseProviderProps) {
   const [words, setWords] = useState<IWord[]>([]);
-  const [conversations, setConversations] = useState([]);
+  const [conversations, setConversations] = useState<IConversation[]>([]);
   const [fWords, fwordsLoading, fwordsError] = useCollection(
     collection(db, "words"),
     {}
   );
+  const [fConversations, fConversationsLoading, fConversationsError] =
+    useCollection(collection(db, "conversations"), {});
 
   useEffect(() => {
     if (!fwordsLoading && fWords) {
       const newWords = fWords.docs.map((doc) => {
         let um = doc.data().um as string;
         let newUmbundoFormated = um.split(/[,;]/g);
-        console.log(newUmbundoFormated);
         newUmbundoFormated = newUmbundoFormated.map((um) => um.trim());
 
         return { ...doc.data(), um: newUmbundoFormated };
@@ -40,6 +42,17 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
       setWords(newWords as IWord[]);
     }
   }, [fWords]);
+
+  useEffect(() => {
+    if (!fConversationsLoading && fConversations) {
+      const newConversations = fConversations.docs.map((doc) => {
+        // return {...doc.data()} as IConversation;
+        return { ...doc.data() };
+      });
+
+      setConversations(newConversations as IConversation[]);
+    }
+  }, [fConversations]);
 
   return (
     <DatabaseContext.Provider value={{ words, conversations }}>
