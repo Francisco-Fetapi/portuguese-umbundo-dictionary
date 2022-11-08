@@ -13,6 +13,10 @@ export default function WordItem({ secondary, ...props }: WordItemProps) {
     navigate("/palavra/" + props.primary.toLowerCase());
   }
 
+  if (!secondary) {
+    return <div />;
+  }
+
   return (
     <ListItem button divider onClick={handleClick}>
       <ListItemText
