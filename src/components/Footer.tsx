@@ -5,6 +5,11 @@ import { FaMicrophone } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useNetwork } from "@mantine/hooks";
 import { useSnackbar } from "notistack";
+import "regenerator-runtime/runtime";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import { useEffect } from "react";
 
 interface FooterProps {
   forTraductorPage?: boolean;
@@ -15,8 +20,20 @@ export default function Footer({ forTraductorPage, setText }: FooterProps) {
   const navigate = useNavigate();
   const network = useNetwork();
   const { enqueueSnackbar } = useSnackbar();
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition,
+  } = useSpeechRecognition();
 
   function handleMicrophone() {
+    if (!browserSupportsSpeechRecognition) {
+      enqueueSnackbar("Seu dispositivo não suporta digitação por voz.", {
+        variant: "error",
+        autoHideDuration: 3 * 1000,
+      });
+    }
     if (!network.online) {
       enqueueSnackbar("Sem conexão com a internet", {
         variant: "error",
@@ -26,15 +43,25 @@ export default function Footer({ forTraductorPage, setText }: FooterProps) {
       return;
     }
     console.log("Tudo ok");
-    setText("Texto pego do microfone");
+    if (!listening) {
+      SpeechRecognition.startListening({
+        language: "pt-PT",
+      });
+    } else {
+      SpeechRecognition.stopListening();
+    }
   }
+
+  useEffect(() => {
+    setText(transcript.replace(/\./, "").toLowerCase());
+  }, [transcript]);
 
   if (forTraductorPage) {
     return (
       <FooterContainer style={{ bottom: 30 }}>
         <Stack direction="row" justifyContent="space-evenly">
           <FabWithText
-            label="Falar"
+            label={listening ? "Ouvindo..." : "Falar"}
             icon={<FaMicrophone size={30} />}
             handleClick={handleMicrophone}
           />
@@ -53,7 +80,7 @@ export default function Footer({ forTraductorPage, setText }: FooterProps) {
         />
         <FabWithText
           bigger
-          label="Falar"
+          label={listening ? "Ouvindo..." : "Falar"}
           icon={<FaMicrophone size={30} />}
           handleClick={handleMicrophone}
         />
