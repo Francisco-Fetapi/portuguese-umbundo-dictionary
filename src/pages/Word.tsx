@@ -28,6 +28,7 @@ export default function Word() {
   const isFavorited = favorites.some((item) => item?.pt === word?.pt);
 
   function handleToggleFavorite() {
+    console.log(word);
     if (isFavorited) {
       dispatch(removeItemFromFavorites(word!));
       return;
