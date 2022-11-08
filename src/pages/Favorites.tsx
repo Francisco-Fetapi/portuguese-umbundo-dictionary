@@ -8,7 +8,10 @@ export default function Favorites() {
   const favorites = useSelector(selectFavorites);
 
   return (
-    <PageHeader pageName="Favoritos" noInitialMargin={!!favorites.length}>
+    <PageHeader
+      pageName="Favoritos"
+      noInitialMargin={!!(favorites?.length || 0)}
+    >
       <Box>
         <WordList words={favorites} />
       </Box>
