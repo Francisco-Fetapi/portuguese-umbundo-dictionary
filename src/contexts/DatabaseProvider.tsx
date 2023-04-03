@@ -20,7 +20,13 @@ export default function DatabaseProvider({ children }: DatabaseProviderProps) {
   );
 
   useEffect(() => {
-    setWords(wordsJson as IWord[]);
+    let wordsFormatted = wordsJson.map((word) => {
+      let newUmbundoFormated = word.um.split(/[,;]/g);
+      newUmbundoFormated = newUmbundoFormated.map((um) => um.trim());
+
+      return { ...word, um: newUmbundoFormated };
+    });
+    setWords(wordsFormatted as IWord[]);
   }, []);
   useEffect(() => {
     setConversations(conversationsJson);
