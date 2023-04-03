@@ -15,7 +15,7 @@ export default function WordList({
   emptyMessage,
   containerId = "#page-header-container",
 }: WordListProps) {
-  const itemsPerPage = 10;
+  const itemsPerPage = 20;
   const [page, setPage] = useState(itemsPerPage);
   const [isPending, startTransition] = useTransition();
   const isPageFinished = page >= words.length;
