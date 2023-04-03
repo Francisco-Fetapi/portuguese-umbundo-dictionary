@@ -1,6 +1,6 @@
 import { useDebouncedValue } from "@mantine/hooks";
 import { Autocomplete, Box, Grid, TextField } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useTransition } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PageHeader from "../components/PageHeader";
 import WordList from "../components/WordList";
@@ -58,8 +58,12 @@ export default function AdvancedSearch() {
   const currentResults =
     filteredResults.length > 0 ? filteredResults : database.words!;
 
+  const [isPending, startTransition] = useTransition();
+
   useEffect(() => {
-    filter();
+    startTransition(() => {
+      filter();
+    });
   }, [classFilter.value, exampleFilter.value, database.words]);
 
   useEffect(() => {
@@ -79,6 +83,8 @@ export default function AdvancedSearch() {
       })
     );
   }
+
+  console.log(isPending);
 
   function filter() {
     let filtered = database.words!;
@@ -100,7 +106,9 @@ export default function AdvancedSearch() {
 
   const handleSubmit: IFormSubmit = (e) => {
     e.preventDefault();
-    filter();
+    startTransition(() => {
+      filter();
+    });
   };
 
   return (
@@ -173,11 +181,13 @@ export default function AdvancedSearch() {
         </Grid>
       </Box>
       <Box mt={1}>
-        <WordList
-          words={filteredResults}
-          emptyMessage="Nenhum resultado encontrado"
-        />
-        {database.words?.length === 0 && (
+        {!isPending && database.words?.length > 0 && (
+          <WordList
+            words={filteredResults}
+            emptyMessage="Nenhum resultado encontrado"
+          />
+        )}
+        {isPending && (
           <Text color="gray" align="center">
             Carregando...
           </Text>

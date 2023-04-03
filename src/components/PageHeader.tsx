@@ -18,7 +18,7 @@ export default function PageHeader({
   containerProps,
 }: PageHeaderProps) {
   return (
-    <PageHeaderContainer>
+    <PageHeaderContainer id="page-header-container">
       <Box>
         <Stack
           direction="row"
@@ -66,6 +66,7 @@ export default function PageHeader({
         flexDirection="column"
         height="85%"
         mt="54px"
+        id="modal-body"
         {...containerProps}
       >
         {children}
