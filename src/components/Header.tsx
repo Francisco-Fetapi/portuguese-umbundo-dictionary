@@ -22,6 +22,7 @@ export default function Header() {
   return (
     <HeaderContainer
       className={textToTranslate.length > 0 ? "full" : undefined}
+      id="header-container"
     >
       <Box pt={2} px={0.8}>
         <Stack direction="row" alignItems="center">

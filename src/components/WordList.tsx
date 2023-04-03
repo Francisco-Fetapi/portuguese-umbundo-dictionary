@@ -7,36 +7,48 @@ import WordItem from "./WordItem";
 interface WordListProps {
   words: IWord[];
   emptyMessage?: string;
+  containerId?: string;
 }
 
-export default function WordList({ words, emptyMessage }: WordListProps) {
+export default function WordList({
+  words,
+  emptyMessage,
+  containerId = "#page-header-container",
+}: WordListProps) {
   const itemsPerPage = 10;
   const [page, setPage] = useState(itemsPerPage);
   const [isPending, startTransition] = useTransition();
+  const isPageFinished = page >= words.length;
 
   function nextPage() {
+    console.log(page, words.length);
+    if (isPageFinished) {
+      return;
+    }
+
     if (!isPending) {
       startTransition(() => {
         setPage(page + itemsPerPage);
       });
     }
   }
+  const wordsToShow = words.slice(0, page);
 
   useEffect(() => {
-    const container = document.querySelector("#page-header-container");
+    const container = document.querySelector(containerId) as HTMLDivElement;
 
-    container?.addEventListener("scroll", (e) => {
-      const somePieceOfWindow = window.innerHeight;
-      const percentage =
-        ((container.scrollTop + somePieceOfWindow) / container.scrollHeight) *
-        100;
-      if (percentage >= 99) {
-        nextPage();
-      }
-    });
+    if (container) {
+      container.onscroll = () => {
+        const somePieceOfWindow = window.innerHeight;
+        const percentage =
+          ((container.scrollTop + somePieceOfWindow) / container.scrollHeight) *
+          100;
+        if (percentage >= 99) {
+          nextPage();
+        }
+      };
+    }
   });
-
-  const wordsToShow = words.slice(0, page);
 
   return (
     <div>
@@ -51,9 +63,6 @@ export default function WordList({ words, emptyMessage }: WordListProps) {
           ))
         )}
       </List>
-      <Box sx={{ textAlign: "center", my: 2 }}>
-        {isPending && <CircularProgress />}
-      </Box>
     </div>
   );
 }
