@@ -99,8 +99,6 @@ export default function AdvancedSearch() {
       return 0;
     });
 
-    console.log("ordered", filtered);
-
     dispatch(setSearchResultsSecondary(filtered));
   }
 
