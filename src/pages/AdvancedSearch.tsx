@@ -84,8 +84,6 @@ export default function AdvancedSearch() {
     );
   }
 
-  console.log(isPending);
-
   function filter() {
     let filtered = database.words!;
     filtered = filterByText(filtered, searchTextSecondary);
