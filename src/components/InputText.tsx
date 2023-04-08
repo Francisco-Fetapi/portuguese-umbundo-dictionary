@@ -16,7 +16,7 @@ type FuncFormEventHandler = React.FormEventHandler<HTMLFormElement> | undefined;
 export default function InputText() {
   const { automaticSearch } = useSelector(selectSettings);
   const textToTranslate = useSelector(selectTextToTranslate);
-  const [value, handleChange] = useInputState(textToTranslate);
+  const [value, handleChange] = useInputState("");
   const [debounced] = useDebouncedValue(value, 700);
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -40,6 +40,12 @@ export default function InputText() {
     e.preventDefault();
     dispatch(setTextToTranslate(value));
   };
+
+  useEffect(() => {
+    if (value !== textToTranslate) {
+      handleChange(textToTranslate);
+    }
+  }, []);
 
   return (
     <InputArea>
