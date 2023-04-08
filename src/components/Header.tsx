@@ -56,6 +56,7 @@ export default function Header() {
         <Box mt={1} px={1}>
           <InputText />
         </Box>
+
         {textToTranslate.length === 0 && (
           <Box mt={1} mb={2} display="flex" justifyContent="center">
             <PasteButton
@@ -63,9 +64,11 @@ export default function Header() {
             />
           </Box>
         )}
-        <Box mt={2}>
-          <TranslatedArea />
-        </Box>
+        {textToTranslate.length >= 1 && (
+          <Box mt={2}>
+            <TranslatedArea />
+          </Box>
+        )}
       </Box>
       {(searchResults.length === 0 || textToTranslate.length === 0) && (
         <div className="ornament">

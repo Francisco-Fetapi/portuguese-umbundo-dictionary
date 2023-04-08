@@ -14,10 +14,10 @@ import { InputArea } from "../styles/General";
 type FuncFormEventHandler = React.FormEventHandler<HTMLFormElement> | undefined;
 
 export default function InputText() {
-  const [value, handleChange] = useInputState("");
-  const [debounced] = useDebouncedValue(value, 700);
   const { automaticSearch } = useSelector(selectSettings);
   const textToTranslate = useSelector(selectTextToTranslate);
+  const [value, handleChange] = useInputState(textToTranslate);
+  const [debounced] = useDebouncedValue(value, 700);
   const dispatch = useDispatch();
   const theme = useTheme();
   const { database, filterByText } = useDatabase();
@@ -26,14 +26,9 @@ export default function InputText() {
   useEffect(() => {
     if (automaticSearch) {
       dispatch(setTextToTranslate(value));
+      console.log("changed");
     }
   }, [debounced]);
-
-  useEffect(() => {
-    if (value !== textToTranslate) {
-      handleChange(textToTranslate);
-    }
-  }, [textToTranslate]);
 
   useEffect(() => {
     if (database.words) {
@@ -50,6 +45,8 @@ export default function InputText() {
     e.preventDefault();
     dispatch(setTextToTranslate(value));
   };
+
+  console.log(textToTranslate);
 
   return (
     <InputArea>
