@@ -58,15 +58,20 @@ export default function FireBaseProvider({ children }: DatabaseProviderProps) {
     <DatabaseContext.Provider value={{ words, conversations }}>
       {fwordsLoading && (
         <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          sx={{
+            backgroundColor: "rgba(0,0,0,.75)",
+            color: "#fff",
+            zIndex: (theme) => theme.zIndex.drawer + 1,
+          }}
           open={fwordsLoading}
         >
           {/* <LinearProgress color="primary" variant="indeterminate" /> */}
           <Stack justifyContent="center" alignItems="center">
             <CircularProgress />
             <br />
-            <Text align="center" variant="subtitle2" color="gray">
-              Carregando dados. Aguarde um momento
+            <Text align="center" variant="subtitle2" color="white">
+              Aguarde um momento <br />
+              Carregando dados...
             </Text>
           </Stack>
         </Backdrop>
