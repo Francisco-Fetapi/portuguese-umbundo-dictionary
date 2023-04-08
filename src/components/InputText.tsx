@@ -9,7 +9,7 @@ import {
   selectTextToTranslate,
 } from "../store/App.selectors";
 import { setSearchResults, setTextToTranslate } from "../store/App.store";
-import { InputArea } from "../styles/General";
+import { InputArea, Text } from "../styles/General";
 
 type FuncFormEventHandler = React.FormEventHandler<HTMLFormElement> | undefined;
 
@@ -47,6 +47,9 @@ export default function InputText() {
     }
   }, []);
 
+  const textCopied =
+    textToTranslate && !value && `Texto copiado "${textToTranslate}"`;
+
   return (
     <InputArea>
       <Box
@@ -58,7 +61,7 @@ export default function InputText() {
         <input
           value={value}
           onChange={handleChange}
-          placeholder="Introduza a palavra"
+          placeholder={textCopied || "Introduza a palavra"}
           className={theme.palette.mode}
         />
       </Box>

@@ -16,7 +16,7 @@ export default function useDatabase() {
       return database.words?.find((item) => {
         // let word2 = item[from];
         if (from === "pt") {
-          return word.trim() == item[from].trim();
+          return word.trim().toLowerCase() == item[from].trim().toLowerCase();
         } else {
           return item[from].includes(word);
         }
