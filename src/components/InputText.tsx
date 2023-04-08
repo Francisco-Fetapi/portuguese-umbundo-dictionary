@@ -31,7 +31,11 @@ export default function InputText() {
 
   useEffect(() => {
     if (database.words) {
-      const results = filterByText(database.words, value, languagesOrder[0]);
+      const results = filterByText(
+        database.words,
+        value || textToTranslate,
+        languagesOrder[0]
+      );
       dispatch(setSearchResults(results));
     }
   }, [textToTranslate]);
