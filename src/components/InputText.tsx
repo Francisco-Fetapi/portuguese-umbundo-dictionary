@@ -26,17 +26,12 @@ export default function InputText() {
   useEffect(() => {
     if (automaticSearch) {
       dispatch(setTextToTranslate(value));
-      console.log("changed");
     }
   }, [debounced]);
 
   useEffect(() => {
     if (database.words) {
-      const results = filterByText(
-        database.words,
-        textToTranslate,
-        languagesOrder[0]
-      );
+      const results = filterByText(database.words, value, languagesOrder[0]);
       dispatch(setSearchResults(results));
     }
   }, [textToTranslate]);
@@ -45,8 +40,6 @@ export default function InputText() {
     e.preventDefault();
     dispatch(setTextToTranslate(value));
   };
-
-  console.log(textToTranslate);
 
   return (
     <InputArea>

@@ -88,6 +88,7 @@ export function sliceCreator(initialState: App) {
         Object.assign(state, stateReseted(initialState));
       },
       setTextToTranslate(state, action: PayloadAction<string>) {
+        if (!action.payload) return;
         state.textToTranslate = action.payload;
       },
       setSearchResults(state, action: PayloadAction<IWord[]>) {

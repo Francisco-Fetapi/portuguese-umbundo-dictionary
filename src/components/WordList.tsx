@@ -21,7 +21,6 @@ export default function WordList({
   const isPageFinished = page >= words.length;
 
   function nextPage() {
-    console.log(page, words.length);
     if (isPageFinished) {
       return;
     }

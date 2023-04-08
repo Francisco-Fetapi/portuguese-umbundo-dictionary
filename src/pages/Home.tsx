@@ -24,9 +24,9 @@ export default function Home() {
   //   };
   // }, []);
 
-  useEffect(() => {
-    dispatch(resetAdvancedSearch());
-  }, []);
+  // useEffect(() => {
+  // dispatch(resetAdvancedSearch());
+  // }, []);
 
   return (
     <div className="super-container">
