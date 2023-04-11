@@ -7,6 +7,12 @@ import config from "../config.json";
 export default function HelpAndComments() {
   const [value, handleChange] = useInputState("");
 
+  const emailSubject = window.encodeURI("Feedback em relação ao Aplicativo.");
+  const body = window.encodeURI(value);
+
+  const finalLink = `mailto://${config.application_email}?subject=${emailSubject}&body=${body}`;
+  const maxLength = 50;
+
   return (
     <PageHeader pageName="Ajuda e Comentários">
       <Box
@@ -15,7 +21,7 @@ export default function HelpAndComments() {
         component="form"
         noValidate
         autoComplete="off"
-        action={`mailto://${config.application_email}`}
+        action={finalLink}
       >
         <Text
           align="center"
@@ -35,6 +41,8 @@ export default function HelpAndComments() {
             value={value}
             onChange={handleChange}
             name="message"
+            inputProps={{ maxLength }}
+            helperText={`${value.length}/${maxLength}`}
           />
         </Box>
         <BoxColumnCenter mt={2}>
