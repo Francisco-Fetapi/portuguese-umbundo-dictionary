@@ -1,4 +1,11 @@
 {
   "application_email": "franciscofetapi10@gmail.com",
-  "application_facebook_page": "somepage"
+  "application_facebook_page": "somepage",
+  "contribuitors": [
+    { "name": "Simão Vasco" },
+    { "name": "Leodivaldo Passagem" },
+    { "name": "Onésimo Xavier" },
+    { "name": "Teresa Camota" },
+    { "name": "Venâncio Ferreira" }
+  ]
 }

@@ -29,7 +29,7 @@ export default function AboutUs() {
         </Box>
 
         <Box mt={2}>
-          <Text variant="subtitle2">Enviar comentários para</Text>
+          <Text variant="subtitle2">Envie comentários/sugestões para</Text>
           <Link
             variant="subtitle2"
             href={`mailto://${config.application_email}`}
@@ -48,8 +48,8 @@ export default function AboutUs() {
                   gridTemplateColumns: "1fr 1fr",
                 }}
               >
-                {[1, 2, 3, 4, 5, 6].map((item) => (
-                  <li key={item}>Nome da pessoa{item}</li>
+                {config.contribuitors.map((contribuitor) => (
+                  <li key={contribuitor.name}>{contribuitor.name}</li>
                 ))}
               </ul>
             </Text>
@@ -58,8 +58,9 @@ export default function AboutUs() {
       </Box>
       <Box flexGrow={1} />
       <Box my={2}>
-        <Text color="gray" fontWeight={300} variant="subtitle2" align="center">
-          Copyright &copy; 2022, todos os direitos reservados.
+        <Text color="gray" fontWeight={400} variant="subtitle2" align="center">
+          Copyright &copy; {new Date().getFullYear()} - todos os direitos
+          reservados.
         </Text>
       </Box>
     </PageHeader>
