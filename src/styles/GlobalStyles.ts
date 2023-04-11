@@ -6,6 +6,11 @@ interface StylesProps {
 
 export const GlobalStyles = createGlobalStyle<StylesProps>`
 
+@font-face{
+  src: url("/Roboto-Regular.ttf");
+  font-family: "Roboto";
+}
+
 :root{
   /* #4f5150 */
   --primary-color:${(props) =>
@@ -38,6 +43,7 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
       background-position: center center;
       background-size: 100% 100%;
       background-repeat: no-repeat;
+      background-attachment:fixed;
     }
     .bg-container2{
       
