@@ -1,6 +1,7 @@
 import { Box, Link } from "@mui/material";
 import PageHeader from "../components/PageHeader";
 import { Text } from "../styles/General";
+import config from "../config.json";
 
 export default function UtilityTerms() {
   return (
@@ -35,7 +36,7 @@ export default function UtilityTerms() {
             <li>
               <Text fontWeight={300} variant="subtitle2">
                 Nos informar a partir da nossa &nbsp;
-                <Link href="https://facebook.com/pages/pt" target="__blank">
+                <Link href={config.application_facebook_page} target="__blank">
                   página no facebook
                 </Link>{" "}
                 sobre qualquer mau funcionamento da aplicação fixando no final

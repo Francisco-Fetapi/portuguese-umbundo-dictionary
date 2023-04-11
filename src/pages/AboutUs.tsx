@@ -21,7 +21,7 @@ export default function AboutUs() {
           <Text variant="subtitle2">Visite nossa página no facebook</Text>
           <Link
             variant="subtitle2"
-            href={`https://facebook.com/page/${config.application_facebook_page}`}
+            href={config.application_facebook_page}
             target="__blank"
           >
             Página do facebook
