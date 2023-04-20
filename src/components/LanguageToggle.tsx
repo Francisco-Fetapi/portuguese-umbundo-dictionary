@@ -40,7 +40,7 @@ function ButtonLanguage({ label }: ButtonLanguageProps) {
     <Button
       disabled
       startIcon={
-        <img src={`/img/${logos[label]}`} alt="Icon" width={20} height={15} />
+        <img src={`./img/${logos[label]}`} alt="Icon" width={20} height={15} />
       }
       sx={{
         ":disabled": {

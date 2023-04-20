@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import AboutUs from "./pages/AboutUs";
 import Conversations from "./pages/Conversations";
 import Favorites from "./pages/Favorites";
@@ -16,7 +16,7 @@ import Conversation from "./pages/Conversation";
 
 export default function routes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/historico" element={<History />} />
@@ -36,6 +36,6 @@ export default function routes() {
         <Route path="/palavra/:word" element={<Word />} />
         <Route path="/tradutor" element={<Traductor />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

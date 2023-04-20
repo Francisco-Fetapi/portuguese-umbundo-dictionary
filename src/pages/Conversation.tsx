@@ -53,7 +53,7 @@ interface LogoLanguageShortProps {
 function LogoLanguageShort({ logo }: LogoLanguageShortProps) {
   return (
     <img
-      src={`/img/${logo}.jpg`}
+      src={`./img/${logo}.jpg`}
       width={18}
       height={18}
       style={{

@@ -38,7 +38,7 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
       min-height: 100vh;
       position:absolute;
       z-index:1;
-      background: url("/img/bg-afrika.jpg");
+      background: url("./img/bg-afrika.jpg");
       /* background-position: 100% 100%; */
       background-position: center center;
       background-size: 100% 100%;

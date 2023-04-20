@@ -5,15 +5,16 @@ import { Provider } from "react-redux";
 import Routes from "./routes";
 import { AppContainer } from "./styles/General";
 import LocalDatabaseProvider from "./contexts/DatabaseProvider";
-import FirebaseProvider from "./contexts/FireBaseProvider";
+// import FirebaseProvider from "./contexts/FireBaseProvider";
 
 const databases = {
   development: LocalDatabaseProvider,
-  production: FirebaseProvider,
+  // production: FirebaseProvider,
 };
 
 const environment = navigator.onLine ? "production" : "development";
-const DatabaseProvider = databases[environment];
+// const DatabaseProvider = databases[environment];
+const DatabaseProvider = databases["development"];
 
 function App() {
   return (
