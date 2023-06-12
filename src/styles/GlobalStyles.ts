@@ -79,4 +79,8 @@ export const GlobalStyles = createGlobalStyle<StylesProps>`
       pointer-events: none;
       display:none;
     }
+
+    .MuiListItem-root .MuiListItemAvatar-root svg{
+      fill:#111;
+    }
 `;
