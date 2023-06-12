@@ -74,6 +74,7 @@ export default function Traductor() {
           fullWidth
           value={textToTranslate}
           onChange={(e) => setTextToTranslate(e.target.value)}
+          helperText="⚠ Esta funcionalidade é instavél. Para uma maior precisão aguarde as próximas versões. ⚠"
         />
       </Box>
 
