@@ -117,7 +117,7 @@ export default function Word() {
                 ))
               ) : (
                 <Text color="gray" variant="subtitle2">
-                  Sem exmplos no momento.
+                  Sem exemplos no momento.
                 </Text>
               )}
             </Box>
