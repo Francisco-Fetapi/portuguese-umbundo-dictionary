@@ -1,31 +1,303 @@
 [
   {
-    "topic": "Saudação",
-    "description": "Uma pequena descricao do topico. Opcional",
-    "slug": "saudacao",
+    "id": "8gjkJPPhIc5vRiNYx5lm",
     "phrases": [
       {
-        "pt": "Frase em portugues 1",
-        "um": "Frase em umbundo 2"
+        "um": "“Nda wasanga ombia yo kaliye, kaciyo ka kowinesi”",
+        "pt": "Panela velha faz boa comida "
       },
       {
-        "pt": "Frase em portugues 2",
-        "um": "Frase em umbundo 2"
+        "pt": " A força do jacaré é na agua. Deixe estar o jacaré que ja secará a lagoa.",
+        "um": "“Unene wa ngando ko vava”"
+      },
+      {
+        "um": "“Nda vimbo muafa onjamba, ombangulo onjamba”",
+        "pt": " Se morre um elefante na aldeia, ele é o principal assunto. "
+      },
+      {
+        "um": "\"Yuna ka lalinga eko limue, kala seteka eci cokaliye\" ",
+        "pt": "Aquele que nunca cometeu um erro nunca tentou algo novo"
+      },
+      {
+        "um": "\"Onduko yiwa, yavelapo  okuti ovowasi cisule\" ",
+        "pt": "Um bom nome é melhor do que riquezas "
+      },
+      {
+        "um": "\"O manhi yimosi, yavela olomuleta Vivaldi\" ",
+        "pt": "Um pé é melhor do que duas muletas "
+      },
+      {
+        "um": "\"Nda voluali kamuli ombembua, kuli ombembua vu Kristo\" ",
+        "pt": "Quando não há paz na terra, há paz em Cristo "
+      },
+      {
+        "um": "\"Elongo, osapi lieci ciwa\" ",
+        "pt": "Educação é a chave do sucesso "
+      },
+      {
+        "um": "\"A suelẽlã citava vapeseka uteke wosi, apole esanju liya komele\" ",
+        "pt": "O choro pode durar uma noite mas a alegria vem pela manhã  "
+      },
+      {
+        "um": "\"Ove lalimue eteke okakala likawove omo yumue wa pama okasi otembo yosi love konele kuosi\" ",
+        "pt": "Tu nunca estarás sozinho porque Alguém mais forte está sempre contigo em toda parte"
+      },
+      {
+        "pt": "A preguiça anda tão devagar que a pobreza facilmente a alcansa  ",
+        "um": "\"Owesi wenda levando, pũai  usuke wiya ale vusanhĩwa lonjanga\" "
+      },
+      {
+        "um": "\"Nhĩse okukala ombua yomuenhõ ekuti o osi yafa yisule\" ",
+        "pt": "Melhor ser um cão vivo do que um leão morto "
+      },
+      {
+        "um": "\"Nhĩse unhali wayuluka, ekamba lielivova halioko\" ",
+        "pt": "Melhor um inimigo aberto do que um falso amigo "
+      },
+      {
+        "um": "\"Alinga, vavangula vali olukandi okuti ondaka cisule\" ",
+        "pt": "Acções falam mais alto do que palavras "
+      },
+      {
+        "pt": "Nós ganhamos sabedoria mais rápido em tempos difíceis do que em tempos de prosperidade",
+        "um": "\"Etu tufunhã ukulihĩso lonjanga volotembo viatilã, volotembo viuwasi cisule\" "
+      },
+      {
+        "um": "\"Nhĩse okucilua, upolokoso cisule\" ",
+        "pt": "Melhor tarde do que nunca "
+      },
+      {
+        "um": "\"Aliponhõ avali kavalingi casuapo\" ",
+        "pt": "Dois erros não fazem um certo "
+      },
+      {
+        "um": "\"Ocindekase cikuete vali esilivilo, olondaka visule\" ",
+        "pt": "Uma imagem vale mais do que palavras  "
+      },
+      {
+        "pt": "Na juventude deve-se acumular o saber e na velhice fazer o uso dele",
+        "um": "\"Vovomalehẽ, tua sesamelã okuliongoluila ukulihiso vovokulu tu cifunfula\" "
       }
-    ]
+    ],
+    "description": "Nesta secção tu aprenderás alguns provérbios úteis para a vida",
+    "author": "Simão Vasco ",
+    "topic": "Provérbios ",
+    "slug": "provérbios-",
+    "date": "Thu Jun 01 2023 17:13:22 GMT+0100 (West Africa Standard Time)"
   },
   {
-    "topic": "Algum outro topico",
-    "description": "Uma pequena descricao do topico. Opcional",
-    "slug": "algum-outro-topico",
     "phrases": [
       {
-        "pt": "Frase em portugues 1",
-        "um": "Frase em umbundo 2"
+        "pt": "Deus é amor ",
+        "um": "Suku ocisola"
       },
       {
-        "pt": "Frase em portugues 2",
-        "um": "Frase em umbundo 2"
+        "um": "Suku uwa",
+        "pt": "Deus é bom "
+      },
+      {
+        "um": "Omunu, lomunu okuete cimue alinga vekalo",
+        "pt": "Cada um tem algo a contribuir na sociedade "
+      },
+      {
+        "pt": "Devemos ser bondosos uns com os outros",
+        "um": "tuasesamela oku njuka omunu lokuetu"
+      },
+      {
+        "pt": "Não devemos nos cansar de fazer o bem",
+        "um": "Ka tukakavi okulinga ciwa"
+      },
+      {
+        "pt": "Amai-vos uns aos outros",
+        "um": "Lisoli pokati"
+      }
+    ],
+    "author": "Simão Vasco ",
+    "topic": "Outras expressões ",
+    "slug": "outras-expressões-",
+    "date": "Tue May 30 2023 20:47:22 GMT+0100 (Hora padrão da África Ocidental)",
+    "description": "Aqui aprenderás outras expressões úteis ",
+    "id": "ZXqj2fQe04OCMgOPEfjv"
+  },
+  {
+    "topic": "Diálogo",
+    "phrases": [
+      {
+        "um": "Ove ovangula Umbundu?",
+        "pt": "Você fala Umbundo?"
+      },
+      {
+        "um": "Sio, Umbundu Kaundilomboloka",
+        "pt": "Não, eu não entendo Umbundo"
+      },
+      {
+        "um": "Oco, kamue nhõ katito",
+        "pt": "Sim, mas só um pouco"
+      },
+      {
+        "pt": "Você pode falar mais devagar?",
+        "um": "Ove citava okuvangula evando?"
+      },
+      {
+        "pt": "Você pode repetir?",
+        "um": "Ove citava opitulula?"
+      },
+      {
+        "um": "Civanguiwa ndati... vumbundu? ",
+        "pt": "Como se diz... em Umbundo?"
+      },
+      {
+        "pt": "Como se soletra isso?",
+        "um": "Eci citepesiwa  ndati watayo? "
+      },
+      {
+        "um": "Ove nda wanyiha elungulo?",
+        "pt": "Tu poderias me dar um conselho?"
+      },
+      {
+        "um": "Nyẽ cilipita?",
+        "pt": "O que está acontecendo?"
+      },
+      {
+        "um": "Nda pandula kua cosi.",
+        "pt": "Obrigado por tudo"
+      },
+      {
+        "pt": "De nada",
+        "um": "Lacimue"
+      },
+      {
+        "um": "Onduko yove?",
+        "pt": "Qual é o teu nome?"
+      },
+      {
+        "um": "Onduko yange ame Mingo",
+        "pt": "Meu nome é Mingo"
+      },
+      {
+        "um": "Okasi pi? watunga pi? ",
+        "pt": "Onde tu moras?"
+      },
+      {
+        "pt": "Eu vivo na Catumbela ",
+        "um": "Ame ndikasi kokatombela"
+      },
+      {
+        "pt": "Tu estudas?",
+        "um": "Ove otanga?"
+      },
+      {
+        "um": "Oco, nditanga",
+        "pt": "Sim, estudo"
+      }
+    ],
+    "id": "iIG2lPwWdgSkDK82sLkG",
+    "author": "Simão Vasco ",
+    "date": "Sun May 28 2023 17:41:06 GMT+0100 (Hora padrão da África Ocidental)",
+    "description": "Neste tópico tu aprenderás as principais formas de trocar ideias com alguém, conversando. ",
+    "slug": "diálogo"
+  },
+  {
+    "date": "Wed May 17 2023 22:21:42 GMT+0100 (Hora padrão da África Ocidental)",
+    "slug": "cumprimentos-",
+    "topic": "Cumprimentos ",
+    "phrases": [
+      {
+        "um": "Walale? ",
+        "pt": "Passou bem a noite? "
+      },
+      {
+        "um": "Ndalale potchiwa",
+        "pt": " Passei bem  (pela manhã) "
+      },
+      {
+        "pt": "Passou bem o dia?",
+        "um": "Walãnga?"
+      },
+      {
+        "um": "Ndalanga potchiwa",
+        "pt": "Passei bem (pela tarde/noite) )"
+      },
+      {
+        "pt": "Está bem?",
+        "um": "Wakola potchiwa?"
+      },
+      {
+        "um": "Ocassi chiwa? ",
+        "pt": "Tudo bem? "
+      },
+      {
+        "um": "Utanha uwa",
+        "pt": "Boa  tarde"
+      },
+      {
+        "um": "Sali potchiwa",
+        "pt": "Adeus, fique bem "
+      }
+    ],
+    "id": "lNnOv1vXVJ2rJw665Ypo",
+    "author": "Simão Vasco ",
+    "description": "Neste tópico tu aprenderás como saudar em Umbundo"
+  },
+  {
+    "date": "Thu Jun 01 2023 11:25:01 GMT+0100 (West Africa Standard Time)",
+    "slug": "dias-e-tempos",
+    "topic": "Dias e tempos",
+    "author": "Simão Vasco ",
+    "description": "Aqui aprenderás sobre os dias e certos advérbios de tempo",
+    "id": "oUcFPBmJLLGaiW1YtaXl",
+    "phrases": [
+      {
+        "pt": "Amanhã ",
+        "um": "Hẽla"
+      },
+      {
+        "um": "Etali",
+        "pt": "Hoje "
+      },
+      {
+        "pt": "Ontem ",
+        "um": "Hẽla liapita"
+      },
+      {
+        "pt": "Agora ",
+        "um": "Kaliye, Echimueci echi "
+      },
+      {
+        "pt": "Depois, mais tarde ",
+        "um": "Ndopo, noke"
+      },
+      {
+        "pt": "Domingo ",
+        "um": "Calumingo, eteke lia tete"
+      },
+      {
+        "um": "Casikunda, eteke lia vali",
+        "pt": "Segunda-feira"
+      },
+      {
+        "pt": "Terça-feira",
+        "um": "Catelesa, eteke lia tatu"
+      },
+      {
+        "pt": "Quarta-feira",
+        "um": "Cakualata, eteke lia kualã"
+      },
+      {
+        "pt": "Quinta-feita",
+        "um": "Cakinda, eteke lia talõ"
+      },
+      {
+        "um": "Casesa, eteke liepandu ",
+        "pt": "Sexta-feita "
+      },
+      {
+        "um": "Casapalo, eteke liepandu vali",
+        "pt": "Sábado "
+      },
+      {
+        "pt": "Antes",
+        "um": "Apa andi"
       }
     ]
   }

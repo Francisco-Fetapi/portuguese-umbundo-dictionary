@@ -5,16 +5,30 @@ import { Provider } from "react-redux";
 import Routes from "./routes";
 import { AppContainer } from "./styles/General";
 import LocalDatabaseProvider from "./contexts/DatabaseProvider";
-// import FirebaseProvider from "./contexts/FireBaseProvider";
+import FirebaseProvider from "./contexts/FireBaseProvider";
 
 const databases = {
   development: LocalDatabaseProvider,
-  // production: FirebaseProvider,
+  production: FirebaseProvider,
+  test: LocalDatabaseProvider,
 };
 
-const environment = navigator.onLine ? "production" : "development";
-// const DatabaseProvider = databases[environment];
-const DatabaseProvider = databases["development"];
+type Envs = keyof typeof databases;
+let url = new URLSearchParams(window.location.search);
+let forceOfflineMode: string | null = null;
+
+if (url) {
+  forceOfflineMode = url.get("local");
+}
+
+let environment: Envs = navigator.onLine ? "production" : "development";
+if (forceOfflineMode) {
+  environment = "test";
+}
+const DatabaseProvider = databases[environment || "test"];
+// const DatabaseProvider = databases.test;
+
+console.log("Using: ", environment);
 
 function App() {
   return (
