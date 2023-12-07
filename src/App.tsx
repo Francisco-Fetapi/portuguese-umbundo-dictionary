@@ -25,9 +25,10 @@ let environment: Envs = navigator.onLine ? "production" : "development";
 if (forceOfflineMode) {
   environment = "test";
 }
-// const DatabaseProvider = databases[environment];
+const DatabaseProvider = databases[environment || "test"];
+// const DatabaseProvider = databases.test;
 
-const DatabaseProvider = databases.test;
+console.log("Using: ", environment);
 
 function App() {
   return (

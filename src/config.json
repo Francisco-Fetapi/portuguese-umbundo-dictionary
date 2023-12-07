@@ -1,12 +1,11 @@
 {
-  "application_email": "vascosimao705@gmail.com",
+  "application_email": "franciscofetapi10@gmail.com",
   "application_facebook_page": "https://facebook.com/pages/pt",
   "contribuitors": [
-    { "name": "Simão Vasco" },
-    { "name": "Leodivaldo Passagem" },
-    { "name": "Onésimo Xavier" },
-    { "name": "Teresa Camota" },
-    { "name": "Venâncio Ferreira" },
-    {"name":"Domingas Gomes"}
+    {
+      "name": "Francisco Fetapi",
+      "url": "https://franciscofetapi.vercel.app/"
+    },
+    { "name": "Pascoal Kahamba", "url": "#" }
   ]
 }
